@@ -49,8 +49,8 @@ const App = () => {
       description: "An siteweb built with HTML, CSS and Javascript",
       tech: ["HTML", "CSS", "Javascript"],
       image: "/src/assets/images/Screenshot-Bright Future Of Web.png",
-      demoLink: "https://demo.example.com",
-      codeLink: "https://toavina-jr-evaluation.netlify.app"
+      demoLink: "https://toavina-jr-evaluation.netlify.app",
+      codeLink: "https://github.com/DTC-Formation/evaluation-html-css-ToavinaJr"
     },
   ];
   

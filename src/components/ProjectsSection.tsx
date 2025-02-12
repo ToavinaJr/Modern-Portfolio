@@ -35,9 +35,6 @@ export const ProjectsSection = ({ projects}: ProjectsSectionProps) => {
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                  <span className="text-white text-lg font-semibold tracking-wide">Voir Détails</span>
-                </div>
               </div>
 
               {/* Contenu */}
@@ -50,7 +47,7 @@ export const ProjectsSection = ({ projects}: ProjectsSectionProps) => {
                   {project.tech.map((tech, i) => (
                     <span
                       key={i}
-                      className="px-3 py-1 text-xs sm:text-sm rounded-full bg-[#00bcff] text-white font-medium shadow-md"
+                      className="px-3 py-1 text-xs sm:text-sm rounded-full bg-[#868686] text-white font-medium shadow-md"
                     >
                       {tech}
                     </span>
@@ -72,10 +69,10 @@ export const ProjectsSection = ({ projects}: ProjectsSectionProps) => {
                     href={project.demoLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-5 py-2 rounded-lg bg-[#00bcff] hover:bg-[#009edb] transition-all duration-300 text-white font-medium shadow-md w-full sm:w-auto"
+                    className="text-slate-100 flex items-center gap-2 px-5 py-2 rounded-lg bg-[#01425a] hover:bg-[#009edb] transition-all duration-300 font-medium shadow-md w-full sm:w-auto"
                   >
                     <ExternalLink size={18} />
-                    <span>Démo</span>
+                    <span>Demo</span>
                   </a>
                 </div>
               </div>

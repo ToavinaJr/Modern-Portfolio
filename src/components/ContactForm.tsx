@@ -73,7 +73,7 @@ export const ContactForm = ({ darkMode }: ContactFormProps) => {
       >
         🤙 Contact Me
       </h2>
-      <form className={`max-w-lg mx-auto space-y-6 p-8 rounded-lg shadow-lg ${darkMode ? 'bg-[#1e293b] text-white' : 'bg-white text-gray-900'}`}>
+      <form className={`max-w-lg mx-auto sm:space-y-4 space-y-6 p-8 rounded-lg shadow-lg ${darkMode ? 'bg-[#1e293b] text-white' : 'bg-white text-gray-900'}`}>
         <div className="relative">
           <label className={`block mb-2 text-sm font-semibold ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Name</label>
           <input
@@ -97,7 +97,7 @@ export const ContactForm = ({ darkMode }: ContactFormProps) => {
         </div>
         <button
           type="submit"
-          className="w-full bg-[#00bcff] text-white py-3 rounded-lg hover:bg-[#009edb] transition-all flex items-center justify-center gap-2 shadow-md"
+          className="w-full cursor-pointer bg-[#01425a] hover:bg-[#009edb] transition-all duration-300 text-white py-3 rounded-lg flex items-center justify-center gap-2 shadow-md"
         >
           <Mail size={20} />
           Send Message

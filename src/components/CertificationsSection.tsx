@@ -31,9 +31,6 @@ export const CertificationsSection = ({ certifications }: CertificationsSectionP
                   alt={cert.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                  <span className="text-white text-sm font-medium tracking-wide">Voir Détails</span>
-                </div>
               </div>
 
               {/* Contenu */}
@@ -46,18 +43,18 @@ export const CertificationsSection = ({ certifications }: CertificationsSectionP
                 <div className="flex gap-3 mt-4">
                   <button
                     onClick={() => window.open(cert.image, '_blank')}
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-200 dark:bg-[#2b2b40] hover:bg-gray-300 dark:hover:bg-[#3a3a5a] transition-all duration-300 text-gray-800 dark:text-white font-medium shadow-sm"
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg cursor-pointer bg-gray-200 dark:bg-[#2b2b40] hover:bg-gray-300 dark:hover:bg-[#3a3a5a] transition-all duration-300 text-gray-800 dark:text-white font-medium shadow-sm"
                   >
                     <Image size={16} />
-                    <span>Voir</span>
+                    <span>View</span>
                   </button>
                   <a
                     href={cert.certificateLink}
                     download
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#00bcff] hover:bg-[#009edb] transition-all duration-300 text-white font-medium shadow-sm"
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#01425a] hover:bg-[#009edb] transition-all duration-300 text-white font-medium shadow-sm"
                   >
                     <Download size={16} />
-                    <span>Télécharger</span>
+                    <span>Download</span>
                   </a>
                 </div>
               </div>

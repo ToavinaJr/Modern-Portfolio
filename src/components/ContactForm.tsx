@@ -71,7 +71,7 @@ export const ContactForm = ({ darkMode }: ContactFormProps) => {
         ref={titleParallax.ref as React.RefObject<HTMLHeadingElement>}
         className="text-3xl font-bold mb-8 text-center"
       >
-        Contact Me
+        🤙 Contact Me
       </h2>
       <form className={`max-w-lg mx-auto space-y-6 p-8 rounded-lg shadow-lg ${darkMode ? 'bg-[#1e293b] text-white' : 'bg-white text-gray-900'}`}>
         <div className="relative">

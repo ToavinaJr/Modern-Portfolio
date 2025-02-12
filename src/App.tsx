@@ -18,7 +18,7 @@ const App = () => {
       tech: ["Qt", "C++"],
       image: "/src/assets/images/Screenshot-draw-it.png",
       demoLink: "",
-      codeLink: "https://github.com/example/project"
+      codeLink: "https://github.com/ToavinaJr/Shape-Drawer-Application-avec-Qt"
     },
     {
       title: "Media Player",
@@ -26,7 +26,7 @@ const App = () => {
       tech: ["Qt", "C++"],
       image: "/src/assets/images/Screenshot-Media-Player.png",
       demoLink: "https://demo.example.com",
-      codeLink: "https://github.com/example/project"
+      codeLink: "https://github.com/ToavinaJr/Media-Player-QT"
     },
     {
       title: "Sudoku Application Player",
@@ -34,7 +34,7 @@ const App = () => {
       tech: ["Qt", "C++"],
       image: "/src/assets/images/Screenshot-Sudoku.png",
       demoLink: "https://demo.example.com",
-      codeLink: "https://github.com/example/project"
+      codeLink: "https://github.com/ToavinaJr/Sudoku-app-with-Qt"
     },
     {
       title: "Maze Application Generator",
@@ -42,7 +42,15 @@ const App = () => {
       tech: ["Qt", "C++"],
       image: "/src/assets/images/Screenshot-Maze-Generator.png",
       demoLink: "https://demo.example.com",
-      codeLink: "https://github.com/example/project"
+      codeLink: "https://github.com/ToavinaJr/Maze-Project-avec-Qt"
+    },
+    {
+      title: "Bright future of Web",
+      description: "An siteweb built with HTML, CSS and Javascript",
+      tech: ["HTML", "CSS", "Javascript"],
+      image: "/src/assets/images/Screenshot-Bright Future Of Web.png",
+      demoLink: "https://demo.example.com",
+      codeLink: "https://toavina-jr-evaluation.netlify.app"
     },
   ];
   

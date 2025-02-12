@@ -1,16 +1,3 @@
-// export interface Project {
-//     title: string;
-//     description: string;
-//     tech: string[];
-//     link: string;
-// }
-
-// export interface Certification {
-//     title: string;
-//     issuer: string;
-//     date: string;
-// }
-
 export interface Education {
     degree: string;
     school: string;

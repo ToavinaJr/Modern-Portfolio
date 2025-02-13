@@ -4,7 +4,7 @@ export const HeroSection = () => (
   <section className="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center gap-12 bg-gradient-to-b from-gray-100 to-white dark:from-gray-900 dark:to-gray-800 rounded-lg shadow-xl">
     <div className="md:w-1/3 flex justify-center">
       <img
-        src="/src/assets/images/photo_profil.jpg"
+        src="/images/photo_profil.jpg"
         alt="Profile"
         className="rounded-full w-48 h-48 md:w-56 md:h-56 object-cover shadow-lg border-4 border-white dark:border-gray-700 transition-transform transform hover:scale-105"
       />

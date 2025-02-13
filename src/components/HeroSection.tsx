@@ -22,7 +22,7 @@ export const HeroSection = () => (
         <a href="https://www.linkedin.com/in/randriamihaingoson-toavina-sylvianno-38a987276" className="text-gray-700 dark:text-gray-300 hover:text-[#00bcff] transition-all flex items-center"  target='_blank'>
           <Linkedin size={28}/>
         </a>
-        <button className="text-white px-5 py-3 rounded-full flex items-center gap-3 font-semibold shadow-lg cursor-pointer hover:bg-[#01425a] bg-[#009edb]">
+        <button className="text-white px-5 py-3 rounded-full flex items-center gap-3 font-semibold shadow-lg cursor-pointer bg-[#01425a] hover:bg-[#009edb]">
           <Download size={24} />
           Resume
         </button>

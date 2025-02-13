@@ -21,7 +21,7 @@ export const HeroSection = () => (
         <a href="#" className="text-gray-700 dark:text-gray-300 hover:text-[#00bcff] transition-all flex items-center">
           <Linkedin size={28} />
         </a>
-        <button className="bg-[#868686] text-white px-5 py-3 rounded-full flex items-center gap-3 font-semibold shadow-lg bg-gradient-to-r from-[#1e293b] to-[#00bcff] cursor-pointer hover:bg-[#009edb]">
+        <button className="text-white px-5 py-3 rounded-full flex items-center gap-3 font-semibold shadow-lg cursor-pointer hover:bg-[#01425a] bg-[#009edb]">
           <Download size={24} />
           Resume
         </button>

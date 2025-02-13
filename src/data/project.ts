@@ -65,6 +65,14 @@ const dataProject : Project[] = [
         demoLink: "https://toavina-web-game.netlify.app/",
         codeLink: "https://github.com/ToavinaJr/2048-web-game"
     },
+    {
+        title: "NBA Stat",
+        description: "A siteweb for showing NBA Stat with a dashboard",
+        tech: ["JS", "HTML", "CSS", "ChartJS"],
+        image: "/src/assets/images/Screenshot-NBA-Stat.png",
+        demoLink: "https://toavina-sylvianno-nba-chart-js.netlify.app/",
+        codeLink: "https://github.com/ToavinaJr/Nba-stat-charjs"
+    },
 ];
 
 export default dataProject;

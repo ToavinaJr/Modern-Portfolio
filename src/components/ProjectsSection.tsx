@@ -60,7 +60,7 @@ export const ProjectsSection = ({ projects}: ProjectsSectionProps) => {
                     href={project.codeLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-5 py-2 rounded-lg bg-[#2b2b40] hover:bg-[#3a3a5a] transition-all duration-300 text-white font-medium shadow-md w-full sm:w-auto"
+                    className="flex items-center gap-2 px-5 py-2 rounded-lg hover:bg-[#2b2b40] bg-[#3a3a5a] transition-all duration-300 text-white font-medium shadow-md w-full sm:w-auto"
                   >
                     <Code size={18} />
                     <span>Code</span>

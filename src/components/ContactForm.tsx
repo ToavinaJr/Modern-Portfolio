@@ -83,6 +83,7 @@ export const ContactForm = ({ darkMode }: ContactFormProps) => {
           <input
             type="text"
             className={`w-full p-3 rounded-lg border ${darkMode ? 'border-gray-600 bg-[#1e293b] text-white' : 'border-gray-300 bg-gray-100 text-gray-900'} focus:outline-none focus:ring-2 focus:ring-[#00bcff] transition`}
+            name="text"
           />
         </div>
         <div className="relative">
@@ -90,6 +91,7 @@ export const ContactForm = ({ darkMode }: ContactFormProps) => {
           <input
             type="email"
             className={`w-full p-3 rounded-lg border ${darkMode ? 'border-gray-600 bg-[#1e293b] text-white' : 'border-gray-300 bg-gray-100 text-gray-900'} focus:outline-none focus:ring-2 focus:ring-[#00bcff] transition`}
+            name="email"
           />
         </div>
         <div className="relative">
@@ -97,6 +99,7 @@ export const ContactForm = ({ darkMode }: ContactFormProps) => {
           <textarea
             rows={4}
             className={`w-full p-3 rounded-lg border ${darkMode ? 'border-gray-600 bg-[#1e293b] text-white' : 'border-gray-300 bg-gray-100 text-gray-900'} focus:outline-none focus:ring-2 focus:ring-[#00bcff] transition`}
+            name='text'
           />
         </div>
         <input type="hidden" name="_next" value="https://portfolio-toavinajr.vercel.app"></input>

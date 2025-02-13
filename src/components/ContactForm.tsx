@@ -99,6 +99,7 @@ export const ContactForm = ({ darkMode }: ContactFormProps) => {
             className={`w-full p-3 rounded-lg border ${darkMode ? 'border-gray-600 bg-[#1e293b] text-white' : 'border-gray-300 bg-gray-100 text-gray-900'} focus:outline-none focus:ring-2 focus:ring-[#00bcff] transition`}
           />
         </div>
+        <input type="hidden" name="_next" value="https://portfolio-toavinajr.vercel.app"></input>
         <button
           type="submit"
           className="w-full cursor-pointer bg-[#01425a] hover:bg-[#009edb] transition-all duration-300 text-white py-3 rounded-lg flex items-center justify-center gap-2 shadow-md"
@@ -106,6 +107,7 @@ export const ContactForm = ({ darkMode }: ContactFormProps) => {
           <Mail size={20} />
           Send Message
         </button>
+        
       </form>
     </section>
   );

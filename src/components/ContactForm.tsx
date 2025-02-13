@@ -30,7 +30,7 @@ export const ContactForm = ({ darkMode }: ContactFormProps) => {
           <input
             type="text"
             className={`w-full p-3 rounded-lg border ${darkMode ? 'border-gray-600 bg-[#1e293b] text-white' : 'border-gray-300 bg-gray-100 text-gray-900'} focus:outline-none focus:ring-2 focus:ring-[#00bcff] transition`}
-            name="text"
+            name="name"
           />
         </div>
         <div className="relative">

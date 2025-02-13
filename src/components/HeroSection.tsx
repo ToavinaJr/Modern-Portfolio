@@ -15,10 +15,10 @@ export const HeroSection = () => (
         Passionate about creating innovative web solutions with modern technologies.
       </p>
       <div className="flex gap-6 justify-center md:justify-start mt-4 items-center">
-        <a href="#" className="text-gray-700 dark:text-gray-300 hover:text-[#00bcff] transition-all flex items-center">
+        <a href="https://github.com/ToavinaJr" className="text-gray-700 dark:text-gray-300 hover:text-[#00bcff] transition-all flex items-center">
           <Github size={28} />
         </a>
-        <a href="#" className="text-gray-700 dark:text-gray-300 hover:text-[#00bcff] transition-all flex items-center">
+        <a href="https://www.linkedin.com/in/randriamihaingoson-toavina-sylvianno-38a987276" className="text-gray-700 dark:text-gray-300 hover:text-[#00bcff] transition-all flex items-center">
           <Linkedin size={28} />
         </a>
         <button className="text-white px-5 py-3 rounded-full flex items-center gap-3 font-semibold shadow-lg cursor-pointer hover:bg-[#01425a] bg-[#009edb]">

@@ -16,7 +16,7 @@ export const HeroSection = () => (
       </p>
       {/* reseaux sociaux */}
       <div className="flex gap-6 justify-center md:justify-start mt-4 items-center">
-        <a href="https://github.com/ToavinaTr" className="text-gray-700 dark:text-gray-300 hover:text-[#00bcff] transition-all flex items-center">
+        <a href="https://github.com/ToavinaJr" className="text-gray-700 dark:text-gray-300 hover:text-[#00bcff] transition-all flex items-center">
           <Github size={28} target='_blank'/>
         </a>
         <a href="https://www.linkedin.com/in/randriamihaingoson-toavina-sylvianno-38a987276" className="text-gray-700 dark:text-gray-300 hover:text-[#00bcff] transition-all flex items-center">

@@ -10,7 +10,7 @@ export const HeroSection = () => (
       />
     </div>
     <div className="md:w-2/3 text-center md:text-left space-y-6">
-      <h2 className="sm:text- md:text-5xl font-extrabold text-gray-900 dark:text-white">Full Stack Developer</h2>
+      <h2 className="sm:text- md:text-5xl font-extrabold text-gray-900 dark:text-white">Junior Developer</h2>
       <p className="text-lg text-gray-700 dark:text-gray-300 max-w-lg mx-auto md:mx-0">
         Passionate about creating innovative web solutions with modern technologies.
       </p>

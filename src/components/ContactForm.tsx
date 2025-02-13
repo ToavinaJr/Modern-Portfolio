@@ -73,7 +73,11 @@ export const ContactForm = ({ darkMode }: ContactFormProps) => {
       >
         🤙 Contact Me
       </h2>
-      <form className={`max-w-lg mx-auto sm:space-y-4 space-y-6 p-8 rounded-lg shadow-lg ${darkMode ? 'bg-[#1e293b] text-white' : 'bg-white text-gray-900'}`}>
+      <form 
+        className={`max-w-lg mx-auto sm:space-y-4 space-y-6 p-8 rounded-lg shadow-lg ${darkMode ? 'bg-[#1e293b] text-white' : 'bg-white text-gray-900'}`}
+        action="https://formspree.io/f/xrbeaovo"
+        method="POST"
+      >
         <div className="relative">
           <label className={`block mb-2 text-sm font-semibold ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Name</label>
           <input

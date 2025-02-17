@@ -14,7 +14,7 @@ export const ProjectsSection = ({ projects}: ProjectsSectionProps) => {
   });
 
   return (
-    <section className="container mx-auto px-6 py-20">
+    <section id="projets" className="container mx-auto px-6 py-20">
       {/* Titre avec effet parallax */}
       <h2
         ref={titleParallax.ref as React.RefObject<HTMLHeadingElement>}

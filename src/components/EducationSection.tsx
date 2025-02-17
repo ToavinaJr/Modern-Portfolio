@@ -16,7 +16,7 @@ export const EducationSection = ({ education, darkMode }: EducationSectionProps)
   });
 
   return (
-    <section className="container mx-auto px-4 py-16">
+    <section id='educations' className="container mx-auto px-4 py-16">
       <h2 
         ref={titleParallax.ref as React.RefObject<HTMLHeadingElement>}
         className="text-4xl font-extrabold text-center mb-12 tracking-wide "

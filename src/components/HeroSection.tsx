@@ -1,7 +1,7 @@
 import { Github, Linkedin, Download } from 'lucide-react';
 
 export const HeroSection = () => (
-  <section className="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center gap-12 bg-gradient-to-b from-gray-100 to-white dark:from-gray-900 dark:to-gray-800 rounded-lg shadow-xl">
+  <section id="hero" className="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center gap-12 bg-gradient-to-b from-gray-100 to-white dark:from-gray-900 dark:to-gray-800 rounded-lg shadow-xl">
     <div className="md:w-1/3 flex justify-center">
       <img
         src="/images/photo_profil.jpg"

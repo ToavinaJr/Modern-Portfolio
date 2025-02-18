@@ -21,7 +21,7 @@ export const EducationSection = ({ education, darkMode }: EducationSectionProps)
         ref={titleParallax.ref as React.RefObject<HTMLHeadingElement>}
         className="text-4xl font-extrabold text-center mb-12 tracking-wide "
       >
-        Education
+        🎓 Education
       </h2>
       <div className="grid md:grid-cols-2 gap-8">
         {education.map((edu, index) => (

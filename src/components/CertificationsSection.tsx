@@ -19,7 +19,7 @@ export const CertificationsSection = ({ certifications }: CertificationsSectionP
         ref={titleParallax.ref as React.RefObject<HTMLHeadingElement>}
         className="text-3xl font-bold mb-8 text-center"
       >
-        🎓 Certifications
+        🏅 Certifications
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {certifications.map((cert) => (

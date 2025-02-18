@@ -49,7 +49,7 @@ export const CertificationsSection = ({ certifications }: CertificationsSectionP
                     <span>View</span>
                   </button>
                   <a
-                    href={cert.certificateLink}
+                    href={cert.image}
                     download
                     className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#01425a] hover:bg-[#009edb] transition-all duration-300 text-white font-medium shadow-sm"
                   >

@@ -21,6 +21,7 @@ export const Header = ({ darkMode, onThemeToggle }: HeaderProps) => {
     { href: "#certificats", label: 'Certificats' },
     { href: '#educations', label: 'Education' },
     { href: '#skills', label: 'Skills' },
+    { href: '#stack', label: 'Stack' },
     { href: '#contact', label: 'Contact' },
   ];
 

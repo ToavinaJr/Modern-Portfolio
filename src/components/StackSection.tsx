@@ -37,7 +37,7 @@ export const StackSection = () => {
   
 
   return (
-    <section className="w-full py-20 bg-gradient-to-b from-gray-100 to-white dark:from-gray-900 dark:to-gray-800">
+    <section id="stack" className="w-full py-20 bg-gradient-to-b from-gray-100 to-white dark:from-gray-900 dark:to-gray-800">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-extrabold text-center text-gray-900 dark:text-white mb-8">
           My Tech Stacks

@@ -1,6 +1,5 @@
 import { Education } from '../types';
 import { ParallaxCard } from './ParallaxCard';
-import { useParallax } from 'react-scroll-parallax';
 import { School } from 'lucide-react';
 
 interface EducationSectionProps {
@@ -9,16 +8,9 @@ interface EducationSectionProps {
 }
 
 export const EducationSection = ({ education, darkMode }: EducationSectionProps) => {
-  const titleParallax = useParallax({
-    speed: 20,
-    translateY: [0, 50],
-    opacity: [1, 0],
-  });
-
   return (
     <section id='educations' className="container mx-auto px-4 py-16">
       <h2 
-        ref={titleParallax.ref as React.RefObject<HTMLHeadingElement>}
         className="text-4xl font-extrabold text-center mb-12 tracking-wide "
       >
         🎓 Education

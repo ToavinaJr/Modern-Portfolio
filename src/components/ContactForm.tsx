@@ -1,21 +1,13 @@
 import { Mail } from 'lucide-react';
-import { useParallax } from 'react-scroll-parallax';
 
 interface ContactFormProps {
   darkMode: boolean;
 }
 
 export const ContactForm = ({ darkMode }: ContactFormProps) => {
-  const titleParallax = useParallax({
-    speed: 20,
-    translateY: [0, 50],
-    opacity: [1, 0],
-  });
-
   return (
     <section id='contact' className="container mx-auto px-4 py-16">
       <h2 
-        ref={titleParallax.ref as React.RefObject<HTMLHeadingElement>}
         className="text-3xl font-bold mb-8 text-center"
       >
         🤙 Contact Me

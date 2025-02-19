@@ -1,5 +1,4 @@
 import { Project } from "../types";
-import { useParallax } from "react-scroll-parallax";
 import { Code, ExternalLink } from "lucide-react";
 
 interface ProjectsSectionProps {
@@ -7,17 +6,12 @@ interface ProjectsSectionProps {
 }
 
 export const ProjectsSection = ({ projects}: ProjectsSectionProps) => {
-  const titleParallax = useParallax({
-    speed: 20,
-    translateY: [0, 50],
-    opacity: [1, 0],
-  });
+  
 
   return (
     <section id="projets" className="container mx-auto px-6 py-20">
       {/* Titre avec effet parallax */}
       <h2
-        ref={titleParallax.ref as React.RefObject<HTMLHeadingElement>}
         className="text-4xl font-extrabold text-center mb-12 tracking-wide"
       >
         🚀 Projects

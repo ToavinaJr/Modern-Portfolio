@@ -1,5 +1,4 @@
 import { Certification } from '../types';
-import { useParallax } from 'react-scroll-parallax';
 import { Image, Download } from 'lucide-react';
 
 interface CertificationsSectionProps {
@@ -7,16 +6,9 @@ interface CertificationsSectionProps {
 }
 
 export const CertificationsSection = ({ certifications }: CertificationsSectionProps) => {
-  const titleParallax = useParallax({
-    speed: 20,
-    translateY: [0, 50],
-    opacity: [1, 0],
-  });
-
   return (
     <section className="container mx-auto px-4 py-16">
       <h2 
-        ref={titleParallax.ref as React.RefObject<HTMLHeadingElement>}
         className="text-3xl font-bold mb-8 text-center"
       >
         🏅 Certifications

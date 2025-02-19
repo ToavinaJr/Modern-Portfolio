@@ -17,7 +17,7 @@ export const CertificationsSection = ({ certifications }: CertificationsSectionP
         {certifications.map((cert) => (
             <div className="group relative overflow-hidden rounded-lg shadow-md bg-white dark:bg-[#1e293b] transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
               {/* Image avec overlay */}
-              <div className="relative h-40 sm:h-48 overflow-hidden rounded-t-lg mb-2.5">
+              <div className="relative border-1 h-40 sm:h-48 overflow-hidden rounded-t-lg mb-2.5">
                 <img
                   src={cert.image}
                   alt={cert.title}

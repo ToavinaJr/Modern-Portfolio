@@ -23,7 +23,6 @@ const App = () => {
         <ProjectsSection projects={dataProject} />
         <CertificationsSection certifications={dataCertification} />
         <EducationSection education={dataEducation} darkMode={darkMode} />
-        {/* <SkillsSection /> */}
         <StackSection/>
         <ContactForm darkMode={darkMode} />
       </div>

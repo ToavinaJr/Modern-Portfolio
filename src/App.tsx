@@ -7,7 +7,7 @@ import { EducationSection } from './components/EducationSection';
 import { ContactForm } from './components/ContactForm';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import { StackSection } from './components/StackSection';
-// import { SkillsSection } from './components/SkillsSection';
+import { SkillsSection } from './components/SkillsSection';
 import  dataEducation  from '../src/data/education';
 import dataCertification from './data/certification';
 import dataProject from './data/project';
@@ -23,6 +23,7 @@ const App = () => {
         <ProjectsSection projects={dataProject} />
         <CertificationsSection certifications={dataCertification} />
         <EducationSection education={dataEducation} darkMode={darkMode} />
+        <SkillsSection />
         <StackSection/>
         <ContactForm darkMode={darkMode} />
       </div>

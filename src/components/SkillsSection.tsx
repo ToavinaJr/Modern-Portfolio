@@ -1,11 +1,11 @@
-import { Code, Database, Server, Activity, Shield, PenTool } from 'lucide-react';
+import { Code, Database, Server, Activity, PenTool } from 'lucide-react';
 
 export const SkillsSection = () => {
   const skills = [
     { name: 'Frontend Development', icon: <Code size={32} /> },
     { name: 'Backend Development', icon: <Server size={32} /> },
     { name: 'Database Management', icon: <Database size={32} /> },
-    { name: 'Cybersecurity', icon: <Shield size={32} /> },
+    // { name: 'Cybersecurity', icon: <Shield size={32} /> },
     { name: 'Problem Solving', icon: <Activity size={32} /> },
     { name: 'UI/UX Design', icon: <PenTool size={32} /> },
   ];

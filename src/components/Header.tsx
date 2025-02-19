@@ -23,7 +23,7 @@ export const Header = ({ darkMode, onThemeToggle }: HeaderProps) => {
   ];
 
   return (
-    <header className="container mx-auto px-4 py-6 animate-fade-in">
+    <header className="container backdrop-blur-md sticky z-[50] top-0 left-0 mx-auto px-4 py-6 animate-fade-in">
       <nav className="flex justify-between items-center">
         <h1 className="text-2xl font-bold animate-slide-down">
           <span className="text-[#00bcff] hover:text-[#009edb] transition-colors duration-300">Toavina</span>

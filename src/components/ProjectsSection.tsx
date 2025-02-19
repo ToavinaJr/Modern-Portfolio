@@ -12,7 +12,7 @@ export const ProjectsSection = ({ projects}: ProjectsSectionProps) => {
     <section id="projets" className="container mx-auto px-6 py-20">
       {/* Titre avec effet parallax */}
       <h2
-        className="text-4xl font-extrabold text-center mb-12 tracking-wide"
+        className="text-4xl font-extrabold text-gray-900 dark:text-gray-600  text-center mb-12 tracking-wide"
       >
         🚀 Projects
       </h2>

@@ -6,6 +6,8 @@ import { CertificationsSection } from './components/CertificationsSection';
 import { EducationSection } from './components/EducationSection';
 import { ContactForm } from './components/ContactForm';
 import { ParallaxProvider } from 'react-scroll-parallax';
+import { StackSection } from './components/StackSection';
+// import { SkillsSection } from './components/SkillsSection';
 import  dataEducation  from '../src/data/education';
 import dataCertification from './data/certification';
 import dataProject from './data/project';
@@ -15,12 +17,14 @@ const App = () => {
 
   return (
     <ParallaxProvider>
-      <div className={`min-h-screen ${darkMode ? 'bg-[#030712] text-[#f4f4f4]' : 'bg-[#f4f4f4] text-[#030712]'}`}>
+      <div className={`min-h-screen ${darkMode ? 'bg-[#030712] text-[#645c5c]' : 'bg-[#f4f4f4] text-[#030712]'}`}>
         <Header darkMode={darkMode} onThemeToggle={() => setDarkMode(!darkMode)} />
         <HeroSection />
         <ProjectsSection projects={dataProject} />
-        <CertificationsSection certifications={dataCertification}  />
+        <CertificationsSection certifications={dataCertification} />
         <EducationSection education={dataEducation} darkMode={darkMode} />
+        {/* <SkillsSection /> */}
+        <StackSection/>
         <ContactForm darkMode={darkMode} />
       </div>
     </ParallaxProvider>

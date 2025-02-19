@@ -100,6 +100,7 @@ export const ContactForm = ({ darkMode }: ContactFormProps) => {
             name="name"
             value={formData.name}
             onChange={handleChange}
+            placeholder='Your Name'
           />
           {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
         </div>
@@ -116,6 +117,7 @@ export const ContactForm = ({ darkMode }: ContactFormProps) => {
             name="email"
             value={formData.email}
             onChange={handleChange}
+            placeholder='Your Email'
           />
           {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
         </div>
@@ -132,6 +134,7 @@ export const ContactForm = ({ darkMode }: ContactFormProps) => {
             name="message"
             value={formData.message}
             onChange={handleChange}
+            placeholder='Your Message'
           />
           {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
         </div>

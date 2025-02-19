@@ -7,7 +7,7 @@ interface CertificationsSectionProps {
 
 export const CertificationsSection = ({ certifications }: CertificationsSectionProps) => {
   return (
-    <section className="container mx-auto px-4 py-16">
+    <section id="certificats" className="container mx-auto px-4 py-16">
       <h2 
         className="text-3xl text-gray-900 dark:text-gray-600  font-bold mb-8 text-center"
       >

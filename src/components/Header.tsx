@@ -18,7 +18,9 @@ export const Header = ({ darkMode, onThemeToggle }: HeaderProps) => {
   const navLinks = [
     { href: '#hero', label: 'Accueil' },
     { href: '#projets', label: 'Projets' },
+    { href: "#certificats", label: 'Certificats' },
     { href: '#educations', label: 'Education' },
+    { href: '#skills', label: 'Skills' },
     { href: '#contact', label: 'Contact' },
   ];
 

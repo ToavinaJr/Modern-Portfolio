@@ -1,5 +1,5 @@
 import { Github, Linkedin, Download } from 'lucide-react';
-
+import { FaHandshake } from "react-icons/fa";
 export const HeroSection = () => (
   <section id="hero" className="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center gap-12 bg-gradient-to-b from-gray-100 to-white dark:from-gray-900 dark:to-gray-800 rounded-lg shadow-xl animate-fade-in">
     <div className="md:w-1/3 flex justify-center">
@@ -35,6 +35,13 @@ export const HeroSection = () => (
           <Download size={24} />
           Resume
         </button>
+        <a 
+          href="#contact" 
+          className="text-gray-700 px-5 py-3 rounded-full  gap-3 font-semibold shadow-lg cursor-pointer  hover:bg-[#009edb] hover:scale-105 bg-blue-500 dark:text-gray-300 flex items-center " 
+        >          
+          Hire Me
+          <FaHandshake size={24}/>
+        </a>
       </div>
     </div>
     <style >{`

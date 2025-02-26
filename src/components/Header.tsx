@@ -91,11 +91,11 @@ export const Header = ({ darkMode, onThemeToggle }: HeaderProps) => {
 
       {/* Menu mobile avec modes sombre/clair améliorés */}
       <div
-        className={`fixed top-0 left-0 w-full h-screen bg-gray-50 dark:bg-gray-900 backdrop-blur-none z-40 transform transition-all duration-300 ease-in-out md:hidden overflow-hidden ${
+        className={`fixed top-0 left-0 w-full h-screen ${!darkMode ? "bg-gray-50 text-gray-700": "bg-gray-900 text-gray-50"} backdrop-blur-none z-40 transform transition-all duration-300 ease-in-out md:hidden overflow-hidden ${
           isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
         }`}
       >
-        <div className="h-full container mx-auto px-4 pt-24 bg-gray-50 dark:bg-gray-900">
+        <div className="h-full container mx-auto px-4 pt-24 ">
           <ul className="space-y-6">
             {navLinks.map((link, index) => (
               <li
@@ -106,7 +106,7 @@ export const Header = ({ darkMode, onThemeToggle }: HeaderProps) => {
               >
                 <a
                   href={link.href}
-                  className={`block text-2xl font-semibold text-gray-900 dark:text-gray-100
+                  className={`block text-2xl font-semibold 
                     hover:text-[#00bcff] dark:hover:text-[#00bcff] transition-all duration-300 
                     hover:translate-x-2 ${activeLink === link.href ? 'text-[#00bcff] dark:text-[#00bcff]' : ''}`}
                   onClick={() => {

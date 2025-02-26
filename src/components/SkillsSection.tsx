@@ -13,7 +13,7 @@ export const SkillsSection = () => {
   return (
     <section id="skills" className="container mx-auto px-6 py-20 text-center animate-fade-in-up">
       <h2 className="text-4xl font-extrabold text-[#00bcff] mb-10 animate-text-focus-in">
-        Skills & Expertise
+        Skills & Expertises
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
         {skills.map((skill, index) => (

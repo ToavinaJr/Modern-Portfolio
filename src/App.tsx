@@ -24,7 +24,7 @@ const App = () => {
         <CertificationsSection certifications={dataCertification} />
         <EducationSection education={dataEducation} darkMode={darkMode} />
         <SkillsSection />
-        <StackSection/>
+        <StackSection darkMode={darkMode}/>
         <ContactForm darkMode={darkMode} />
       </div>
     </ParallaxProvider>

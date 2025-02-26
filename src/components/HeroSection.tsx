@@ -1,5 +1,6 @@
 import { Github, Linkedin, Download } from 'lucide-react';
 import { FaHandshake } from "react-icons/fa";
+
 export const HeroSection = () => (
   <section id="hero" className="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center gap-12 bg-gradient-to-b from-gray-100 to-white dark:from-gray-900 dark:to-gray-800 rounded-lg shadow-xl animate-fade-in">
     <div className="md:w-1/3 flex justify-center">

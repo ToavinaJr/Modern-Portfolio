@@ -44,7 +44,7 @@ export const Header = ({ darkMode, onThemeToggle }: HeaderProps) => {
               >
                 <a
                   href={link.href}
-                  className={`relative py-2 hover:text-[#00bcff] transition-colors duration-200 dark:text-gray-200
+                  className={`relative py-2 hover:text-[#00bcff] transition-colors duration-200 ${darkMode ? 'text-gray-200' : 'text-gray-800'}
                     ${activeLink === link.href ? 'text-[#00bcff]' : ''}
                     after:content-[''] after:absolute after:w-full after:h-0.5 
                     after:bg-[#00bcff] after:left-0 after:bottom-0 

@@ -26,7 +26,7 @@ export const Header = ({ darkMode, onThemeToggle }: HeaderProps) => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 w-full backdrop-blur-md z-[50] px-4 py-6 animate-fade-in">
+    <header className="fixed top-0 right-0 w-full backdrop-blur-md z-[50] px-4 py-6 animate-fade-in">
       <div className="container mx-auto">
         <nav className="flex justify-between items-center">
           <h1 className="text-2xl font-bold animate-slide-down">
@@ -72,14 +72,14 @@ export const Header = ({ darkMode, onThemeToggle }: HeaderProps) => {
               className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors relative z-50"
               aria-label="Toggle menu"
             >
-              <div className="relative w-6 h-6">
+              <div className="relative w-6 h-6 text-black">
                 <X
                   className={`absolute top-0 left-0 transform transition-all duration-300 ease-in-out text-gray-800 dark:text-gray-200 ${
                     isMenuOpen ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-90'
                   }`}
                 />
                 <Menu 
-                  className={`absolute top-0 left-0 transform transition-all duration-300 ease-in-out text-gray-800 dark:text-gray-200 ${
+                  className={`absolute top-0 left-0 transform transition-all duration-300 ease-in-out text-gray-900 dark:text-gray-500 ${
                     isMenuOpen ? 'opacity-0 rotate-90' : 'opacity-100 rotate-0'
                   }`}
                 />

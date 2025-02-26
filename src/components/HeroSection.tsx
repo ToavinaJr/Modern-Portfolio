@@ -6,7 +6,7 @@ interface HeroSectionProps {
 }
 
 export const HeroSection = ({ darkMode } : HeroSectionProps) => (
-  <section id="hero" className={`container container-hero mx-auto px-6 py-8 md:py-20 flex flex-col md:flex-row items-center gap-12 bg-gradient-to-b md:min-h-[80vh] from-gray-100 to-white dark:from-gray-900 dark:to-gray-800 rounded-lg shadow-xl animate-fade-in`}>
+  <section id="hero" className={`mt-24 container container-hero mx-auto px-6 py-8 md:py-20 flex flex-col md:flex-row items-center gap-12 bg-gradient-to-b md:min-h-[80vh] from-gray-100 to-white dark:from-gray-900 dark:to-gray-800 rounded-lg shadow-xl animate-fade-in`}>
     <div className="md:w-1/3 flex justify-center">
       <img
         src="/images/photo_profil.jpg"

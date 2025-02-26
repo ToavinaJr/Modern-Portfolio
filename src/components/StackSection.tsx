@@ -63,12 +63,14 @@ export const StackSection = ({darkMode} : StackSectionProps) => {
               {techStacks.slice(currentIndex, currentIndex + itemsPerPage).map((tech, index) => (
                 <div
                   key={index}
-                  className="flex-[0_0_100%] sm:flex-[0_0_48%] md:flex-[0_0_30%] p-4"
+                  className={`flex-[0_0_100%] sm:flex-[0_0_48%] md:flex-[0_0_30%] p-4`}
                 >
-                  <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg h-48 flex flex-col items-center justify-center hover:scale-105 transition">
+                  <div className={`${
+                     darkMode ? 'bg-[#1e293b] text-white' : 'bg-white text-gray-900'
+                    } p-6 rounded-xl shadow-lg h-48 flex flex-col items-center justify-center hover:scale-105 transition `}>
                     <div className="text-5xl mb-3">{tech.icon}</div>
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{tech.name}</h3>
-                    <p className="text-gray-600 dark:text-gray-400 text-center">{tech.level}</p>
+                    <h3 className={`text-lg font-semibold ${darkMode ? ' text-white' : ' text-gray-600'}`}>{tech.name}</h3>
+                    <p className={`${darkMode ? ' text-white' : ' text-gray-400'} text-center`}>{tech.level}</p>
                   </div>
                 </div>
               ))}

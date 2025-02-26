@@ -15,7 +15,7 @@ export const SkillsSection = () => {
       <h2 className="text-4xl font-extrabold text-[#00bcff] mb-10 animate-text-focus-in">
         Skills & Expertise
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
         {skills.map((skill, index) => (
           <div
             key={index}

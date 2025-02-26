@@ -7,13 +7,13 @@ interface CertificationsSectionProps {
 
 export const CertificationsSection = ({ certifications }: CertificationsSectionProps) => {
   return (
-    <section id="certificats" className="container mx-auto px-4 py-16">
+    <section id="certificats" className="container mx-auto px-4 mb-4 py-16">
       <h2 
         className="text-3xl text-[#00bcff] font-bold mb-8 text-center"
       >
         🏅 Certifications
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
         {certifications.map((cert) => (
             <div className="group relative overflow-hidden rounded-lg shadow-md bg-white dark:bg-[#1e293b] transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
               {/* Image avec overlay */}

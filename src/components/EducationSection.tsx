@@ -9,9 +9,9 @@ interface EducationSectionProps {
 
 export const EducationSection = ({ education, darkMode }: EducationSectionProps) => {
   return (
-    <section id='educations' className="container mx-auto px-4 py-16">
+    <section id='educations' className="container mx-auto px-4 py-6 md:py-16">
       <h2 
-        className="text-4xl text-[#00bcff]  font-extrabold text-center mb-12 tracking-wide "
+        className="text-4xl text-[#00bcff]  font-extrabold text-center mb-6 md:mb-12 tracking-wide "
       >
         🎓 Education
       </h2>

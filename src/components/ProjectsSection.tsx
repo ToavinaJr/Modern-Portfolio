@@ -17,7 +17,7 @@ export const ProjectsSection = ({ projects}: ProjectsSectionProps) => {
         🚀 Projects
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-10">
         {projects.map((project) => (
           
             <div className="group relative overflow-hidden rounded-2xl shadow-lg dark:bg-[#1e293b] duration-300 hover:shadow-xl hover:scale-[1.02]">

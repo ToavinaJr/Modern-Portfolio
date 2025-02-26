@@ -2,7 +2,7 @@ import { Github, Linkedin, Download } from 'lucide-react';
 import { FaHandshake } from "react-icons/fa";
 
 export const HeroSection = () => (
-  <section id="hero" className="container mx-auto px-6 py-8 md:py-20 flex flex-col md:flex-row items-center gap-12 bg-gradient-to-b from-gray-100 to-white dark:from-gray-900 dark:to-gray-800 rounded-lg shadow-xl animate-fade-in">
+  <section id="hero" className="container mx-auto px-6 py-8 md:py-20 flex flex-col md:flex-row items-center gap-12 bg-gradient-to-b md:min-h-[80vh] from-gray-100 to-white dark:from-gray-900 dark:to-gray-800 rounded-lg shadow-xl animate-fade-in">
     <div className="md:w-1/3 flex justify-center">
       <img
         src="/images/photo_profil.jpg"
@@ -34,14 +34,14 @@ export const HeroSection = () => (
             <Linkedin size={28} className="animate-bounce-subtle"/>
           </a>
         </div>
-        <div className='flex gap-6'>
-          <button className="text-white px-5 py-3 rounded-full flex items-center gap-3 font-semibold shadow-lg cursor-pointer bg-[#01425a] hover:bg-[#009edb] transition-all duration-300 hover:scale-105 animate-pulse">
+        <div className='flex xs:flex-col flex-row gap-6'>
+          <button className="text-white p-2 md:px-5 md:py-3 rounded-full flex items-center gap-3 font-semibold shadow-lg cursor-pointer bg-[#01425a] hover:bg-[#009edb] transition-all duration-300 hover:scale-105 animate-pulse">
             <Download size={24} />
             Resume
           </button>
           <a 
             href="#contact" 
-            className="text-gray-700 px-5 py-3 rounded-full  gap-3 font-semibold shadow-lg cursor-pointer  hover:bg-[#009edb] hover:scale-105 bg-blue-500 dark:text-gray-300 flex items-center " 
+            className="text-gray-700 p-2 md:px-5 md:py-3 rounded-full  gap-3 font-semibold shadow-lg cursor-pointer  hover:bg-[#009edb] hover:scale-105 bg-blue-500 dark:text-gray-300 flex items-center " 
             >          
             Hire Me
             <FaHandshake size={24}/>

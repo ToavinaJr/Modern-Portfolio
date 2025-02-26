@@ -16,32 +16,36 @@ export const HeroSection = () => (
       <p className="text-lg text-gray-700 dark:text-gray-300 max-w-lg mx-auto md:mx-0 animate-fade-in-up">
         Passionate about creating innovative web solutions with modern technologies.
       </p>
-      <div className="flex gap-6 justify-center md:justify-start mt-4 items-center animate-fade-in-up">
-        <a 
-          href="https://github.com/ToavinaJr" 
-          className="text-gray-700 dark:text-gray-300 hover:text-[#00bcff] transition-all flex items-center hover:scale-110 duration-300" 
-          target='_blank'
-        >
-          <Github size={28} className="animate-bounce-subtle"/>
-        </a>
-        <a 
-          href="https://www.linkedin.com/in/randriamihaingoson-toavina-sylvianno-38a987276" 
-          className="text-gray-700 dark:text-gray-300 hover:text-[#00bcff] transition-all flex items-center hover:scale-110 duration-300" 
-          target='_blank'
-        >
-          <Linkedin size={28} className="animate-bounce-subtle"/>
-        </a>
-        <button className="text-white px-5 py-3 rounded-full flex items-center gap-3 font-semibold shadow-lg cursor-pointer bg-[#01425a] hover:bg-[#009edb] transition-all duration-300 hover:scale-105 animate-pulse">
-          <Download size={24} />
-          Resume
-        </button>
-        <a 
-          href="#contact" 
-          className="text-gray-700 px-5 py-3 rounded-full  gap-3 font-semibold shadow-lg cursor-pointer  hover:bg-[#009edb] hover:scale-105 bg-blue-500 dark:text-gray-300 flex items-center " 
-        >          
-          Hire Me
-          <FaHandshake size={24}/>
-        </a>
+      <div className="flex flex-col md:flex-row gap-6 justify-center md:justify-start mt-4 items-center animate-fade-in-up">
+        <div className="flex gap-6">
+          <a 
+            href="https://github.com/ToavinaJr" 
+            className="text-gray-700 dark:text-gray-300 hover:text-[#00bcff] transition-all flex items-center hover:scale-110 duration-300" 
+            target='_blank'
+            >
+            <Github size={28} className="animate-bounce-subtle"/>
+          </a>
+          <a 
+            href="https://www.linkedin.com/in/randriamihaingoson-toavina-sylvianno-38a987276" 
+            className="text-gray-700 dark:text-gray-300 hover:text-[#00bcff] transition-all flex items-center hover:scale-110 duration-300" 
+            target='_blank'
+            >
+            <Linkedin size={28} className="animate-bounce-subtle"/>
+          </a>
+        </div>
+        <div className='flex gap-6'>
+          <button className="text-white px-5 py-3 rounded-full flex items-center gap-3 font-semibold shadow-lg cursor-pointer bg-[#01425a] hover:bg-[#009edb] transition-all duration-300 hover:scale-105 animate-pulse">
+            <Download size={24} />
+            Resume
+          </button>
+          <a 
+            href="#contact" 
+            className="text-gray-700 px-5 py-3 rounded-full  gap-3 font-semibold shadow-lg cursor-pointer  hover:bg-[#009edb] hover:scale-105 bg-blue-500 dark:text-gray-300 flex items-center " 
+            >          
+            Hire Me
+            <FaHandshake size={24}/>
+          </a>
+        </div>
       </div>
     </div>
     <style >{`

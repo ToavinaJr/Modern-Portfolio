@@ -17,7 +17,7 @@ const App = () => {
 
   return (
     <ParallaxProvider>
-      <div className={`min-h-screen ${darkMode ? 'bg-[#030712] text-[#645c5c]' : 'bg-[#f4f4f4] text-[#030712]'} w-[100vw] overflow-x-hidden`}>
+      <div className={`min-h-screen ${darkMode ? 'bg-[#030712] text-[#645c5c]' : 'bg-[#f5f5f5] text-[#030712]'} w-[100vw] overflow-x-hidden`}>
         <Header darkMode={darkMode} onThemeToggle={() => setDarkMode(!darkMode)} />
         <HeroSection darkMode={darkMode}/>
         <ProjectsSection projects={dataProject} />

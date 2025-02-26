@@ -9,7 +9,7 @@ export const CertificationsSection = ({ certifications }: CertificationsSectionP
   return (
     <section id="certificats" className="container mx-auto px-4 py-16">
       <h2 
-        className="text-3xl text-gray-900 dark:text-gray-600  font-bold mb-8 text-center"
+        className="text-3xl text-[#00bcff] font-bold mb-8 text-center"
       >
         🏅 Certifications
       </h2>

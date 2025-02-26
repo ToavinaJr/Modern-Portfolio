@@ -11,7 +11,7 @@ export const EducationSection = ({ education, darkMode }: EducationSectionProps)
   return (
     <section id='educations' className="container mx-auto px-4 py-16">
       <h2 
-        className="text-4xl text-gray-900 dark:text-gray-600  font-extrabold text-center mb-12 tracking-wide "
+        className="text-4xl text-[#00bcff]  font-extrabold text-center mb-12 tracking-wide "
       >
         🎓 Education
       </h2>

@@ -81,7 +81,7 @@ export const ContactForm = ({ darkMode }: ContactFormProps) => {
 
   return (
     <section id="contact" className="container mx-auto px-4 py-16">
-      <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-600  mb-8 text-center">🤙 Contact Me</h2>
+      <h2 className="text-3xl font-bold text-[#00bcff]  mb-8 text-center">🤙 Contact Me</h2>
       <form
         className={`max-w-lg mx-auto sm:space-y-4 space-y-6 p-8 rounded-lg shadow-lg ${
           darkMode ? 'bg-[#1e293b] text-white' : 'bg-white text-gray-900'

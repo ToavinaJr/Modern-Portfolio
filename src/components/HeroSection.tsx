@@ -11,7 +11,7 @@ export const HeroSection = () => (
       />
     </div>
     <div className="md:w-2/3 text-center md:text-left space-y-6 animate-slide-in-right">
-      <h2 className="sm:text- md:text-5xl font-extrabold text-gray-900 dark:text-white animate-text-focus-in">
+      <h2 className="sm:text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white animate-text-focus-in">
         Junior Developer
       </h2>
       <p className="text-lg text-gray-700 dark:text-gray-300 max-w-lg mx-auto md:mx-0 animate-fade-in-up">

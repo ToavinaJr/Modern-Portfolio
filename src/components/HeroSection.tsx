@@ -15,10 +15,10 @@ export const HeroSection = ({ darkMode } : HeroSectionProps) => (
       />
     </div>
     <div className="md:w-2/3 text-center md:text-left space-y-3 md:space-y-6 animate-slide-in-right">
-      <h2 className={`text-3xl md:text-5xl font-extrabold ${!darkMode ? "text-gray-900" : "text-white"} animate-text-focus-in`}>
+      <h2 className={`text-3xl md:text-5xl font-extrabold ${!darkMode ? "text-slate-700" : "text-white"} animate-text-focus-in`}>
         Junior Developer
       </h2>
-      <p className={`text-lg ${!darkMode ? "text-gray-700" : "text-gray-300"} max-w-lg mx-auto md:mx-0 animate-fade-in-up`}>
+      <p className={`text-lg ${!darkMode ? "text-gray-600" : "text-gray-300"} max-w-lg mx-auto md:mx-0 animate-fade-in-up`}>
         Passionate about creating innovative web solutions with modern technologies.
       </p>
       <div className="flex flex-col-reverse md:flex-row gap-6 justify-center md:justify-start mt-4 items-center animate-fade-in-up">

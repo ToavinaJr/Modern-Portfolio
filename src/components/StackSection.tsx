@@ -48,7 +48,7 @@ export const StackSection = ({darkMode} : StackSectionProps) => {
         </h2>
 
         <div className="relative max-w-5xl mx-auto">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-center">
             <button
               onClick={prevSlide}
               className="p-3 rounded-full bg-blue-500 hover:bg-blue-600 text-white transition-all transform hover:scale-110 active:scale-95"
@@ -58,7 +58,7 @@ export const StackSection = ({darkMode} : StackSectionProps) => {
 
             <div
               ref={sliderRef}
-              className="flex overflow-hidden gap-4 w-full"
+              className="flex overflow-hidden justify-center gap-4 w-full"
             >
               {techStacks.slice(currentIndex, currentIndex + itemsPerPage).map((tech, index) => (
                 <div

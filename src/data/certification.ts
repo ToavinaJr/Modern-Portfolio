@@ -43,6 +43,27 @@ const dataCertification: Certification[] = [
       image: "/images/HTML_certificate.jpg",
       certificateLink: "https://www.codingame.com/certification/NHIGu5MqBVjHZfgKs8iH1g"
     },
+    {
+      title: "Problem Solving Certificate (Basic)",
+      issuer: "Hackerrank",
+      date: "",
+      image: "/images/problem_solving_basic certificate.jpg",
+      certificateLink: "https://www.hackerrank.com/certificates/795471e261c0"
+    },
+    {
+      title: "Problem Solving Certificate (Intermediate)",
+      issuer: "Hackerrank",
+      date: "",
+      image: "/images/problem_solving_intermediate certificate.jpg",
+      certificateLink: "https://www.hackerrank.com/certificates/8981dda9acde"
+    },
+    {
+      title: "SQL Certificate (Basic)",
+      issuer: "Hackerrank",
+      date: "",
+      image: "/images/sql_basic certificate.jpg",
+      certificateLink: "https://www.hackerrank.com/certificates/910e8ae489b3"
+    },
 ];
 
 export default dataCertification;

@@ -1,6 +1,14 @@
 import { Project } from "../types";
 
 const dataProject : Project[] = [
+     {
+      title: "Editera-ko",
+      description: "A code editor with syntax highlighting and terminal support",
+      tech: ["C++", "Qt"],
+      image: "/images/Screenshoot-Editera-ko.png",
+      demoLink: "",
+      codeLink: "https://github.com/ToavinaJr/Editerako-App"
+    },
     {
       title: "Draw It",
       description: "A drawing game built with Qt, and C++",
@@ -24,6 +32,14 @@ const dataProject : Project[] = [
       image: "/images/Screenshot-Media-Player.png",
       demoLink: "https://demo.example.com",
       codeLink: "https://github.com/ToavinaJr/Media-Player-QT"
+    },
+    {
+      title: "Chess Game",
+      description: "A chess game built with SFML and C++",
+      tech: ["SFML", "C++"],
+      image: "/images/Screenshot-Chess.png",
+      demoLink: "https://demo.example.com",
+      codeLink: "https://github.com/ToavinaJr/Jr-Chess-SFML"
     },
     {
       title: "Sudoku Application Player",

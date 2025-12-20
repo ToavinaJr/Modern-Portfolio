@@ -34,6 +34,14 @@ const dataProject : Project[] = [
       codeLink: "https://github.com/ToavinaJr/Media-Player-QT"
     },
     {
+      title: "SpaceTourism",
+      description: "A space tourism site is a Frontend Mentor challenge built with React and TailwindCSS",
+      tech: ["React", "TailwindCSS"],
+      image: "/images/Screenshot-Media-Player.png",
+      demoLink: "https://spacetourism-rciqya8vi-toavina-sylviannos-projects.vercel.app/",
+      codeLink: "https://github.com/ToavinaJr/spacetourism"
+    },
+    {
       title: "Chess Game",
       description: "A chess game built with SFML and C++",
       tech: ["SFML", "C++"],

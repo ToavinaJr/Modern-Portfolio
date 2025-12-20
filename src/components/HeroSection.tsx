@@ -39,10 +39,10 @@ export const HeroSection = ({ darkMode } : HeroSectionProps) => (
           </a>
         </div>
         <div className='flex xs:flex-col flex-row gap-6'>
-          <button className="text-white p-2 md:px-5 md:py-3 rounded-full flex items-center gap-3 font-semibold shadow-lg cursor-pointer bg-[#01425a] hover:bg-[#009edb] transition-all duration-300 hover:scale-105 animate-pulse">
+          <a href="pdf/CV-RANDRIAMIHAINGOSON_Toavina_Sylvianno.pdf" target='_blank' className="text-white p-2 md:px-5 md:py-3 rounded-full flex items-center gap-3 font-semibold shadow-lg cursor-pointer bg-[#01425a] hover:bg-[#009edb] transition-all duration-300 hover:scale-105 animate-pulse">
             <Download size={24} />
             Resume
-          </button>
+          </a>
           <a 
             href="#contact" 
             className="bg-blue-500 text-white p-2 md:px-5 md:py-3 rounded-full gap-3 font-semibold shadow-lg cursor-pointer hover:bg-[#009edb] hover:scale-105 dark:bg-blue-600 flex items-center" 

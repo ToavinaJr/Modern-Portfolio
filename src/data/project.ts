@@ -30,7 +30,7 @@ const dataProject : Project[] = [
       description: "A media player built with Qt an C++",
       tech: ["Qt", "C++"],
       image: "/images/Screenshot-Media-Player.png",
-      demoLink: "https://demo.example.com",
+      demoLink: "",
       codeLink: "https://github.com/ToavinaJr/Media-Player-QT"
     },
     {
@@ -54,7 +54,7 @@ const dataProject : Project[] = [
       description: "A sudoku generator and verificator application built with Qt an C++",
       tech: ["Qt", "C++"],
       image: "/images/Screenshot-Sudoku.png",
-      demoLink: "https://demo.example.com",
+      demoLink: "",
       codeLink: "https://github.com/ToavinaJr/Sudoku-app-with-Qt"
     },
     {
@@ -62,7 +62,7 @@ const dataProject : Project[] = [
       description: "An application built for maze generation and solving built with Qt an C++",
       tech: ["Qt", "C++"],
       image: "/images/Screenshot-Maze-Generator.png",
-      demoLink: "https://demo.example.com",
+      demoLink: "",
       codeLink: "https://github.com/ToavinaJr/Maze-Project-avec-Qt"
     },
     {
@@ -78,7 +78,7 @@ const dataProject : Project[] = [
       description: "A retro game MineSweeper built with C++ and SFML",
       tech: ["C++", "SFML"],
       image: "/images/Screenshot-Minesweeper.png",
-      demoLink: "https://demo.example.com",
+      demoLink: "",
       codeLink: "https://github.com/ToavinaJr/Minesweeper-SFML"
     },
     {

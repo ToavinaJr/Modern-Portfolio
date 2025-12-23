@@ -46,7 +46,7 @@ const dataProject : Project[] = [
       description: "A chess game built with SFML and C++",
       tech: ["SFML", "C++"],
       image: "/images/Screenshot-Chess.png",
-      demoLink: "https://demo.example.com",
+      demoLink: "",
       codeLink: "https://github.com/ToavinaJr/Jr-Chess-SFML"
     },
     {
@@ -72,6 +72,14 @@ const dataProject : Project[] = [
       image: "/images/Screenshot-Bright Future Of Web.png",
       demoLink: "https://toavina-jr-evaluation.netlify.app",
       codeLink: "https://github.com/DTC-Formation/evaluation-html-css-ToavinaJr"
+    },
+    {
+      title: "Minesweeper Game",
+      description: "A retro game MineSweeper built with C++ and SFML",
+      tech: ["C++", "SFML"],
+      image: "/images/Screenshot-Minesweeper.png",
+      demoLink: "https://demo.example.com",
+      codeLink: "https://github.com/ToavinaJr/Minesweeper-SFML"
     },
     {
         title: "BrainWave Clone",

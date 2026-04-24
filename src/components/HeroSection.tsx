@@ -46,12 +46,16 @@ export const HeroSection = ({ darkMode } : HeroSectionProps) => {
           className={`text-3xl md:text-5xl font-extrabold ${!darkMode ? "text-[#009edb]" : "text-white"}`}
           variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } } }}
         >
-          Junior Developer
+          Web Developer & AI Automation Creator
         </motion.h2>
-
-        <motion.p className={`text-lg ${!darkMode ? "text-gray-600" : "text-gray-300"} max-w-lg mx-auto md:mx-0`} variants={itemVariants}>
-          Passionate about creating innovative web solutions with modern technologies.
+        
+        <motion.p
+          className={`text-lg ${!darkMode ? "text-gray-600" : "text-gray-300"} max-w-lg mx-auto md:mx-0`}
+          variants={itemVariants}
+        >
+          Passionate about building modern websites and creating AI-powered automations that improve productivity and simplify workflows.
         </motion.p>
+
 
         <motion.div className="flex flex-col-reverse md:flex-row gap-6 justify-center md:justify-start mt-4 items-center" variants={itemVariants}>
           <motion.div className="flex gap-6" variants={itemVariants}>

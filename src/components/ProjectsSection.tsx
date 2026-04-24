@@ -33,7 +33,7 @@ export const ProjectsSection = ({ projects}: ProjectsSectionProps) => {
 
               {/* Contenu */}
               <div className="p-6">
-                <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-3 text-white">{project.title}</h3>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-3 text-[#1e293b]">{project.title}</h3>
                 <p className="text-gray-300 mb-4 leading-relaxed text-sm sm:text-base">{project.description}</p>
                 
                 {/* Technologies utilisées */}

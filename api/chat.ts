@@ -1,7 +1,7 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import Groq from 'groq-sdk';
-import { buildKnowledgeContext } from '../src/lib/chatbot';
-import chatbotKnowledge from '../src/data/chatbotKnowledge';
+import { buildKnowledgeContext } from '../src/lib/chatbot.js';
+import chatbotKnowledge from '../src/data/chatbotKnowledge.js';
 
 const MODEL = 'llama-3.3-70b-versatile';
 

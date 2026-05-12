@@ -1,4 +1,4 @@
-import { ChatKnowledgeDocument } from '../types';
+import { ChatKnowledgeDocument } from '../types.js';
 
 const chatbotKnowledge: ChatKnowledgeDocument[] = [
   {

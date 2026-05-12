@@ -21,3 +21,16 @@ export interface Project {
     image: string;
     certificateLink: string;
   }
+
+  export interface ChatKnowledgeDocument {
+    id: string;
+    title: string;
+    content: string;
+    tags: string[];
+  }
+
+  export interface ChatMessage {
+    id: string;
+    role: 'user' | 'assistant';
+    content: string;
+  }

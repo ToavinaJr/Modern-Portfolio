@@ -11,6 +11,7 @@ import { SkillsSection } from './components/SkillsSection';
 import  dataEducation  from '../src/data/education';
 import dataCertification from './data/certification';
 import dataProject from './data/project';
+import ChatBot from './components/ChatBot';
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -26,6 +27,7 @@ const App = () => {
         <SkillsSection darkMode={darkMode}/>
         <StackSection darkMode={darkMode}/>
         <ContactForm darkMode={darkMode} />
+        <ChatBot darkMode={darkMode} />
       </div>
     </ParallaxProvider>
   );

@@ -121,12 +121,12 @@ export const buildKnowledgeContext = (question: string, documents: ChatKnowledge
   const matches = retrieveKnowledge(question, documents);
 
   if (!matches.length) {
-    return 'Aucune connaissance pertinente trouvée. Utilise les informations générales sur Toavina.';
+    return 'No specific match found in the knowledge base. However, here is general information about Toavina: He is a full-stack developer with advanced C++ and React/TypeScript skills, dual masters degree, problem-solving expertise, and is available for freelance and full-time opportunities. Contact via the portfolio form for collaboration.';
   }
 
   const context = matches
     .map((item) => `**${item.document.title}**: ${item.document.content}`)
     .join('\n\n');
 
-  return `Contexte pertinent du profil:\n${context}`;
+  return `Relevant profile context:\n${context}`;
 };

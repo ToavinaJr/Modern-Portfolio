@@ -3,66 +3,66 @@ import { ChatKnowledgeDocument } from '../types.js';
 const chatbotKnowledge: ChatKnowledgeDocument[] = [
   {
     id: 'profile',
-    title: 'Profil Professionnel',
+    title: 'Professional Profile',
     content:
-      'Toavina Sylvianno est un développeur full-stack passionné par le développement logiciel haute performance et les interfaces web modernes. Avec une formation solide en mathématiques et informatique, il combine expertise en C++ pour les applications système et React/TypeScript pour les solutions web. Basé en Afrique de l\'Est, il est disponible pour missions de freelance, CDI ou projets collaboratifs.',
-    tags: ['profil', 'presentation', 'toavina', 'about', 'developpeur', 'full-stack'],
+      'Toavina Sylvianno is a full-stack developer passionate about high-performance software development and modern web interfaces. With solid training in mathematics and computer science, he combines expertise in C++ for system applications and React/TypeScript for web solutions. Based in East Africa, available for freelance missions, full-time roles, or collaborative projects.',
+    tags: ['profile', 'about', 'toavina', 'developer', 'full-stack', 'background'],
   },
   {
     id: 'education',
-    title: 'Formation Académique',
+    title: 'Academic Background',
     content:
-      'Formation: Master en Computer Science à MISA (2020-2022) - focus: algorithmes, architecture logicielle. Master en Mathématiques Fondamentales, Université d\'Antananarivo (2016-2020) - spécialisation: analyse numérique. Cette double formation mathématique et informatique permet une approche rigoureuse des problèmes complexes.',
-    tags: ['formation', 'education', 'master', 'universite', 'diplome', 'academique'],
+      'Master in Computer Science from MISA (2020-2022) - focus: algorithms and software architecture. Master in Fundamental Mathematics from University of Antananarivo (2016-2020) - specialization: numerical analysis. This dual training enables rigorous problem-solving and strong algorithmic thinking.',
+    tags: ['education', 'master', 'university', 'degree', 'academic', 'training'],
   },
   {
     id: 'core-skills',
-    title: 'Compétences Principales',
+    title: 'Core Skills',
     content:
-      'C++ Advanced (POO, templates, STL, SFML, Qt), React 19 (hooks, Framer Motion, TypeScript), TypeScript strict, TailwindCSS, HTML5/CSS3, JavaScript ES2023, Architecture MVC/MV*, Algorithmes et structures de données, Vite/Webpack build systems.',
-    tags: ['skills', 'competences', 'core', 'languages', 'frameworks'],
+      'C++ Advanced (OOP, templates, STL, SFML, Qt), React 19 (hooks, Framer Motion, TypeScript), TypeScript strict mode, TailwindCSS, HTML5/CSS3, JavaScript ES2023, MVC/MVVM architecture, Data structures & algorithms, Vite/Webpack build systems.',
+    tags: ['skills', 'technical', 'core', 'languages', 'frameworks', 'expertise'],
   },
   {
     id: 'secondary-skills',
-    title: 'Compétences Secondaires',
+    title: 'Additional Skills',
     content:
-      'Node.js/Express (débutant), Python (scripting), PHP (WordPress), GraphQL, MongoDB, REST APIs, Git/GitHub, Linux CLI, Problem Solving (HackerRank certified), SQL.',
-    tags: ['skills', 'competences', 'secondary', 'tools', 'databases'],
+      'Node.js/Express (beginner), Python (scripting), PHP (WordPress), GraphQL, MongoDB, REST APIs, Git/GitHub, Linux CLI, Problem Solving (HackerRank certified), SQL.',
+    tags: ['skills', 'technical', 'secondary', 'tools', 'databases', 'tools'],
   },
   {
     id: 'projects-desktop',
-    title: 'Projets Desktop (C++/Qt)',
+    title: 'Desktop Projects (C++/Qt)',
     content:
-      'Editera-ko: Éditeur de code avec syntax highlighting et terminal intégré. Draw It: Jeu de dessin avec détection de formes. Tetris Game: Clone du Tetris classique. Media Player: Lecteur multimédia. Chess Game: Jeu d\'échecs complet avec IA. Sudoku Application: Générateur et vérificateur. Maze Generator: Générateur et solver de labyrinthes. Minesweeper: Version SFML du Démineur rétro.',
-    tags: ['projets', 'desktop', 'cpp', 'qt', 'sfml', 'games'],
+      'Editera-ko: Code editor with syntax highlighting and integrated terminal. Draw It: Drawing game with shape detection. Tetris Game: Classic Tetris clone. Media Player: Multimedia player. Chess Game: Full chess game with AI. Sudoku Application: Generator and verifier. Maze Generator: Maze generator and solver. Minesweeper: Retro Minesweeper SFML version.',
+    tags: ['projects', 'desktop', 'cpp', 'qt', 'sfml', 'games', 'applications'],
   },
   {
     id: 'projects-web',
-    title: 'Projets Web (React/Frontend)',
+    title: 'Web Projects (React/Frontend)',
     content:
-      'SpaceTourism: Site de tourisme spatial (React, TailwindCSS, Frontend Mentor). BrainWave Clone: Landing page tech moderne. 2048 Game: Implémentation du jeu 2048. NBA Stats Dashboard: Dashboard avec charting. Bright Future Of Web: Site corporate (HTML/CSS/JS). Modern Portfolio: Portfolio personnel (Vite, React 19, Framer Motion, Groq AI chatbot intégré).',
-    tags: ['projets', 'web', 'react', 'frontend', 'dashboard'],
+      'SpaceTourism: Space tourism website (React, TailwindCSS, Frontend Mentor). BrainWave Clone: Modern tech landing page. 2048 Game: 2048 game implementation. NBA Stats Dashboard: Dashboard with charting. Bright Future Of Web: Corporate website (HTML/CSS/JS). Modern Portfolio: Personal portfolio (Vite, React 19, Framer Motion, Groq AI chatbot integration).',
+    tags: ['projects', 'web', 'react', 'frontend', 'dashboard', 'portfolio'],
   },
   {
     id: 'certifications',
-    title: 'Certifications Profesionnelles',
+    title: 'Professional Certifications',
     content:
-      'HackerRank: Problem Solving Intermediate, SQL Basic. Coding Game: C++ Certified (Sep 2024). Sololearn: C++ Advanced, CSS, HTML, PHP. Ces certifications attestent d\'une expertise validée en algorithmique, bases de données, et langages modernes.',
-    tags: ['certifications', 'certificat', 'hackerrank', 'sololearn', 'codingame', 'validation'],
+      'HackerRank: Problem Solving Intermediate, SQL Basic. Coding Game: C++ Certified (Sep 2024). Sololearn: C++ Advanced, CSS, HTML, PHP. These certifications validate expertise in algorithms, databases, and modern programming languages.',
+    tags: ['certifications', 'certificate', 'hackerrank', 'sololearn', 'codingame', 'validation'],
   },
   {
     id: 'approach',
-    title: 'Approche et Valeurs',
+    title: 'Approach & Values',
     content:
-      'Code propre et maintenable: respect des conventions, documentation inline. Performance: optimisation des algorithmes et UX responsive. Apprentissage continu: suivi des technologies modernes. Collaboration: communication claire, feedback constructif. User-centric: design orienté expérience utilisateur.',
-    tags: ['approche', 'valeurs', 'philosophie', 'methode', 'excellence'],
+      'Clean & maintainable code: following conventions and inline documentation. Performance: algorithm optimization and responsive UX. Continuous learning: staying current with modern technologies. Collaboration: clear communication and constructive feedback. User-centric design: focusing on user experience.',
+    tags: ['approach', 'values', 'philosophy', 'methodology', 'excellence'],
   },
   {
     id: 'contact',
-    title: 'Contact et Collaboration',
+    title: 'Contact & Collaboration',
     content:
-      'Disponibilité: Freelance, projets ponctuels, CDI. Réponse typique: 24h. Contact via formulaire portfolio. Horaires: Fuseau horaire UTC+3 (EAT). Préférences: Remote-first, code en français possible.',
-    tags: ['contact', 'email', 'formulaire', 'collaboration', 'disponibilite'],
+      'Availability: Freelance, one-off projects, or full-time roles. Typical response time: 24 hours. Contact via portfolio form. Timezone: UTC+3 (EAT). Preferences: Remote-first work, multilingual (French/English).',
+    tags: ['contact', 'email', 'form', 'collaboration', 'availability', 'reach-out'],
   },
 ];
 

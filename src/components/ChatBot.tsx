@@ -6,13 +6,13 @@ import { ChatMessage } from '../types';
 import { buildKnowledgeContext } from '../lib/chatbot';
 
 const QUICK_PROMPTS = [
-  'Parle-moi du profil',
-  'Quels sont les projets principaux ?',
-  'Quelle est la stack technique ?',
-  'Quelles certifications as-tu ?',
+  'Tell me about the profile',
+  'What are the main projects?',
+  'What is the tech stack?',
+  'What certifications does he have?',
 ];
 
-const PENDING_RESPONSE = 'Je cherche une réponse dans la base de connaissance et je consulte Groq...';
+const PENDING_RESPONSE = 'Searching the knowledge base and consulting Groq...';
 
 type ChatBotProps = {
   darkMode: boolean;
@@ -27,12 +27,12 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
       id: 'welcome',
       role: 'assistant',
       content:
-        'Bonjour, je suis l\'assistant du portfolio. Pose-moi une question sur le profil, les projets, la stack ou la formation.',
+        'Hi! I\'m the portfolio assistant. Ask me about the profile, projects, tech stack, or education.',
     },
   ]);
 
   const assistantHint = useMemo(
-    () => ['profil', 'projets', 'stack', 'formation', 'certifications', 'contact'],
+    () => ['profile', 'projects', 'stack', 'education', 'certifications', 'contact'],
     [],
   );
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
@@ -98,7 +98,7 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
       }
 
       const data = (await response.json()) as { answer?: string };
-      const answer = data.answer?.trim() || 'Je n\'ai pas pu générer de réponse.';
+      const answer = data.answer?.trim() || 'I could not generate a response at this moment.';
 
       setMessages((current) =>
         current.map((message) =>
@@ -114,7 +114,7 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
             ? {
                 ...message,
                 content:
-                  "La réponse Groq n'est pas disponible pour le moment. Vérifie la clé GROQ_API_KEY ou le backend local.",
+                  'Groq response is not available. Check GROQ_API_KEY or the local backend.',
               }
             : message,
         ),
@@ -150,14 +150,14 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
                 </div>
                 <div>
                   <p className={`text-sm font-semibold ${panelTextClassName}`}>Portfolio Assistant</p>
-                  <p className={`text-xs ${mutedTextClassName}`}>RAG local sur le profil</p>
+                  <p className={`text-xs ${mutedTextClassName}`}>RAG-powered with Groq</p>
                 </div>
               </div>
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
                 className={`rounded-full p-2 transition ${darkMode ? 'text-white/60 hover:bg-white/10 hover:text-white' : 'text-slate-500 hover:bg-slate-100 hover:text-slate-900'}`}
-                aria-label="Fermer le chat"
+                aria-label="Close chat"
               >
                 <X size={18} />
               </button>
@@ -216,14 +216,14 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
                 <input
                   value={input}
                   onChange={(event) => setInput(event.target.value)}
-                  placeholder="Demande-moi quelque chose sur le profil..."
+                  placeholder="Ask me something about the profile..."
                   className={`h-11 flex-1 rounded-2xl border px-4 text-sm outline-none ${inputClassName}`}
                 />
                 <button
                   type="submit"
                   disabled={isLoading}
                   className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-cyan-400 text-slate-950 transition hover:bg-cyan-300 disabled:cursor-not-allowed disabled:opacity-60"
-                  aria-label="Envoyer"
+                  aria-label="Send"
                 >
                   <Send size={16} />
                 </button>
@@ -231,7 +231,7 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
 
               <div className={`mt-3 flex items-center gap-2 text-[11px] ${mutedTextClassName}`}>
                 <Bot size={13} />
-                <span>Réponses construites à partir de la base de connaissance du portfolio.</span>
+                <span>Answers built from the portfolio knowledge base.</span>
               </div>
             </div>
           </motion.div>
@@ -246,12 +246,12 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
             ? 'border-cyan-400/30 bg-[#08101f] text-white shadow-[0_20px_60px_rgba(0,0,0,0.4)] hover:border-cyan-300/60'
             : 'border-cyan-500/20 bg-white text-slate-900 shadow-[0_20px_60px_rgba(15,23,42,0.14)] hover:border-cyan-500/50'
         }`}
-        aria-label="Ouvrir le chatbot"
+        aria-label="Open chatbot"
       >
         <span className="flex h-9 w-9 items-center justify-center rounded-full bg-cyan-400/15 text-cyan-300">
           <MessageCircle size={18} />
         </span>
-        <span className="hidden sm:inline">Chat du portfolio</span>
+        <span className="hidden sm:inline">Chat</span>
         <ChevronDown size={16} className={`transition ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 
@@ -262,7 +262,7 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
             : 'border-slate-200 bg-white/90 text-slate-500'
         }`}
       >
-        Pose une question sur {assistantHint.join(', ')}.
+        Ask about {assistantHint.join(', ')}.
       </div>
     </>
   );

@@ -3,46 +3,74 @@ import { ChatKnowledgeDocument } from '../types.js';
 const chatbotKnowledge: ChatKnowledgeDocument[] = [
   {
     id: 'profile',
-    title: 'Profil',
+    title: 'Profil Professionnel',
     content:
-      'Toavina est un développeur passionné par le développement logiciel et le web. Son portfolio met en avant une expérience solide en C++, React, TypeScript, TailwindCSS, HTML, CSS et JavaScript.',
-    tags: ['profil', 'presentation', 'toavina', 'about'],
+      'Toavina Sylvianno est un développeur full-stack passionné par le développement logiciel haute performance et les interfaces web modernes. Avec une formation solide en mathématiques et informatique, il combine expertise en C++ pour les applications système et React/TypeScript pour les solutions web. Basé en Afrique de l\'Est, il est disponible pour missions de freelance, CDI ou projets collaboratifs.',
+    tags: ['profil', 'presentation', 'toavina', 'about', 'developpeur', 'full-stack'],
   },
   {
     id: 'education',
-    title: 'Formation',
+    title: 'Formation Académique',
     content:
-      'Il a obtenu un Master en Computer Science à MISA entre 2020 et 2022, ainsi qu\'un Master en Mathématiques fondamentales à l\'Université d\'Antananarivo entre 2016 et 2020.',
-    tags: ['formation', 'education', 'master', 'universite'],
+      'Formation: Master en Computer Science à MISA (2020-2022) - focus: algorithmes, architecture logicielle. Master en Mathématiques Fondamentales, Université d\'Antananarivo (2016-2020) - spécialisation: analyse numérique. Cette double formation mathématique et informatique permet une approche rigoureuse des problèmes complexes.',
+    tags: ['formation', 'education', 'master', 'universite', 'diplome', 'academique'],
   },
   {
-    id: 'stack',
-    title: 'Stack technique',
+    id: 'core-skills',
+    title: 'Compétences Principales',
     content:
-      'Ses technologies principales incluent C++, JavaScript, React, TailwindCSS, TypeScript, HTML5 et CSS3. Il a aussi des bases en Node.js, Python, PHP, GraphQL, MongoDB, Rust et Next.js.',
-    tags: ['stack', 'technologies', 'competences', 'skills'],
+      'C++ Advanced (POO, templates, STL, SFML, Qt), React 19 (hooks, Framer Motion, TypeScript), TypeScript strict, TailwindCSS, HTML5/CSS3, JavaScript ES2023, Architecture MVC/MV*, Algorithmes et structures de données, Vite/Webpack build systems.',
+    tags: ['skills', 'competences', 'core', 'languages', 'frameworks'],
   },
   {
-    id: 'projects',
-    title: 'Projets',
+    id: 'secondary-skills',
+    title: 'Compétences Secondaires',
     content:
-      'Son portfolio contient plusieurs projets C++ et Qt comme Editera-ko, Draw It, Tetris Game, Media Player, Chess Game, Sudoku Application Player et Maze Application Generator, ainsi que des projets web comme SpaceTourism, BrainWave Clone, 2048 Game et NBA Stat.',
-    tags: ['projets', 'realisation', 'portfolio', 'projects'],
+      'Node.js/Express (débutant), Python (scripting), PHP (WordPress), GraphQL, MongoDB, REST APIs, Git/GitHub, Linux CLI, Problem Solving (HackerRank certified), SQL.',
+    tags: ['skills', 'competences', 'secondary', 'tools', 'databases'],
+  },
+  {
+    id: 'projects-desktop',
+    title: 'Projets Desktop (C++/Qt)',
+    content:
+      'Editera-ko: Éditeur de code avec syntax highlighting et terminal intégré. Draw It: Jeu de dessin avec détection de formes. Tetris Game: Clone du Tetris classique. Media Player: Lecteur multimédia. Chess Game: Jeu d\'échecs complet avec IA. Sudoku Application: Générateur et vérificateur. Maze Generator: Générateur et solver de labyrinthes. Minesweeper: Version SFML du Démineur rétro.',
+    tags: ['projets', 'desktop', 'cpp', 'qt', 'sfml', 'games'],
+  },
+  {
+    id: 'projects-web',
+    title: 'Projets Web (React/Frontend)',
+    content:
+      'SpaceTourism: Site de tourisme spatial (React, TailwindCSS, Frontend Mentor). BrainWave Clone: Landing page tech moderne. 2048 Game: Implémentation du jeu 2048. NBA Stats Dashboard: Dashboard avec charting. Bright Future Of Web: Site corporate (HTML/CSS/JS). Modern Portfolio: Portfolio personnel (Vite, React 19, Framer Motion, Groq AI chatbot intégré).',
+    tags: ['projets', 'web', 'react', 'frontend', 'dashboard'],
   },
   {
     id: 'certifications',
-    title: 'Certifications',
+    title: 'Certifications Profesionnelles',
     content:
-      'Il possède des certifications Hackerrank en Problem Solving et SQL, ainsi que plusieurs certifications Sololearn et Codingame en C++, CSS, HTML, PHP et C.',
-    tags: ['certifications', 'certificat', 'hackerrank', 'sololearn', 'codingame'],
+      'HackerRank: Problem Solving Intermediate, SQL Basic. Coding Game: C++ Certified (Sep 2024). Sololearn: C++ Advanced, CSS, HTML, PHP. Ces certifications attestent d\'une expertise validée en algorithmique, bases de données, et langages modernes.',
+    tags: ['certifications', 'certificat', 'hackerrank', 'sololearn', 'codingame', 'validation'],
+  },
+  {
+    id: 'approach',
+    title: 'Approche et Valeurs',
+    content:
+      'Code propre et maintenable: respect des conventions, documentation inline. Performance: optimisation des algorithmes et UX responsive. Apprentissage continu: suivi des technologies modernes. Collaboration: communication claire, feedback constructif. User-centric: design orienté expérience utilisateur.',
+    tags: ['approche', 'valeurs', 'philosophie', 'methode', 'excellence'],
   },
   {
     id: 'contact',
-    title: 'Contact',
+    title: 'Contact et Collaboration',
     content:
-      'Le portfolio contient un formulaire de contact pour les messages professionnels et les opportunités de collaboration.',
-    tags: ['contact', 'email', 'formulaire'],
+      'Disponibilité: Freelance, projets ponctuels, CDI. Réponse typique: 24h. Contact via formulaire portfolio. Horaires: Fuseau horaire UTC+3 (EAT). Préférences: Remote-first, code en français possible.',
+    tags: ['contact', 'email', 'formulaire', 'collaboration', 'disponibilite'],
   },
 ];
+
+export const ragConfig = {
+  minSimilarityScore: 0.2,
+  maxContextDocuments: 3,
+  contextWindow: 2000,
+  modelName: 'llama-3.3-70b-versatile',
+};
 
 export default chatbotKnowledge;

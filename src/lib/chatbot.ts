@@ -91,24 +91,42 @@ const scoreDocument = (questionTokens: string[], document: ChatKnowledgeDocument
 
 export const retrieveKnowledge = (question: string, documents: ChatKnowledgeDocument[]) => {
   const questionTokens = tokenize(question);
+  const questionNormalized = normalize(question);
 
-  return documents
-    .map((document) => ({
+  const scored = documents.map((document) => {
+    const { score, overlapRatio } = scoreDocument(questionTokens, document);
+    
+    // Bonus si la question contient des mots exactes du titre
+    let titleBonus = 0;
+    if (document.title.toLowerCase().includes(questionNormalized.split(' ')[0])) {
+      titleBonus = 2;
+    }
+    
+    const finalScore = score + titleBonus;
+    
+    return {
       document,
-      ...scoreDocument(questionTokens, document),
-    }))
+      score: finalScore,
+      overlapRatio,
+    };
+  });
+
+  return scored
+    .filter((item) => item.score > 0)
     .sort((left, right) => right.score - left.score)
     .slice(0, 3);
 };
 
 export const buildKnowledgeContext = (question: string, documents: ChatKnowledgeDocument[]) => {
-  const matches = retrieveKnowledge(question, documents).filter((item) => item.score > 0);
+  const matches = retrieveKnowledge(question, documents);
 
   if (!matches.length) {
-    return 'Aucune connaissance pertinente trouvée dans la base de connaissance du portfolio.';
+    return 'Aucune connaissance pertinente trouvée. Utilise les informations générales sur Toavina.';
   }
 
-  return matches
-    .map((item) => `- ${item.document.title}: ${item.document.content}`)
-    .join('\n');
+  const context = matches
+    .map((item) => `**${item.document.title}**: ${item.document.content}`)
+    .join('\n\n');
+
+  return `Contexte pertinent du profil:\n${context}`;
 };

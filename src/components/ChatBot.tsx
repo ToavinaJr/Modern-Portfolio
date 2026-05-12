@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Bot, ChevronDown, MessageCircle, Send, Sparkles, X } from 'lucide-react';
+import { Bot, ChevronDown, Loader2, MessageCircle, Send, Sparkles, X } from 'lucide-react';
 import chatbotKnowledge from '../data/chatbotKnowledge';
 import { ChatMessage } from '../types';
-import { generateAnswer } from '../lib/chatbot';
+import { buildKnowledgeContext } from '../lib/chatbot';
 
 const QUICK_PROMPTS = [
   'Parle-moi du profil',
@@ -12,6 +12,8 @@ const QUICK_PROMPTS = [
   'Quelles certifications as-tu ?',
 ];
 
+const PENDING_RESPONSE = 'Je cherche une réponse dans la base de connaissance et je consulte Groq...';
+
 type ChatBotProps = {
   darkMode: boolean;
 };
@@ -19,6 +21,7 @@ type ChatBotProps = {
 const ChatBot = ({ darkMode }: ChatBotProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: 'welcome',
@@ -47,11 +50,14 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
   const bubbleClassName = darkMode
     ? 'border-white/10 bg-white/5 text-white/88'
     : 'border-slate-200 bg-slate-50 text-slate-800';
+  const pendingBubbleClassName = darkMode
+    ? 'border-white/10 bg-white/5 text-white/65'
+    : 'border-slate-200 bg-slate-50 text-slate-500';
 
-  const sendMessage = (rawText: string) => {
+  const sendMessage = async (rawText: string) => {
     const text = rawText.trim();
 
-    if (!text) {
+    if (!text || isLoading) {
       return;
     }
 
@@ -61,15 +67,61 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
       content: text,
     };
 
-    const assistantMessage: ChatMessage = {
-      id: crypto.randomUUID(),
+    const assistantMessageId = crypto.randomUUID();
+    const pendingMessage: ChatMessage = {
+      id: assistantMessageId,
       role: 'assistant',
-      content: generateAnswer(text, chatbotKnowledge),
+      content: PENDING_RESPONSE,
     };
 
-    setMessages((current) => [...current, userMessage, assistantMessage]);
+    setMessages((current) => [...current, userMessage, pendingMessage]);
     setInput('');
     setIsOpen(true);
+    setIsLoading(true);
+
+    const knowledgeContext = buildKnowledgeContext(text, chatbotKnowledge);
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: text,
+          context: knowledgeContext,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`API error ${response.status}`);
+      }
+
+      const data = (await response.json()) as { answer?: string };
+      const answer = data.answer?.trim() || 'Je n\'ai pas pu générer de réponse.';
+
+      setMessages((current) =>
+        current.map((message) =>
+          message.id === assistantMessageId
+            ? { ...message, content: answer }
+            : message,
+        ),
+      );
+    } catch {
+      setMessages((current) =>
+        current.map((message) =>
+          message.id === assistantMessageId
+            ? {
+                ...message,
+                content:
+                  "La réponse Groq n'est pas disponible pour le moment. Vérifie la clé GROQ_API_KEY ou le backend local.",
+              }
+            : message,
+        ),
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -121,10 +173,15 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
                     className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
                       message.role === 'user'
                         ? 'bg-cyan-500 text-slate-950'
-                        : bubbleClassName
+                        : message.content === PENDING_RESPONSE
+                          ? pendingBubbleClassName
+                          : bubbleClassName
                     }`}
                   >
-                    {message.content}
+                    <span className="flex items-center gap-2">
+                      {message.content}
+                      {message.content === PENDING_RESPONSE ? <Loader2 size={14} className="animate-spin" /> : null}
+                    </span>
                   </div>
                 </div>
               ))}
@@ -164,7 +221,8 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
                 />
                 <button
                   type="submit"
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-cyan-400 text-slate-950 transition hover:bg-cyan-300"
+                  disabled={isLoading}
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-cyan-400 text-slate-950 transition hover:bg-cyan-300 disabled:cursor-not-allowed disabled:opacity-60"
                   aria-label="Envoyer"
                 >
                   <Send size={16} />

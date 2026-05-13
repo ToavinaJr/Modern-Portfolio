@@ -79,6 +79,11 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
     setIsOpen(true);
     setIsLoading(true);
 
+    const conversationHistory = [...messages, userMessage]
+      .filter((message) => message.content !== PENDING_RESPONSE)
+      .slice(-10)
+      .map((message) => ({ role: message.role, content: message.content }));
+
     const knowledgeContext = buildKnowledgeContext(text, chatbotKnowledge);
 
     try {
@@ -90,6 +95,7 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
         body: JSON.stringify({
           message: text,
           context: knowledgeContext,
+          history: conversationHistory,
         }),
       });
 
@@ -149,8 +155,7 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
                   <Sparkles size={18} />
                 </div>
                 <div>
-                  <p className={`text-sm font-semibold ${panelTextClassName}`}>Portfolio Assistant</p>
-                  <p className={`text-xs ${mutedTextClassName}`}>RAG-powered with Groq</p>
+                  <p className={`text-sm font-semibold ${panelTextClassName}`}>Bot-ko Assistant</p>
                 </div>
               </div>
               <button
@@ -231,7 +236,7 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
 
               <div className={`mt-3 flex items-center gap-2 text-[11px] ${mutedTextClassName}`}>
                 <Bot size={13} />
-                <span>Answers built from the portfolio knowledge base.</span>
+                <span>Bot-ko is here to answer your questions.</span>
               </div>
             </div>
           </motion.div>

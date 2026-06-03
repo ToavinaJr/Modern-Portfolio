@@ -6,7 +6,7 @@ const dataProject : Project[] = [
         description: "A website like a social media for sharing and discovering recipes built with React and TailwindCSS",
         tech: ["React", "TailwindCSS"],
         image: "/images/Screenshoot-Koziko.png",
-        demoLink: "",
+        demoLink: "https://koziko.vercel.app/",
         codeLink: "https://koziko.vercel.app/"
       },
      {

@@ -1,6 +1,14 @@
 import { Project } from "../types";
 
 const dataProject : Project[] = [
+      {
+        title: "Kôziko",
+        description: "A website like a social media for sharing and discovering recipes built with React and TailwindCSS",
+        tech: ["React", "TailwindCSS"],
+        image: "/images/Screenshoot-Koziko.png",
+        demoLink: "",
+        codeLink: "https://koziko.vercel.app/"
+      },
      {
       title: "Editera-ko",
       description: "A code editor with syntax highlighting and terminal support",

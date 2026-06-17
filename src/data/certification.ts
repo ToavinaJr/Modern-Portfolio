@@ -9,6 +9,13 @@ const dataCertification: Certification[] = [
       certificateLink: "https://www.hackerrank.com/certificates/795471e261c0"
     },
     {
+      title: "Coding Speed (Bronze Level)",
+      issuer: "Coding Game",
+      date: "",
+      image: "/images/Certification_coding_speed.jpg",
+      certificateLink: "https://www.codingame.com/certification/sOzQlagpWnjVsA9usp2qVA"
+    },
+    {
       title: "Problem Solving Certificate (Intermediate)",
       issuer: "Hackerrank",
       date: "",

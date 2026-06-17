@@ -7,14 +7,7 @@ const dataCertification: Certification[] = [
       date: "",
       image: "/images/problem_solving_basic certificate.jpg",
       certificateLink: "https://www.hackerrank.com/certificates/795471e261c0"
-    },
-    {
-      title: "Coding Speed (Bronze Level)",
-      issuer: "Coding Game",
-      date: "",
-      image: "/images/Certification_coding_speed.jpg",
-      certificateLink: "https://www.codingame.com/certification/sOzQlagpWnjVsA9usp2qVA"
-    },
+    },    
     {
       title: "Problem Solving Certificate (Intermediate)",
       issuer: "Hackerrank",
@@ -28,6 +21,13 @@ const dataCertification: Certification[] = [
       date: "",
       image: "/images/sql_basic certificate.jpg",
       certificateLink: "https://www.hackerrank.com/certificates/910e8ae489b3"
+    },
+    {
+      title: "Coding Speed (Bronze Level)",
+      issuer: "Coding Game",
+      date: "",
+      image: "/images/Certification_coding_speed.jpg",
+      certificateLink: "https://www.codingame.com/certification/sOzQlagpWnjVsA9usp2qVA"
     },
     {
       title: "C++ Certificate",

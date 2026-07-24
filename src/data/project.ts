@@ -2,6 +2,22 @@ import { Project } from "../types";
 
 const dataProject : Project[] = [
       {
+        title: "Fret Flow",
+        description: "A site web for people passionate about music and learning to play the guitar",
+        tech: ["React", "TailwindCSS", "NestJS"],
+        image: "/images/Screenshot-Fret_Flow.png",
+        demoLink: "https://flowfret-jr.vercel.app/",
+        codeLink: "https://flowfret-jr.vercel.app/"
+      },
+      {
+        title: "Edu OS",
+        description: "A site web for education built with React and TailwindCSS",
+        tech: ["React", "TailwindCSS", "NestJS"],
+        image: "/images/Screenshot-Edu_OS.png",
+        demoLink: "https://edu-os-ruddy.vercel.app/",
+        codeLink: "https://edu-os-ruddy.vercel.app/"
+      },
+      {
         title: "Kôziko",
         description: "A website like a social media for sharing and discovering recipes built with React and TailwindCSS",
         tech: ["React", "TailwindCSS"],

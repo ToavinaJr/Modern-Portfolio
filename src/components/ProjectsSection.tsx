@@ -9,21 +9,21 @@ export const ProjectsSection = ({ projects}: ProjectsSectionProps) => {
   
 
   return (
-    <section id="projets" className="container mx-auto px-6 py-20">
+    <section id="projets" className="container mx-auto px-6 py-16">
       {/* Titre avec effet parallax */}
       <h2
-        className="text-4xl font-extrabold text-[#00bcff]  text-center mb-12 tracking-wide"
+        className="text-3xl font-extrabold text-[#00bcff]  text-center mb-8 tracking-wide"
       >
         🚀 Projects
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5">
         {projects.map((project) => (
           
-            <div className="group relative overflow-hidden rounded-2xl shadow-lg dark:bg-[#1e293b] duration-300 hover:shadow-xl hover:scale-[1.02]">
+            <div className="group relative overflow-hidden rounded-xl shadow-md dark:bg-[#1e293b] duration-300 hover:shadow-lg hover:scale-[1.02]">
               
               {/* Image avec overlay dynamique */}
-              <div className="relative h-52 overflow-hidden  rounded-t-2xl">
+              <div className="relative h-32 overflow-hidden rounded-t-xl">
                 <img
                   src={project.image}
                   alt={project.title}
@@ -32,16 +32,16 @@ export const ProjectsSection = ({ projects}: ProjectsSectionProps) => {
               </div>
 
               {/* Contenu */}
-              <div className="p-6">
-                <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-3 text-[#1e293b]">{project.title}</h3>
-                <p className="text-gray-300 mb-4 leading-relaxed text-sm sm:text-base">{project.description}</p>
+              <div className="p-3">
+                <h3 className="text-sm sm:text-base font-semibold mb-1.5 text-[#1e293b] dark:text-white">{project.title}</h3>
+                <p className="text-gray-300 mb-2 leading-snug text-xs line-clamp-2">{project.description}</p>
                 
                 {/* Technologies utilisées */}
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-1 mb-2.5">
                   {project.tech.map((tech, i) => (
                     <span
                       key={i}
-                      className="px-3 py-1 text-xs sm:text-sm rounded-full bg-[#868686] text-white font-medium shadow-md"
+                      className="px-2 py-0.5 text-[10px] sm:text-xs rounded-full bg-[#868686] text-white font-medium"
                     >
                       {tech}
                     </span>
@@ -49,25 +49,27 @@ export const ProjectsSection = ({ projects}: ProjectsSectionProps) => {
                 </div>
 
                 {/* Boutons interactifs */}
-                <div className="flex flex-wrap gap-4">
+                <div className="flex flex-wrap gap-2">
                   <a
                     href={project.codeLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-5 py-2 rounded-lg hover:bg-[#2b2b40] bg-[#3a3a5a] transition-all duration-300 text-white font-medium shadow-md w-full sm:w-auto"
+                    className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md hover:bg-[#2b2b40] bg-[#3a3a5a] transition-all duration-300 text-white font-medium shadow-sm"
                   >
-                    <Code size={18} />
+                    <Code size={14} />
                     <span>Code</span>
                   </a>
-                  <a
-                    href={project.demoLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-slate-100 flex items-center gap-2 px-5 py-2 rounded-lg bg-[#01425a] hover:bg-[#009edb] transition-all duration-300 font-medium shadow-md w-full sm:w-auto"
-                  >
-                    <ExternalLink size={18} />
-                    <span>Demo</span>
-                  </a>
+                  {project.demoLink && (
+                    <a
+                      href={project.demoLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-slate-100 flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md bg-[#01425a] hover:bg-[#009edb] transition-all duration-300 font-medium shadow-sm"
+                    >
+                      <ExternalLink size={14} />
+                      <span>Demo</span>
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

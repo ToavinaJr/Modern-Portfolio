@@ -1,154 +1,44 @@
 import { useState } from 'react';
-import { Mail } from 'lucide-react';
 
-interface ContactFormProps {
-  darkMode: boolean;
-}
-
-export const ContactForm = ({ darkMode }: ContactFormProps) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-
-  const [errors, setErrors] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-
+export const ContactForm = ({ darkMode }: { darkMode: boolean }) => {
+  const [data, setData] = useState({ name: '', email: '', message: '', website: '' });
   const [status, setStatus] = useState('');
+  const [sending, setSending] = useState(false);
+  const update = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setData({ ...data, [event.target.name]: event.target.value });
 
-  // Vérification de l'email
-  const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-  // Gestion du changement des champs
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-
-    // Validation en temps réel
-    let errorMsg = '';
-    if (name === 'name' && value.trim().length < 2) {
-      errorMsg = 'Le nom doit contenir au moins 2 caractères.';
-    } else if (name === 'email' && !isValidEmail(value)) {
-      errorMsg = 'Adresse email invalide.';
-    } else if (name === 'message' && value.trim().length < 10) {
-      errorMsg = 'Le message doit contenir au moins 10 caractères.';
-    }
-
-    setErrors({ ...errors, [name]: errorMsg });
-  };
-
-  // Gestion de la soumission du formulaire
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    // Vérifier si des erreurs existent
-    if (errors.name || errors.email || errors.message) {
-      setStatus('Veuillez corriger les erreurs avant d’envoyer.');
+  const submit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    if (sending || data.website) return;
+    if (data.name.trim().length < 2 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email) || data.message.trim().length < 10) {
+      setStatus('Please provide a valid name, email address and a message of at least 10 characters.');
       return;
     }
-
-    // Vérification finale des champs
-    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
-      setStatus('Tous les champs sont obligatoires.');
-      return;
-    }
-
-    setStatus('Envoi en cours...');
-
+    setSending(true);
+    setStatus('Sending...');
     try {
       const response = await fetch('https://formspree.io/f/xrbeaovo', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        method: 'POST', headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: data.name, email: data.email, message: data.message }),
       });
-
-      if (response.ok) {
-        setStatus('Message envoyé avec succès !');
-        setFormData({ name: '', email: '', message: '' });
-        setErrors({ name: '', email: '', message: '' });
-      } else {
-        setStatus('Échec de l’envoi du message.');
-      }
-    } catch (error) {
-      setStatus('Échec de l’envoi du message.');
-      console.error(error);
-    }
+      if (!response.ok) throw new Error();
+      setStatus('Thank you. Your message has been sent.');
+      setData({ name: '', email: '', message: '', website: '' });
+    } catch {
+      setStatus('The message could not be sent. Please try again later.');
+    } finally { setSending(false); }
   };
 
-  return (
-    <section id="contact" className="container mx-auto px-4 py-16">
-      <h2 className="text-3xl font-bold text-[#00bcff]  mb-8 text-center">🤙 Contact Me</h2>
-      <form
-        className={`max-w-lg mx-auto sm:space-y-4 space-y-6 p-8 rounded-lg shadow-lg ${
-          darkMode ? 'bg-[#1e293b] text-white' : 'bg-white text-gray-900'
-        }`}
-        onSubmit={handleSubmit}
-      >
-        <div className="relative">
-          <label className={`block mb-2 text-sm font-semibold ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-            Name
-          </label>
-          <input
-            type="text"
-            className={`w-full p-3 rounded-lg border ${
-              darkMode ? 'border-gray-600 bg-[#1e293b] text-white' : 'border-gray-300 bg-gray-100 text-gray-900'
-            } focus:outline-none focus:ring-2 focus:ring-[#00bcff] transition`}
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder='Your Name'
-          />
-          {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
-        </div>
-
-        <div className="relative">
-          <label className={`block mb-2 text-sm font-semibold ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-            Email
-          </label>
-          <input
-            type="email"
-            className={`w-full p-3 rounded-lg border ${
-              darkMode ? 'border-gray-600 bg-[#1e293b] text-white' : 'border-gray-300 bg-gray-100 text-gray-900'
-            } focus:outline-none focus:ring-2 focus:ring-[#00bcff] transition`}
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder='Your Email'
-          />
-          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
-        </div>
-
-        <div className="relative">
-          <label className={`block mb-2 text-sm font-semibold ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-            Message
-          </label>
-          <textarea
-            rows={4}
-            className={`w-full p-3 rounded-lg border ${
-              darkMode ? 'border-gray-600 bg-[#1e293b] text-white' : 'border-gray-300 bg-gray-100 text-gray-900'
-            } focus:outline-none focus:ring-2 focus:ring-[#00bcff] transition`}
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            placeholder='Your Message'
-          />
-          {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
-        </div>
-
-        <button
-          type="submit"
-          className="w-full cursor-pointer bg-[#01425a] hover:bg-[#009edb] transition-all duration-300 text-white py-3 rounded-lg flex items-center justify-center gap-2 shadow-md"
-        >
-          <Mail size={20} />
-          Send Message
-        </button>
-
-        {status && <p className="text-center mt-4">{status}</p>}
-      </form>
-    </section>
-  );
+  return <section id="contact" className="section" data-theme-context={darkMode ? 'dark' : 'light'}>
+    <div className="eyebrow">Contact</div><h2>Let&apos;s build something useful</h2>
+    <p className="lead">I am open to junior full-stack roles, C++/Qt opportunities, internships and remote international projects.</p>
+    <form className="info-card contact-form" onSubmit={submit} noValidate>
+      <label>Name<input name="name" value={data.name} onChange={update} autoComplete="name" required minLength={2}/></label>
+      <label>Email<input name="email" type="email" value={data.email} onChange={update} autoComplete="email" required/></label>
+      <label>Message<textarea name="message" value={data.message} onChange={update} rows={6} required minLength={10}/></label>
+      <label className="honeypot" aria-hidden="true">Website<input name="website" value={data.website} onChange={update} tabIndex={-1} autoComplete="off"/></label>
+      <button className="button" disabled={sending}>{sending ? 'Sending...' : 'Send Message'}</button>
+      <p role="status" aria-live="polite">{status}</p>
+    </form>
+  </section>;
 };

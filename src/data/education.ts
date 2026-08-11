@@ -1,16 +1,3 @@
-import { Education } from "../types";
-
-const dataEducation: Education[] = [
-    {
-      degree: "Master's in Computer Science",
-      school: "Mathematics Informatiques Statistics Applied (MISA)",
-      period: "2020-2022"
-    },
-    {
-      degree: "Master's in Mathematics",
-      school: "Mathematics Fondamentals (University of Antananarivo)",
-      period: "2016-2020"
-    }
-];
-
+import type { Education } from '../types';
+const dataEducation: Education[] = [{ degree:'Fourth-year student in Mathematics, Computer Science and Applied Statistics (MISA)', school:'University of Antananarivo', period:'Graduation date: TODO — not provided' }];
 export default dataEducation;

@@ -1,36 +1,53 @@
-import { useState } from 'react';
-import { Header } from './components/Header';
-import { HeroSection } from './components/HeroSection';
-import { ProjectsSection } from './components/ProjectsSection';
-import { CertificationsSection } from './components/CertificationsSection';
-import { EducationSection } from './components/EducationSection';
+import { useEffect, useState } from 'react';
+import { Github, Linkedin, Download, ExternalLink, Code2, MapPin, Clock3, Menu, X } from 'lucide-react';
+import projects from './data/project';
 import { ContactForm } from './components/ContactForm';
-import { ParallaxProvider } from 'react-scroll-parallax';
-import { StackSection } from './components/StackSection';
-import { SkillsSection } from './components/SkillsSection';
-import  dataEducation  from '../src/data/education';
-import dataCertification from './data/certification';
-import dataProject from './data/project';
 import ChatBot from './components/ChatBot';
+import type { Project } from './types';
 
-const App = () => {
-  const [darkMode, setDarkMode] = useState(true);
-
-  return (
-    <ParallaxProvider>
-      <div className={`min-h-screen ${darkMode ? 'bg-[#030712] text-[#645c5c]' : 'bg-[#f5f5f5] text-[#030712]'} w-[100vw] overflow-x-hidden`}>
-        <Header darkMode={darkMode} onThemeToggle={() => setDarkMode(!darkMode)} />
-        <HeroSection darkMode={darkMode}/>
-        <ProjectsSection projects={dataProject} />
-        <CertificationsSection certifications={dataCertification} />
-        <EducationSection education={dataEducation} darkMode={darkMode} />
-        <SkillsSection darkMode={darkMode}/>
-        <StackSection darkMode={darkMode}/>
-        <ContactForm darkMode={darkMode} />
-        <ChatBot darkMode={darkMode} />
-      </div>
-    </ParallaxProvider>
-  );
+const SITE = 'https://portfolio-toavinajr.vercel.app';
+const nav = [['Home','/'],['Projects','/projects'],['About','/#about'],['Experience','/#experience'],['Skills','/#skills'],['Certifications','/#certifications'],['Contact','/#contact']];
+const skillGroups = {
+  Frontend:['React','Next.js','JavaScript / TypeScript','Tailwind CSS','Responsive design','Accessibility'],
+  Backend:['NestJS','Django / DRF','REST APIs','Authentication','Prisma'],
+  Databases:['PostgreSQL','Neon PostgreSQL','Database design','Migrations'],
+  'Desktop & Systems':['C++','Qt','SFML','CMake'],
+  'DevOps & Tools':['Git','Docker','Linux','Vercel','Render'],
+  'AI & Automation':['AI API integration','Workflow automation','Data processing'],
 };
 
-export default App;
+function setMeta(title:string, description:string, path:string, image='/images/og-portfolio.png') {
+  document.title = title;
+  const set=(selector:string, attr:string, value:string)=>document.querySelector(selector)?.setAttribute(attr,value);
+  set('meta[name="description"]','content',description); set('link[rel="canonical"]','href',`${SITE}${path}`);
+  set('meta[property="og:title"]','content',title); set('meta[property="og:description"]','content',description); set('meta[property="og:url"]','content',`${SITE}${path}`); set('meta[property="og:image"]','content',`${SITE}${image}`);
+  set('meta[name="twitter:title"]','content',title); set('meta[name="twitter:description"]','content',description);
+}
+
+function Header({dark,setDark}:{dark:boolean;setDark:(v:boolean)=>void}) {
+  const [open,setOpen]=useState(false);
+  useEffect(()=>{ if(!open)return; const close=(e:KeyboardEvent)=>e.key==='Escape'&&setOpen(false); addEventListener('keydown',close); return()=>removeEventListener('keydown',close); },[open]);
+  return <header className="site-header"><a className="brand" href="/">Toavina <span>Jr</span></a><nav aria-label="Primary navigation" className={open?'open':''}>{nav.map(([label,href])=><a key={label} href={href} onClick={()=>setOpen(false)}>{label}</a>)}</nav><div className="header-actions"><button className="icon-button" onClick={()=>setDark(!dark)} aria-label={`Use ${dark?'light':'dark'} theme`}>{dark?'☀':'☾'}</button><button className="menu-button icon-button" onClick={()=>setOpen(!open)} aria-expanded={open} aria-controls="primary-menu" aria-label="Toggle navigation">{open?<X/>:<Menu/>}</button></div></header>;
+}
+
+function ProjectActions({p,caseStudy=true}:{p:Project;caseStudy?:boolean}) { return <div className="actions">{caseStudy&&<a className="button" href={`/projects/${p.slug}`}>View Case Study</a>}{p.codeLink?<a className="text-link" href={p.codeLink} target="_blank" rel="noopener noreferrer"><Code2/>Code</a>:<span className="private">Private repository</span>}{p.demoLink&&<a className="text-link" href={p.demoLink} target="_blank" rel="noopener noreferrer"><ExternalLink/>Live Demo</a>}</div> }
+
+function ProjectCard({p,compact=false}:{p:Project;compact?:boolean}) { return <article className={`project-card ${compact?'compact':''}`}><img src={p.image} alt={`${p.title} project screenshot`} width="640" height="360" loading="lazy"/><div className="card-body"><div className="eyebrow">{p.category}</div><h3>{p.title}</h3><p>{p.summary}</p><ul className="tags" aria-label="Technology stack">{p.tech.map(t=><li key={t}>{t}</li>)}</ul><ProjectActions p={p}/></div></article> }
+
+function Home() { const selected=projects.filter(p=>p.selected); return <>
+  <section className="hero" id="home"><div className="hero-copy"><div className="eyebrow">RANDRIAMIHAINGOSON Toavina Sylvianno · Toavina Jr</div><h1>Full-Stack Developer <span>| React, NestJS, PostgreSQL & AI Automation</span></h1><p className="lead">I build reliable web applications and AI-powered workflows, with additional experience in C++ and Qt.</p><p className="availability"><MapPin/>Based in Madagascar <span>—</span> Available for remote opportunities</p><div className="actions"><a className="button" href="#selected-work">View Selected Work</a><a className="button secondary" href="/pdf/CV-RANDRIAMIHAINGOSON_Toavina_Sylvianno.pdf" download><Download/>Download Résumé</a></div><div className="socials"><a href="https://github.com/ToavinaJr" target="_blank" rel="noopener noreferrer"><Github/>GitHub</a><a href="https://www.linkedin.com/in/randriamihaingoson-toavina-sylvianno-38a987276" target="_blank" rel="noopener noreferrer"><Linkedin/>LinkedIn</a><a href="#contact">Contact</a></div></div><img className="portrait" src="/images/photo_profil.jpg" alt="Toavina Jr" width="420" height="420" fetchPriority="high"/></section>
+  <section id="selected-work" className="section"><div className="section-heading"><div><div className="eyebrow">Selected work</div><h2>Projects built to solve real problems</h2></div><a href="/projects">View all projects →</a></div><div className="project-grid selected">{selected.map(p=><ProjectCard p={p} key={p.slug}/>)}</div></section>
+  <section id="about" className="section split"><div><div className="eyebrow">About me</div><h2>From mathematics education to software development</h2></div><div><p>I am a fourth-year student in Mathematics, Computer Science and Applied Statistics (MISA) at the University of Antananarivo. I focus on full-stack development with React, NestJS and PostgreSQL, while building complementary experience in C++ and Qt.</p><p>My background as a mathematics teacher strengthened my communication, logical reasoning and ability to explain complex subjects. I am also interested in AI integration and workflow automation.</p><p className="facts"><MapPin/>Antananarivo, Madagascar <Clock3/>UTC+3 · Available for international remote opportunities</p></div></section>
+  <section id="experience" className="section"><div className="eyebrow">Experience & Education</div><h2>Grounded in teaching and applied sciences</h2><div className="two-columns"><article className="info-card"><h3>Mathematics Teacher</h3><p>Developed pedagogy, clear communication, logical thinking, problem-solving and the ability to make complex topics understandable.</p><span>Institution and period: TODO — not provided</span></article><article className="info-card"><h3>Fourth-year MISA student</h3><p>Mathematics, Computer Science and Applied Statistics at the University of Antananarivo.</p><span>Graduation date: TODO — not provided</span></article></div></section>
+  <section id="skills" className="section"><div className="eyebrow">Skills</div><h2>A practical, cross-platform toolkit</h2><div className="skills-grid">{Object.entries(skillGroups).map(([group,items])=><article className="info-card" key={group}><h3>{group}</h3><ul>{items.map(i=><li key={i}>{i}</li>)}</ul></article>)}</div></section>
+  <section id="certifications" className="section"><div className="eyebrow">Certifications</div><h2>Selected credentials</h2><div className="cert-grid">{[['Problem Solving (Intermediate)','HackerRank','8981dda9acde'],['Problem Solving (Basic)','HackerRank','795471e261c0'],['SQL (Basic)','HackerRank','910e8ae489b3'],['C++ Certification','CodinGame','']].map(([t,i,id])=><article className="info-card" key={t}><h3>{t}</h3><p>{i}</p>{id&&<a href={`https://www.hackerrank.com/certificates/${id}`} target="_blank" rel="noopener noreferrer">View credential →</a>}</article>)}</div><details><summary>View all certifications</summary><p>Additional certificate images are available in the portfolio archive. Issuer links and dates require verification before publication.</p></details></section>
+  <ContactForm darkMode={true}/>
+  </> }
+
+function Projects() { useEffect(()=>setMeta('Projects | Toavina Jr','Selected full-stack, frontend and C++/Qt projects by Toavina Jr.','/projects'),[]); return <main id="main-content" className="page"><div className="page-intro"><div className="eyebrow">Portfolio</div><h1>Projects</h1><p>Selected full-stack applications and complementary C++/Qt work, followed by smaller frontend and game projects.</p></div><section className="section"><h2>Selected Projects</h2><div className="project-grid selected">{projects.filter(p=>p.selected).map(p=><ProjectCard p={p} key={p.slug}/>)}</div></section><section className="section"><h2>Other Projects</h2><div className="project-grid compact-grid">{projects.filter(p=>!p.selected).map(p=><ProjectCard p={p} compact key={p.slug}/>)}</div></section></main> }
+
+function CaseStudy({project:p}:{project:Project}) { useEffect(()=>setMeta(`${p.title} Case Study | Toavina Jr`,`${p.summary} Built with ${p.tech.join(', ')}.`,`/projects/${p.slug}`,p.image),[p]); const sections=[['Overview',p.summary],['Problem',p.summary],['My Role',p.role],['Main Features',p.features.join(' · ')],['Technical Architecture',`Built with ${p.tech.join(', ')}.`],['Technical Challenges',p.challenge],['Solutions',p.solution],['Tech Stack',p.tech.join(' · ')],['What I Learned',p.learned]]; const schema={"@context":"https://schema.org","@type":"CreativeWork",name:p.title,description:p.summary,author:{"@type":"Person",name:'Toavina Sylvianno Randriamihaingoson'},url:`${SITE}/projects/${p.slug}`}; return <main id="main-content" className="page case-study"><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}}/><a className="back" href="/projects">← All projects</a><div className="page-intro"><div className="eyebrow">{p.category} · {p.status}</div><h1>{p.title}</h1><p>{p.summary}</p></div><img className="case-image" src={p.image} alt={`${p.title} project screenshot`} width="1200" height="675"/>{sections.map(([title,body])=>body&&<section key={title}><h2>{title}</h2><p>{body}</p></section>)}<section><h2>Repository & Live Demo</h2><ProjectActions p={p} caseStudy={false}/></section></main> }
+
+function NotFound(){return <main id="main-content" className="page not-found"><p className="eyebrow">404</p><h1>Page not found</h1><p>The page you requested does not exist.</p><a className="button" href="/">Return home</a></main>}
+
+export default function App(){ const [dark,setDark]=useState(()=>localStorage.getItem('theme')!=='light'); useEffect(()=>{document.documentElement.dataset.theme=dark?'dark':'light';localStorage.setItem('theme',dark?'dark':'light')},[dark]); const path=location.pathname.replace(/\/$/,'')||'/'; let content;if(path==='/')content=<main id="main-content"><Home/></main>;else if(path==='/projects')content=<Projects/>;else {const p=projects.find(x=>`/projects/${x.slug}`===path);content=p?<CaseStudy project={p}/>:<NotFound/>} return <><a className="skip-link" href="#main-content">Skip to content</a><Header dark={dark} setDark={setDark}/>{content}<footer><p>© {new Date().getFullYear()} Toavina Jr · Antananarivo, Madagascar</p><a href="https://github.com/ToavinaJr" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/randriamihaingoson-toavina-sylvianno-38a987276" target="_blank" rel="noopener noreferrer">LinkedIn</a></footer>{path==='/'&&<ChatBot darkMode={dark}/>}</> }

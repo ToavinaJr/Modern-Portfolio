@@ -1,134 +1,18 @@
-import { Project } from "../types";
+import type { Project } from '../types';
 
-const dataProject : Project[] = [
-      {
-        title: "Fret Flow",
-        description: "A site web for people passionate about music and learning to play the guitar",
-        tech: ["React", "TailwindCSS", "NestJS"],
-        image: "/images/Screenshot-Fret_Flow.png",
-        demoLink: "https://flowfret-jr.vercel.app/",
-        codeLink: "https://flowfret-jr.vercel.app/"
-      },
-      {
-        title: "Edu OS",
-        description: "A site web for education built with React and TailwindCSS",
-        tech: ["React", "TailwindCSS", "NestJS"],
-        image: "/images/Screenshot-Edu_OS.png",
-        demoLink: "https://edu-os-ruddy.vercel.app/",
-        codeLink: "https://edu-os-ruddy.vercel.app/"
-      },
-      {
-        title: "Kôziko",
-        description: "A website like a social media for sharing and discovering recipes built with React and TailwindCSS",
-        tech: ["React", "TailwindCSS", "NestJS"],
-        image: "/images/Screenshoot-Koziko.png",
-        demoLink: "https://koziko.vercel.app/",
-        codeLink: "https://koziko.vercel.app/"
-      },
-     {
-      title: "Editera-ko",
-      description: "A code editor with syntax highlighting and terminal support",
-      tech: ["C++", "Qt"],
-      image: "/images/Screenshoot-Editera-ko.png",
-      demoLink: "",
-      codeLink: "https://github.com/ToavinaJr/Editerako-App"
-    },
-    {
-      title: "Draw It",
-      description: "A drawing game built with Qt, and C++",
-      tech: ["Qt", "C++"],
-      image: "/images/Screenshot-draw-it.png",
-      demoLink: "",
-      codeLink: "https://github.com/ToavinaJr/Shape-Drawer-Application-avec-Qt"
-    },
-    {
-      title: "Tetris Game",
-      description: "A tetris game built with Qt, and C++",
-      tech: ["Qt", "C++"],
-      image: "/images/Screenshot-Tetris.png",
-      demoLink: "",
-      codeLink: "https://github.com/ToavinaJr/Tetris-Game-Qt"
-    },
-    {
-      title: "Media Player",
-      description: "A media player built with Qt an C++",
-      tech: ["Qt", "C++"],
-      image: "/images/Screenshot-Media-Player.png",
-      demoLink: "",
-      codeLink: "https://github.com/ToavinaJr/Media-Player-QT"
-    },
-    {
-      title: "SpaceTourism",
-      description: "A space tourism site is a Frontend Mentor challenge built with React and TailwindCSS",
-      tech: ["React", "TailwindCSS"],
-      image: "/images/Screenshot-spacetourism.png",
-      demoLink: "https://spacetourism-rciqya8vi-toavina-sylviannos-projects.vercel.app/",
-      codeLink: "https://github.com/ToavinaJr/spacetourism"
-    },
-    {
-      title: "Chess Game",
-      description: "A chess game built with SFML and C++",
-      tech: ["SFML", "C++"],
-      image: "/images/Screenshot-Chess.png",
-      demoLink: "",
-      codeLink: "https://github.com/ToavinaJr/Jr-Chess-SFML"
-    },
-    {
-      title: "Sudoku Application Player",
-      description: "A sudoku generator and verificator application built with Qt an C++",
-      tech: ["Qt", "C++"],
-      image: "/images/Screenshot-Sudoku.png",
-      demoLink: "",
-      codeLink: "https://github.com/ToavinaJr/Sudoku-app-with-Qt"
-    },
-    {
-      title: "Maze Application Generator",
-      description: "An application built for maze generation and solving built with Qt an C++",
-      tech: ["Qt", "C++"],
-      image: "/images/Screenshot-Maze-Generator.png",
-      demoLink: "",
-      codeLink: "https://github.com/ToavinaJr/Maze-Project-avec-Qt"
-    },
-    {
-      title: "Bright future of Web",
-      description: "An siteweb built with HTML, CSS and Javascript",
-      tech: ["HTML", "CSS", "Javascript"],
-      image: "/images/Screenshot-Bright Future Of Web.png",
-      demoLink: "https://toavina-jr-evaluation.netlify.app",
-      codeLink: "https://github.com/DTC-Formation/evaluation-html-css-ToavinaJr"
-    },
-    {
-      title: "Minesweeper Game",
-      description: "A retro game MineSweeper built with C++ and SFML",
-      tech: ["C++", "SFML"],
-      image: "/images/Screenshot-Minesweeper.png",
-      demoLink: "",
-      codeLink: "https://github.com/ToavinaJr/Minesweeper-SFML"
-    },
-    {
-        title: "BrainWave Clone",
-        description: "A siteweb for Tech built with React and TailwindCSS",
-        tech: ["React JS", "TailwindCSS"],
-        image: "/images/Screenshot-Brainwave.png",
-        demoLink: "https://toavina-sylvianno-brain-wave.netlify.app/",
-        codeLink: "https://github.com/ToavinaJr/Brainwave-clone"
-    },
-    {
-        title: "2048 Game",
-        description: "A siteweb for 2048 game",
-        tech: ["JS", "HTML", "CSS"],
-        image: "/images/Screenshot-2048.png",
-        demoLink: "https://toavina-web-game.netlify.app/",
-        codeLink: "https://github.com/ToavinaJr/2048-web-game"
-    },
-    {
-        title: "NBA Stat",
-        description: "A siteweb for showing NBA Stat with a dashboard",
-        tech: ["JS", "HTML", "CSS", "ChartJS"],
-        image: "/images/Screenshot-NBA-Stat.png",
-        demoLink: "https://toavina-sylvianno-nba-chart-js.netlify.app/",
-        codeLink: "https://github.com/ToavinaJr/Nba-stat-charjs"
-    },
+const projects: Project[] = [
+  { slug:'fret-flow', title:'Fret Flow', summary:'A web application for people learning to play guitar.', solution:'A focused learning experience for discovering and following guitar content.', role:'Full-stack development', features:['Guitar learning interface','Responsive web experience'], tech:['React','Tailwind CSS','NestJS'], image:'/images/Screenshot-Fret_Flow.png', demoLink:'https://flowfret-jr.vercel.app/', category:'Full-Stack', selected:true, status:'Live demo available' },
+  { slug:'edu-os', title:'Edu OS', summary:'A web application designed around education.', solution:'A responsive education interface backed by a NestJS application.', role:'Full-stack development', features:['Education-focused interface','Responsive layouts'], tech:['React','Tailwind CSS','NestJS'], image:'/images/Screenshot-Edu_OS.png', demoLink:'https://edu-os-ruddy.vercel.app/', category:'Full-Stack', selected:true, status:'Live demo available' },
+  { slug:'koziko', title:'Kôziko', summary:'A social recipe application for sharing and discovering recipes.', solution:'A community-style interface centered on food discovery and sharing.', role:'Full-stack development', features:['Recipe discovery','Social sharing interface'], tech:['React','Tailwind CSS','NestJS'], image:'/images/Screenshoot-Koziko.png', demoLink:'https://koziko.vercel.app/', category:'Full-Stack', selected:true, status:'Live demo available' },
+  { slug:'editera-ko', title:'Editera-ko', summary:'A desktop code editor with syntax highlighting and terminal support.', solution:'A native desktop workspace for editing code and accessing a terminal.', role:'C++/Qt development', features:['Syntax highlighting','Terminal support'], tech:['C++','Qt'], image:'/images/Screenshoot-Editera-ko.png', codeLink:'https://github.com/ToavinaJr/Editerako-App', category:'C++/Qt', selected:true, status:'Source available' },
+  { slug:'draw-it', title:'Draw It', summary:'A desktop drawing application built with Qt and C++.', solution:'An interactive native drawing experience.', role:'Desktop development', features:['Shape drawing'], tech:['C++','Qt'], image:'/images/Screenshot-draw-it.png', codeLink:'https://github.com/ToavinaJr/Shape-Drawer-Application-avec-Qt', category:'C++/Qt', selected:false, status:'Source available' },
+  { slug:'tetris', title:'Tetris Game', summary:'A desktop implementation of the classic puzzle game.', solution:'A native Qt version of Tetris.', role:'Game development', features:['Keyboard-controlled gameplay'], tech:['C++','Qt'], image:'/images/Screenshot-Tetris.png', codeLink:'https://github.com/ToavinaJr/Tetris-Game-Qt', category:'Games', selected:false, status:'Source available' },
+  { slug:'media-player', title:'Media Player', summary:'A native desktop media player.', solution:'A Qt interface for playing media.', role:'Desktop development', features:['Media playback interface'], tech:['C++','Qt'], image:'/images/Screenshot-Media-Player.png', codeLink:'https://github.com/ToavinaJr/Media-Player-QT', category:'C++/Qt', selected:false, status:'Source available' },
+  { slug:'space-tourism', title:'Space Tourism', summary:'A responsive Frontend Mentor space-tourism challenge.', solution:'A polished multi-section frontend experience.', role:'Frontend development', features:['Responsive interface'], tech:['React','Tailwind CSS'], image:'/images/Screenshot-spacetourism.png', demoLink:'https://spacetourism-rciqya8vi-toavina-sylviannos-projects.vercel.app/', codeLink:'https://github.com/ToavinaJr/spacetourism', category:'Frontend', selected:false, status:'Live demo and source available' },
+  { slug:'chess', title:'Chess Game', summary:'A chess game built with C++ and SFML.', solution:'A desktop implementation of chess.', role:'Game development', features:['Chess gameplay'], tech:['C++','SFML'], image:'/images/Screenshot-Chess.png', codeLink:'https://github.com/ToavinaJr/Jr-Chess-SFML', category:'Games', selected:false, status:'Source available' },
+  { slug:'sudoku', title:'Sudoku', summary:'A Sudoku generator and validator.', solution:'A desktop application for generating and checking puzzles.', role:'Desktop development', features:['Puzzle generation','Solution validation'], tech:['C++','Qt'], image:'/images/Screenshot-Sudoku.png', codeLink:'https://github.com/ToavinaJr/Sudoku-app-with-Qt', category:'Games', selected:false, status:'Source available' },
+  { slug:'maze', title:'Maze Generator', summary:'A desktop maze generator and solver.', solution:'An interactive visualization of maze generation and solving.', role:'Desktop development', features:['Maze generation','Maze solving'], tech:['C++','Qt'], image:'/images/Screenshot-Maze-Generator.png', codeLink:'https://github.com/ToavinaJr/Maze-Project-avec-Qt', category:'C++/Qt', selected:false, status:'Source available' },
+  { slug:'minesweeper', title:'Minesweeper', summary:'A desktop version of the classic Minesweeper game.', solution:'A C++ and SFML implementation of the puzzle game.', role:'Game development', features:['Classic puzzle gameplay'], tech:['C++','SFML'], image:'/images/Screenshot-Minesweeper.png', codeLink:'https://github.com/ToavinaJr/Minesweeper-SFML', category:'Games', selected:false, status:'Source available' },
 ];
 
-export default dataProject;
+export default projects;

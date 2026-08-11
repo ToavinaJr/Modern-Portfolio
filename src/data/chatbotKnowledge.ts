@@ -1,76 +1,13 @@
-import { ChatKnowledgeDocument } from '../types.js';
+import type { ChatKnowledgeDocument } from '../types';
 
 const chatbotKnowledge: ChatKnowledgeDocument[] = [
-  {
-    id: 'profile',
-    title: 'Professional Profile',
-    content:
-      'Toavina Sylvianno is a full-stack developer passionate about high-performance software development and modern web interfaces. With solid training in mathematics and computer science, he combines expertise in C++ for system applications and React/TypeScript for web solutions. Based in East Africa, available for freelance missions, full-time roles, or collaborative projects.',
-    tags: ['profile', 'about', 'toavina', 'developer', 'full-stack', 'background'],
-  },
-  {
-    id: 'education',
-    title: 'Academic Background',
-    content:
-      'Master in Computer Science from MISA (2020-2022) - focus: algorithms and software architecture. Master in Fundamental Mathematics from University of Antananarivo (2016-2020) - specialization: numerical analysis. This dual training enables rigorous problem-solving and strong algorithmic thinking.',
-    tags: ['education', 'master', 'university', 'degree', 'academic', 'training'],
-  },
-  {
-    id: 'core-skills',
-    title: 'Core Skills',
-    content:
-      'C++ Advanced (OOP, templates, STL, SFML, Qt), React 19 (hooks, Framer Motion, TypeScript), TypeScript strict mode, TailwindCSS, HTML5/CSS3, JavaScript ES2023, MVC/MVVM architecture, Data structures & algorithms, Vite/Webpack build systems.',
-    tags: ['skills', 'technical', 'core', 'languages', 'frameworks', 'expertise'],
-  },
-  {
-    id: 'secondary-skills',
-    title: 'Additional Skills',
-    content:
-      'Node.js/Express (beginner), Python (scripting), PHP (WordPress), GraphQL, MongoDB, REST APIs, Git/GitHub, Linux CLI, Problem Solving (HackerRank certified), SQL.',
-    tags: ['skills', 'technical', 'secondary', 'tools', 'databases', 'tools'],
-  },
-  {
-    id: 'projects-desktop',
-    title: 'Desktop Projects (C++/Qt)',
-    content:
-      'Editera-ko: Code editor with syntax highlighting and integrated terminal. Draw It: Drawing game with shape detection. Tetris Game: Classic Tetris clone. Media Player: Multimedia player. Chess Game: Full chess game with AI. Sudoku Application: Generator and verifier. Maze Generator: Maze generator and solver. Minesweeper: Retro Minesweeper SFML version.',
-    tags: ['projects', 'desktop', 'cpp', 'qt', 'sfml', 'games', 'applications'],
-  },
-  {
-    id: 'projects-web',
-    title: 'Web Projects (React/Frontend)',
-    content:
-      'SpaceTourism: Space tourism website (React, TailwindCSS, Frontend Mentor). BrainWave Clone: Modern tech landing page. 2048 Game: 2048 game implementation. NBA Stats Dashboard: Dashboard with charting. Bright Future Of Web: Corporate website (HTML/CSS/JS). Modern Portfolio: Personal portfolio (Vite, React 19, Framer Motion, Groq AI chatbot integration).',
-    tags: ['projects', 'web', 'react', 'frontend', 'dashboard', 'portfolio'],
-  },
-  {
-    id: 'certifications',
-    title: 'Professional Certifications',
-    content:
-      'HackerRank: Problem Solving Intermediate, SQL Basic. Coding Game: C++ Certified (Sep 2024). Sololearn: C++ Advanced, CSS, HTML, PHP. These certifications validate expertise in algorithms, databases, and modern programming languages.',
-    tags: ['certifications', 'certificate', 'hackerrank', 'sololearn', 'codingame', 'validation'],
-  },
-  {
-    id: 'approach',
-    title: 'Approach & Values',
-    content:
-      'Clean & maintainable code: following conventions and inline documentation. Performance: algorithm optimization and responsive UX. Continuous learning: staying current with modern technologies. Collaboration: clear communication and constructive feedback. User-centric design: focusing on user experience.',
-    tags: ['approach', 'values', 'philosophy', 'methodology', 'excellence'],
-  },
-  {
-    id: 'contact',
-    title: 'Contact & Collaboration',
-    content:
-      'Availability: Freelance, one-off projects, or full-time roles. Typical response time: 24 hours. Contact via portfolio form. Timezone: UTC+3 (EAT). Preferences: Remote-first work, multilingual (French/English).',
-    tags: ['contact', 'email', 'form', 'collaboration', 'availability', 'reach-out'],
-  },
+  { id:'profile', title:'Professional Profile', content:'Toavina Sylvianno Randriamihaingoson, professionally known as Toavina Jr, is a junior full-stack developer based in Antananarivo, Madagascar. He works with React, NestJS and PostgreSQL, with complementary C++ and Qt experience. He is available for remote international opportunities.', tags:['profile','about','location','availability'] },
+  { id:'education', title:'Education', content:'Toavina is a fourth-year student in Mathematics, Computer Science and Applied Statistics (MISA) at the University of Antananarivo. No graduation date has been provided.', tags:['education','MISA','university'] },
+  { id:'experience', title:'Experience', content:'His previous experience teaching mathematics developed pedagogy, communication, logical reasoning, problem-solving and the ability to explain complex subjects. The institution and period have not been provided.', tags:['experience','teaching','mathematics'] },
+  { id:'skills', title:'Technical Skills', content:'Practiced technologies include React, Next.js, Tailwind CSS, NestJS, Django/DRF, PostgreSQL, Prisma, C++, Qt, SFML, Python, Docker, Git, Vercel, Render, Neon PostgreSQL, API integration and AI workflow automation.', tags:['skills','stack','technology'] },
+  { id:'projects', title:'Selected Projects', content:'Selected projects are Fret Flow, an application for guitar learners; Edu OS, an education web application; Kôziko, a social recipe application; and Editera-ko, a C++/Qt code editor with syntax highlighting and terminal support.', tags:['projects','work','portfolio'] },
+  { id:'contact', title:'Contact and Availability', content:'Toavina is based in Antananarivo in the UTC+3 timezone and is available for junior full-stack roles, C++/Qt opportunities, internships and remote international projects. Contact is available through the portfolio form or LinkedIn.', tags:['contact','remote','availability'] },
 ];
 
-export const ragConfig = {
-  minSimilarityScore: 0.2,
-  maxContextDocuments: 3,
-  contextWindow: 2000,
-  modelName: 'llama-3.3-70b-versatile',
-};
-
+export const ragConfig = { minSimilarityScore:0.2, maxContextDocuments:3, contextWindow:2000, modelName:'llama-3.3-70b-versatile' };
 export default chatbotKnowledge;

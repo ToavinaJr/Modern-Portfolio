@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Github, Linkedin, Download, ExternalLink, Code2, MapPin, Clock3, Menu, X } from 'lucide-react';
+import { Github, Linkedin, Download, ExternalLink, Code2, MapPin, Clock3, Menu, X, Accessibility, MonitorSmartphone, Plug, KeyRound, Database, GitBranch, Workflow, Braces } from 'lucide-react';
+import { SiReact, SiNextdotjs, SiJavascript, SiTypescript, SiTailwindcss, SiNestjs, SiDjango, SiPrisma, SiPostgresql, SiMysql, SiSupabase, SiCplusplus, SiQt, SiSfml, SiCmake, SiGit, SiDocker, SiLinux, SiVercel, SiRender, SiOpenai } from 'react-icons/si';
 import projects from './data/project';
 import certifications from './data/certification';
 import { ContactForm } from './components/ContactForm';
@@ -9,12 +10,12 @@ import type { Project } from './types';
 const SITE = 'https://portfolio-toavinajr.vercel.app';
 const nav = [['Home','/'],['Projects','/projects'],['About','/#about'],['Experience','/#experience'],['Skills','/#skills'],['Certifications','/#certifications'],['Contact','/#contact']];
 const skillGroups = {
-  Frontend:['React','Next.js','JavaScript / TypeScript','Tailwind CSS','Responsive design','Accessibility'],
-  Backend:['NestJS','Django / DRF','REST APIs','Authentication','Prisma'],
-  Databases:['PostgreSQL','MySQL','Supabase','Neon PostgreSQL','Database design','Migrations'],
-  'Desktop & Systems':['C++','Qt','SFML','CMake'],
-  'DevOps & Tools':['Git','Docker','Linux','Vercel','Render'],
-  'AI & Automation':['AI API integration','Workflow automation','Data processing'],
+  Frontend:[{name:'React',Icon:SiReact},{name:'Next.js',Icon:SiNextdotjs},{name:'JavaScript',Icon:SiJavascript},{name:'TypeScript',Icon:SiTypescript},{name:'Tailwind CSS',Icon:SiTailwindcss},{name:'Responsive design',Icon:MonitorSmartphone},{name:'Accessibility',Icon:Accessibility}],
+  Backend:[{name:'NestJS',Icon:SiNestjs},{name:'Django / DRF',Icon:SiDjango},{name:'REST APIs',Icon:Plug},{name:'Authentication',Icon:KeyRound},{name:'Prisma',Icon:SiPrisma}],
+  Databases:[{name:'PostgreSQL',Icon:SiPostgresql},{name:'MySQL',Icon:SiMysql},{name:'Supabase',Icon:SiSupabase},{name:'Neon PostgreSQL',Icon:Database},{name:'Database design',Icon:Database},{name:'Migrations',Icon:GitBranch}],
+  'Desktop & Systems':[{name:'C++',Icon:SiCplusplus},{name:'Qt',Icon:SiQt},{name:'SFML',Icon:SiSfml},{name:'CMake',Icon:SiCmake}],
+  'DevOps & Tools':[{name:'Git',Icon:SiGit},{name:'Docker',Icon:SiDocker},{name:'Linux',Icon:SiLinux},{name:'Vercel',Icon:SiVercel},{name:'Render',Icon:SiRender}],
+  'AI & Automation':[{name:'AI API integration',Icon:SiOpenai},{name:'Workflow automation',Icon:Workflow},{name:'Data processing',Icon:Braces}],
 };
 
 function setMeta(title:string, description:string, path:string, image='/images/og-portfolio.png') {
@@ -40,7 +41,7 @@ function Home() { const selected=projects.filter(p=>p.selected); return <>
   <section id="selected-work" className="section"><div className="section-heading"><div><div className="eyebrow">Selected work</div><h2>Projects built to solve real problems</h2></div><a href="/projects">View all projects →</a></div><div className="project-grid selected">{selected.map(p=><ProjectCard p={p} key={p.slug}/>)}</div></section>
   <section id="about" className="section split"><div><div className="eyebrow">About me</div><h2>From mathematics education to software development</h2></div><div><p>I am a Master 2 student in Mathematics, Computer Science and Applied Statistics (MISA) at the University of Antananarivo. I focus on full-stack development with React, NestJS and PostgreSQL, while building complementary experience in C++ and Qt.</p><p className="mt-4">My experience teaching mathematics at Ikigasy and providing private lessons strengthened my communication, logical reasoning and ability to explain complex subjects. I am also interested in AI integration and workflow automation.</p><p className="facts mt-4"><MapPin/>Antananarivo, Madagascar <Clock3/>UTC+3 · Available for international remote opportunities</p></div></section>
   <section id="experience" className="section"><div className="eyebrow">Experience & Education</div><h2>Grounded in teaching and applied sciences</h2><div className="two-columns"><article className="info-card"><h3>Mathematics Teacher at Ikigasy</h3><p>Teaching mathematics while developing pedagogy, clear communication, logical thinking, problem-solving and the ability to make complex topics understandable.</p><h3>Private Mathematics Tutor</h3><p>Providing individual mathematics lessons adapted to each learner&apos;s needs.</p></article><article className="info-card"><h3>Master 2 MISA Student</h3><p>Mathematics, Computer Science and Applied Statistics at the University of Antananarivo.</p></article></div></section>
-  <section id="skills" className="section"><div className="eyebrow">Skills</div><h2>A practical, cross-platform toolkit</h2><div className="skills-grid">{Object.entries(skillGroups).map(([group,items])=><article className="info-card" key={group}><h3>{group}</h3><ul>{items.map(i=><li key={i}>{i}</li>)}</ul></article>)}</div></section>
+  <section id="skills" className="section"><div className="eyebrow">Skills</div><h2>A practical, cross-platform toolkit</h2><div className="skills-grid">{Object.entries(skillGroups).map(([group,items])=><article className="info-card" key={group}><h3>{group}</h3><ul className="skill-list">{items.map(({name,Icon})=><li key={name}><Icon aria-hidden="true"/><span>{name}</span></li>)}</ul></article>)}</div></section>
   <section id="certifications" className="section"><div className="eyebrow">Certifications</div><h2>Selected credentials</h2><div className="cert-grid">{certifications.slice(0,4).map(cert=><article className="info-card" key={cert.title}><h3>{cert.title}</h3><p>{cert.issuer}</p>{cert.certificateLink&&<a href={cert.certificateLink} target="_blank" rel="noopener noreferrer">View credential →</a>}</article>)}</div><details className="certifications-details"><summary>View all certifications</summary><div className="cert-grid all-certifications">{certifications.map(cert=><article className="project-card cert-card" key={`${cert.issuer}-${cert.title}`}>{cert.image&&<img src={cert.image} alt={`${cert.title} certificate`} width="640" height="360" loading="lazy"/>}<div className="card-body"><h3>{cert.title}</h3><p>{cert.issuer}</p>{cert.description&&<p>{cert.description}</p>}{cert.certificateLink?<a href={cert.certificateLink} target="_blank" rel="noopener noreferrer">View credential →</a>:cert.image&&<a href={cert.image} target="_blank" rel="noopener noreferrer">View certificate →</a>}</div></article>)}</div></details></section>
   <ContactForm darkMode={true}/>
   </> }

@@ -259,6 +259,18 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
         <span className="hidden sm:inline">Chat</span>
         <ChevronDown size={16} className={`transition ${isOpen ? 'rotate-180' : ''}`} />
       </button>
+
+      {!isOpen && (
+        <div
+          className={`fixed right-5 top-[calc(50%+3.5rem)] z-40 hidden max-w-[14rem] rounded-2xl border px-3 py-2 text-center text-[11px] backdrop-blur-xl sm:block ${
+            darkMode
+              ? 'border-white/10 bg-black/30 text-white/60'
+              : 'border-slate-200 bg-white/90 text-slate-500'
+          }`}
+        >
+          Ask about {assistantHint.join(', ')}.
+        </div>
+      )}
     </>
   );
 };

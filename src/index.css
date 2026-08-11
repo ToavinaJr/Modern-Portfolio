@@ -4,3 +4,4 @@
 @media(max-width:580px){.hero,.section,.page,footer{width:min(100% - 1.25rem,1200px)}.hero{padding-top:2.5rem}.hero h1{font-size:2.55rem}.project-grid,.two-columns,.skills-grid,.cert-grid,.compact-grid{grid-template-columns:1fr}.section-heading{align-items:start;flex-direction:column}.actions .button{width:100%}.site-header{padding-inline:.65rem}.brand{font-size:1rem}footer{align-items:flex-start;flex-wrap:wrap}footer p{width:100%;margin:0}}
 .certifications-details{margin-top:1.5rem}.certifications-details summary{font-weight:800}.all-certifications{margin-top:1.25rem}.cert-card img{aspect-ratio:16/9;object-fit:cover}.cert-card a{color:var(--accent)}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+.button{color:#fff}

@@ -7,12 +7,12 @@ const certifications: Certification[] = [
   { title:'C++ Problem Solving', issuer:'CodinGame', image:'/images/Certification-1_page-0001.jpg', certificateLink:'https://www.codingame.com/certification/NHIGu5MqBVjHZfgKs8iH1g', description:'Recognized as fully capable and skilled in C++ problem solving.' },
   { title:'Python 3 Problem Solving', issuer:'CodinGame', image:'', certificateLink:'https://www.codingame.com/certification/WqRx_VF4zguvrwjaba1QBA', description:'Recognized as fully capable and skilled in Python 3 problem solving.' },
   { title:'C++', issuer:'Sololearn', image:'/images/CPlusPlus_certificate.jpg' },
-  { title:'C++ Intermediate', issuer:'Issuer not provided', image:'/images/C++ Intermediate_certificate.jpg' },
+  { title:'C++ Intermediate', issuer:'Sololearn', image:'/images/C++ Intermediate_certificate.jpg' },
   { title:'C', issuer:'Sololearn', image:'/images/C_certificate.jpg' },
-  { title:'C Intermediate', issuer:'Issuer not provided', image:'/images/C Intermediate_certificate.jpg' },
+  { title:'C Intermediate', issuer:'Sololearn', image:'/images/C Intermediate_certificate.jpg' },
   { title:'HTML', issuer:'Sololearn', image:'/images/HTML_certificate.jpg' },
   { title:'CSS', issuer:'Sololearn', image:'/images/CSS_certificate.jpg' },
-  { title:'React', issuer:'Issuer not provided', image:'/images/react_certificate.jpg' },
+  { title:'React', issuer:'Sololearn', image:'/images/react_certificate.jpg' },
   { title:'PHP', issuer:'Sololearn', image:'/images/PHP_certificate.jpg' },
 ];
 export default certifications;

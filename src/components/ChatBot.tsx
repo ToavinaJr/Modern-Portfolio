@@ -147,7 +147,7 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.96 }}
             transition={{ duration: 0.22, ease: 'easeOut' }}
-            className={`fixed bottom-5 right-5 z-50 flex h-[min(36rem,calc(100vh-2.5rem))] w-[min(92vw,24rem)] flex-col overflow-hidden rounded-3xl border backdrop-blur-xl ${shellClassName}`}
+            className={`fixed right-5 top-1/2 -translate-y-1/2 z-50 flex h-[min(36rem,calc(100vh-2.5rem))] w-[min(92vw,24rem)] flex-col overflow-hidden rounded-3xl border backdrop-blur-xl ${shellClassName}`}
           >
             <div className={`flex items-center justify-between border-b px-4 py-3 ${borderClassName}`}>
               <div className="flex items-center gap-3">
@@ -246,7 +246,7 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
       <button
         type="button"
         onClick={() => setIsOpen((current) => !current)}
-        className={`fixed bottom-5 right-5 z-40 inline-flex items-center gap-3 rounded-full border px-4 py-3 text-sm font-medium transition hover:translate-y-[-2px] ${
+        className={`fixed right-5 top-1/2 -translate-y-1/2 z-40 inline-flex items-center gap-3 rounded-full border px-4 py-3 text-sm font-medium transition hover:-translate-y-[52%] ${
           darkMode
             ? 'border-cyan-400/30 bg-[#08101f] text-white shadow-[0_20px_60px_rgba(0,0,0,0.4)] hover:border-cyan-300/60'
             : 'border-cyan-500/20 bg-white text-slate-900 shadow-[0_20px_60px_rgba(15,23,42,0.14)] hover:border-cyan-500/50'
@@ -261,7 +261,7 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
       </button>
 
       <div
-        className={`fixed bottom-24 right-7 z-40 hidden max-w-[14rem] rounded-2xl border px-3 py-2 text-[11px] backdrop-blur-xl sm:block ${
+        className={`fixed right-24 top-1/2 -translate-y-1/2 z-40 hidden max-w-[14rem] rounded-2xl border px-3 py-2 text-center text-[11px] backdrop-blur-xl sm:block ${
           darkMode
             ? 'border-white/10 bg-black/30 text-white/60'
             : 'border-slate-200 bg-white/90 text-slate-500'

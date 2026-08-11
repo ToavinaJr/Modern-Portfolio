@@ -31,7 +31,7 @@ export const ContactForm = ({ darkMode }: { darkMode: boolean }) => {
 
   return <section id="contact" className="section" data-theme-context={darkMode ? 'dark' : 'light'}>
     <div className="eyebrow">Contact</div><h2>Let&apos;s build something useful</h2>
-    <p className="lead">I am open to junior full-stack roles, C++/Qt opportunities, internships and remote international projects.</p>
+    <p className="lead">I am open full-stack roles, C++/Qt opportunities and remote international projects.</p>
     <form className="info-card contact-form" onSubmit={submit} noValidate>
       <label>Name<input name="name" value={data.name} onChange={update} autoComplete="name" required minLength={2}/></label>
       <label>Email<input name="email" type="email" value={data.email} onChange={update} autoComplete="email" required/></label>

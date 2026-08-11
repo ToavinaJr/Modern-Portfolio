@@ -25,6 +25,7 @@ export interface Certification {
   image: string;
   certificateLink?: string;
   date?: string;
+  description?: string;
 }
 
 export interface Education { degree: string; school: string; period: string; }

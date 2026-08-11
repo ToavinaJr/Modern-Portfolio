@@ -33,7 +33,7 @@ export const HeroSection = ({ darkMode } : HeroSectionProps) => {
     >
       <motion.div className="md:w-1/3 flex justify-center" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}>
         <motion.img
-          src="/images/photo_profil.jpg"
+          src="/images/RANDRIAMIHAINGOSON_Toavina_Sylvianno_Profil.jpeg"
           alt="Toavina Jr — profile"
           loading="lazy"
           className="rounded-full w-48 h-48 md:w-56 md:h-56 object-cover shadow-lg border-4 border-white dark:border-gray-700 transition-all duration-300 hover:scale-105"

@@ -11,7 +11,7 @@ const nav = [['Home','/'],['Projects','/projects'],['About','/#about'],['Experie
 const skillGroups = {
   Frontend:['React','Next.js','JavaScript / TypeScript','Tailwind CSS','Responsive design','Accessibility'],
   Backend:['NestJS','Django / DRF','REST APIs','Authentication','Prisma'],
-  Databases:['PostgreSQL','Neon PostgreSQL','Database design','Migrations'],
+  Databases:['PostgreSQL','MySQL','Supabase','Neon PostgreSQL','Database design','Migrations'],
   'Desktop & Systems':['C++','Qt','SFML','CMake'],
   'DevOps & Tools':['Git','Docker','Linux','Vercel','Render'],
   'AI & Automation':['AI API integration','Workflow automation','Data processing'],

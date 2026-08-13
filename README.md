@@ -1,50 +1,88 @@
-# React + TypeScript + Vite
+# ToavinaJr — Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Professional portfolio for **Toavina Sylvianno Randriamihaingoson**, a Software Engineer and Full-Stack Developer based in Antananarivo, Madagascar and available for remote opportunities.
 
-Currently, two official plugins are available:
+![Portfolio preview](public/images/og-portfolio.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Live site:** [portfolio-toavinajr.vercel.app](https://portfolio-toavinajr.vercel.app)
 
-## Expanding the ESLint configuration
+## About
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+The site presents selected full-stack, frontend, C++/Qt and AI integration work. It separates professional teaching experience from practical software engineering projects and avoids unverified proficiency scores or employment claims.
 
-- Configure the top-level `parserOptions` property like this:
+## Tech Stack
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- React 19, TypeScript and Vite
+- Tailwind CSS
+- Groq API integration through server-side endpoints
+- Vercel deployment
+
+## Features
+
+- Responsive portfolio with light and dark themes
+- Five featured project case studies plus supporting projects
+- AI Portfolio Assistant grounded in curated profile data
+- Accessible navigation, skip link, visible focus states and reduced-motion support
+- Per-page metadata, Open Graph cards, JSON-LD, sitemap and robots rules
+- Formspree contact form with validation and spam honeypot
+
+## Architecture
+
+```text
+Browser (React + TypeScript)
+          ↓
+Portfolio data and case-study views
+          ↓
+/api/chat server boundary
+          ↓
+Curated knowledge retrieval → Groq LLM
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Portfolio content lives in typed data modules. The chat API reconstructs trusted context server-side, applies input and rate limits, and keeps the provider key outside the browser.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## AI Assistant
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+The assistant only answers questions about the documented profile, education, experience, skills, projects, availability and contact options. Its prompt forbids invented employers, results, proficiency levels and experience duration. Missing or unrelated information receives an explicit refusal.
+
+Create a local `.env` from `.env.example` and provide `GROQ_API_KEY` to use the assistant during development.
+
+## SEO
+
+The portfolio includes canonical metadata, Open Graph and Twitter cards, a sitemap, robots rules and Schema.org `Person`, `WebSite`, `ProfilePage`, and project-level `SoftwareApplication` data.
+
+## Accessibility
+
+The interface includes semantic landmarks, a skip link, keyboard-operable navigation, labelled controls, status announcements, descriptive image text, visible focus indicators and `prefers-reduced-motion` handling.
+
+## Running Locally
+
+```bash
+git clone https://github.com/ToavinaJr/Modern-Portfolio.git
+cd Modern-Portfolio
+npm install
+npm run dev
 ```
+
+## Quality Checks
+
+```bash
+npm run lint
+npm run typecheck
+npm run build
+```
+
+## Project Structure
+
+```text
+api/                 Vercel serverless chat endpoint
+server/              Local chat development server
+public/              Images, resume, sitemap and robots rules
+src/components/      Interactive UI components
+src/data/            Typed portfolio and knowledge content
+src/lib/             Knowledge retrieval logic
+src/                 Application shell, styles and shared types
+```
+
+## License
+
+No license has been declared. All rights are reserved unless the repository owner states otherwise.

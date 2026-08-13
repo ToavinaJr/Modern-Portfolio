@@ -1,4 +1,4 @@
-import { ChatKnowledgeDocument } from '../types.js';
+import type { ChatKnowledgeDocument } from '../types.js';
 
 const STOP_WORDS = new Set([
   'a',
@@ -121,7 +121,7 @@ export const buildKnowledgeContext = (question: string, documents: ChatKnowledge
   const matches = retrieveKnowledge(question, documents);
 
   if (!matches.length) {
-    return 'No specific match found in the knowledge base. However, here is general information about Toavina: He is a full-stack developer with advanced C++ and React/TypeScript skills, dual masters degree, problem-solving expertise, and is available for freelance and full-time opportunities. Contact via the portfolio form for collaboration.';
+    return 'No relevant information was found in the curated portfolio knowledge base. Say that the information is not documented; do not infer or invent an answer.';
   }
 
   const context = matches

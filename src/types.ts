@@ -1,4 +1,4 @@
-export type ProjectCategory = 'Full-Stack' | 'Frontend' | 'C++/Qt' | 'Games';
+export type ProjectCategory = 'Full-Stack' | 'Frontend' | 'C++/Qt' | 'AI Integration' | 'Games';
 
 export interface Project {
   slug: string;
@@ -15,6 +15,11 @@ export interface Project {
   selected: boolean;
   challenge?: string;
   learned?: string;
+  problem?: string;
+  goals?: string[];
+  architecture?: string[];
+  decisions?: string[];
+  results?: string;
   status: string;
   description?: string;
 }
@@ -32,3 +37,4 @@ export interface Education { degree: string; school: string; period: string; }
 
 export interface ChatKnowledgeDocument { id: string; title: string; content: string; tags: string[]; }
 export interface ChatMessage { id: string; role: 'user' | 'assistant'; content: string; }
+export interface ChatApiResponse { answer?: string; error?: string; }

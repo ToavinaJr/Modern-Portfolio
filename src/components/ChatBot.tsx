@@ -1,9 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Bot, ChevronDown, Loader2, MessageCircle, Send, Sparkles, X } from 'lucide-react';
-import chatbotKnowledge from '../data/chatbotKnowledge';
-import { ChatMessage } from '../types';
-import { buildKnowledgeContext } from '../lib/chatbot';
+import type { ChatApiResponse, ChatMessage } from '../types';
 
 const QUICK_PROMPTS = [
   'Tell me about the profile',
@@ -12,7 +10,7 @@ const QUICK_PROMPTS = [
   'What certifications does he have?',
 ];
 
-const PENDING_RESPONSE = 'Searching the knowledge base and consulting Groq...';
+const PENDING_RESPONSE = 'Searching the portfolio knowledge base...';
 
 type ChatBotProps = {
   darkMode: boolean;
@@ -36,6 +34,7 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
     [],
   );
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const shellClassName = darkMode
     ? 'border-white/10 bg-[#08101f]/95 text-white shadow-[0_25px_80px_rgba(0,0,0,0.45)]'
@@ -84,9 +83,9 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
       .slice(-10)
       .map((message) => ({ role: message.role, content: message.content }));
 
-    const knowledgeContext = buildKnowledgeContext(text, chatbotKnowledge);
-
     try {
+      const controller = new AbortController();
+      const timeout = window.setTimeout(() => controller.abort(), 15_000);
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: {
@@ -94,17 +93,21 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
         },
         body: JSON.stringify({
           message: text,
-          context: knowledgeContext,
           history: conversationHistory,
         }),
+        signal: controller.signal,
       });
+      window.clearTimeout(timeout);
 
       if (!response.ok) {
-        throw new Error(`API error ${response.status}`);
+        const unavailable = response.status === 429
+          ? 'The assistant is receiving too many requests. Please wait a minute and try again.'
+          : 'The portfolio assistant is temporarily unavailable. Please try again later.';
+        throw new Error(unavailable);
       }
 
-      const data = (await response.json()) as { answer?: string };
-      const answer = data.answer?.trim() || 'I could not generate a response at this moment.';
+      const data = (await response.json()) as ChatApiResponse;
+      const answer = data.answer?.trim() || 'The assistant returned an empty response. Please try again.';
 
       setMessages((current) =>
         current.map((message) =>
@@ -113,14 +116,16 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
             : message,
         ),
       );
-    } catch {
+    } catch (error) {
       setMessages((current) =>
         current.map((message) =>
           message.id === assistantMessageId
             ? {
                 ...message,
                 content:
-                  'Groq response is not available. Check GROQ_API_KEY or the local backend.',
+                  error instanceof Error && error.name !== 'AbortError'
+                    ? error.message
+                    : 'The request timed out. Please try again.',
               }
             : message,
         ),
@@ -138,6 +143,14 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
   }, [isOpen, messages]);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    inputRef.current?.focus();
+    const close = (event: KeyboardEvent) => event.key === 'Escape' && setIsOpen(false);
+    window.addEventListener('keydown', close);
+    return () => window.removeEventListener('keydown', close);
+  }, [isOpen]);
+
   return (
     <>
       <AnimatePresence>
@@ -147,7 +160,10 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.96 }}
             transition={{ duration: 0.22, ease: 'easeOut' }}
-            className={`fixed right-5 top-1/2 -translate-y-1/2 z-50 flex h-[min(36rem,calc(100vh-2.5rem))] w-[min(92vw,24rem)] flex-col overflow-hidden rounded-3xl border backdrop-blur-xl ${shellClassName}`}
+            role="dialog"
+            aria-modal="false"
+            aria-labelledby="assistant-title"
+            className={`fixed bottom-24 right-5 z-50 flex h-[min(36rem,calc(100vh-7rem))] w-[min(92vw,24rem)] flex-col overflow-hidden rounded-3xl border backdrop-blur-xl ${shellClassName}`}
           >
             <div className={`flex items-center justify-between border-b px-4 py-3 ${borderClassName}`}>
               <div className="flex items-center gap-3">
@@ -155,7 +171,7 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
                   <Sparkles size={18} />
                 </div>
                 <div>
-                  <p className={`text-sm font-semibold ${panelTextClassName}`}>Bot-ko Assistant</p>
+                  <p id="assistant-title" className={`text-sm font-semibold ${panelTextClassName}`}>AI Portfolio Assistant</p>
                 </div>
               </div>
               <button
@@ -219,6 +235,9 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
                 }}
               >
                 <input
+                  ref={inputRef}
+                  aria-label="Ask the portfolio assistant"
+                  maxLength={500}
                   value={input}
                   onChange={(event) => setInput(event.target.value)}
                   placeholder="Ask me something about the profile..."
@@ -246,7 +265,7 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
       <button
         type="button"
         onClick={() => setIsOpen((current) => !current)}
-        className={`fixed right-5 top-1/2 -translate-y-1/2 z-40 inline-flex items-center gap-3 rounded-full border px-4 py-3 text-sm font-medium transition hover:-translate-y-[52%] ${
+        className={`fixed bottom-5 right-5 z-40 inline-flex items-center gap-3 rounded-full border px-4 py-3 text-sm font-medium transition ${
           darkMode
             ? 'border-cyan-400/30 bg-[#08101f] text-white shadow-[0_20px_60px_rgba(0,0,0,0.4)] hover:border-cyan-300/60'
             : 'border-cyan-500/20 bg-white text-slate-900 shadow-[0_20px_60px_rgba(15,23,42,0.14)] hover:border-cyan-500/50'
@@ -262,7 +281,7 @@ const ChatBot = ({ darkMode }: ChatBotProps) => {
 
       {!isOpen && (
         <div
-          className={`fixed right-5 top-[calc(50%+3.5rem)] z-40 hidden max-w-[14rem] rounded-2xl border px-3 py-2 text-center text-[11px] backdrop-blur-xl sm:block ${
+          className={`fixed bottom-20 right-5 z-40 hidden max-w-[14rem] rounded-2xl border px-3 py-2 text-center text-[11px] backdrop-blur-xl sm:block ${
             darkMode
               ? 'border-white/10 bg-black/30 text-white/60'
               : 'border-slate-200 bg-white/90 text-slate-500'

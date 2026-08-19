@@ -223,6 +223,21 @@ const projects: Project[] = [
     status: 'Source available',
   },
   {
+    slug: 'linkedin-post-generator',
+    title: 'LinkedIn Post Generator',
+    summary: 'A tool for generating engaging LinkedIn posts.',
+    solution: 'An agent for creating and customizing LinkedIn posts.',
+    role: 'Automation, Backend Development',
+    features: ['Post generation', 'Customization options'],
+    tech: ['N8N', 'JavaScript', 'PostgreSQL', 'Api Integration'],
+    image: '/images/Screenshot-LinkedIn-Post-Generator.png',
+    codeLink:
+      '',
+    category: 'Automation',
+    selected: true,
+    status: 'Source available',
+  },
+  {
     slug: 'tetris',
     title: 'Tetris Game',
     summary: 'A desktop implementation of the classic puzzle game.',
@@ -235,6 +250,22 @@ const projects: Project[] = [
     category: 'Games',
     selected: false,
     status: 'Source available',
+  },
+  {
+    slug: 'image-classification-shareit',
+    title: 'Image Classification for ShareIt Platform',
+    summary: 'A tool for classifying images within the ShareIt platform.',
+    solution: 'An image classification system integrated with the ShareIt platform.',
+    role: 'AI Integration',
+    features: ['Image classification', 'Data labeling'],
+
+    tech: ['N8N', 'JavaScript', 'PostgreSQL', 'Api Integration'],
+    image: '/images/Image_Classification_ShareIt.png',
+    codeLink:
+      '',
+    category: 'AI Integration',
+    selected: false,
+    status: 'Source not available',
   },
   {
     slug: 'media-player',

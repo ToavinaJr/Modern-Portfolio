@@ -79,7 +79,7 @@ export function ProjectCard({
 
         <p>{project.summary}</p>
 
-        <p className="project-role mt-2">
+        <p className="project-role my-2">
           <strong>Role:</strong> {project.role}
         </p>
 

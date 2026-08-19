@@ -1,6 +1,6 @@
 import type { IconType } from 'react-icons';
 
-export type ProjectCategory = 'Full-Stack' | 'Frontend' | 'C++/Qt' | 'AI Integration' | 'Games';
+export type ProjectCategory = 'Full-Stack' | 'Frontend' | 'C++/Qt' | 'AI Integration' | 'Games' | 'Automation' | 'Other';
 
 export interface Project {
   slug: string;

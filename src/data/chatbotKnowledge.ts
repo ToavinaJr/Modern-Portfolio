@@ -4,7 +4,7 @@ const chatbotKnowledge: ChatKnowledgeDocument[] = [
   {
     id: 'profile',
     title: 'Professional profile',
-    content: 'Toavina Sylvianno Randriamihaingoson, professionally known as ToavinaJr, is a Software Engineer and Full-Stack Developer based in Antananarivo, Madagascar. He builds web applications with React and NestJS and desktop software with C++ and Qt. He is available for remote international opportunities.',
+    content: 'Toavina Sylvianno RANDRIAMIHAINGOSON, professionally known as ToavinaJr, is a Software Engineer and Full-Stack Developer based in Antananarivo, Madagascar. He builds web applications with React and NestJS and desktop software with C++ and Qt. He is available for remote international opportunities.',
     tags: ['profile', 'about', 'location', 'availability'],
   },
   {

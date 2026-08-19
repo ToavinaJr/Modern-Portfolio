@@ -3,7 +3,7 @@ export function Footer() {
     <footer>
       <p>
         &copy; {new Date().getFullYear()} Toavina Sylvianno Randriamihaingoson ·
-        Software Engineer &amp; Full-Stack Developer
+        Software Engineer &amp; AI Automation Enthusiast
       </p>
 
       <nav aria-label="Footer navigation">

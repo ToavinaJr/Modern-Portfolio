@@ -59,7 +59,7 @@ export function ProjectCard({
 }) {
   return (
     <article
-      className={`project-card ${compact ? 'compact' : ''}`}
+      className={`project-card interactive-project-card ${compact ? 'compact' : ''}`}
     >
       <img
         src={project.image}

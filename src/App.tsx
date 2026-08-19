@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
+import { CursorParticles } from './components/CursorParticles';
 import projects from './data/project';
 import { useRevealAnimations } from './hooks/useRevealAnimations';
 import { useTheme } from './hooks/useTheme';
@@ -25,5 +26,5 @@ export default function App() {
         ? <CaseStudyPage project={project} />
         : <NotFoundPage />;
 
-  return <><a className="skip-link" href="#main-content">Skip to content</a><Header dark={dark} setDark={setDark} />{page}<Footer /><Suspense fallback={null}><ChatBot darkMode={dark} /></Suspense></>;
+  return <><a className="skip-link" href="#main-content">Skip to content</a><Header dark={dark} setDark={setDark} /><CursorParticles />{page}<Footer /><Suspense fallback={null}><ChatBot darkMode={dark} /></Suspense></>;
 }

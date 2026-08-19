@@ -1,6 +1,58 @@
-import { ChevronDown, MessageCircle } from 'lucide-react';
+import {
+  ChevronDown,
+  MessageCircle,
+} from 'lucide-react';
+
 import { ASSISTANT_TOPICS } from './constants';
 
-export function ChatLauncher({ darkMode, isOpen, onToggle }: { darkMode: boolean; isOpen: boolean; onToggle: () => void }) {
-  return <><button type="button" onClick={onToggle} className={`fixed right-5 bottom-5 z-40 inline-flex items-center gap-3 rounded-full border px-4 py-3 text-sm font-medium transition ${darkMode ? 'border-cyan-400/30 bg-[#08101f] text-white shadow-[0_20px_60px_rgba(0,0,0,0.4)] hover:border-cyan-300/60' : 'border-cyan-500/20 bg-white text-slate-900 shadow-[0_20px_60px_rgba(15,23,42,0.14)] hover:border-cyan-500/50'}`} aria-label="Open chatbot"><span className="flex h-9 w-9 items-center justify-center rounded-full bg-cyan-400/15 text-cyan-300"><MessageCircle size={18} /></span><span className="hidden sm:inline">Chat</span><ChevronDown size={16} className={`transition ${isOpen ? 'rotate-180' : ''}`} /></button>{!isOpen && <div className={`fixed right-5 bottom-20 z-40 hidden max-w-[14rem] rounded-2xl border px-3 py-2 text-center text-[11px] backdrop-blur-xl sm:block ${darkMode ? 'border-white/10 bg-black/30 text-white/60' : 'border-slate-200 bg-white/90 text-slate-500'}`}>Ask about {ASSISTANT_TOPICS.join(', ')}.</div>}</>;
+export function ChatLauncher({
+  darkMode,
+  isOpen,
+  onToggle,
+}: {
+  darkMode: boolean;
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
+  return (
+    <>
+      <button
+        type="button"
+        onClick={onToggle}
+        className={`fixed right-5 bottom-5 z-40 inline-flex items-center gap-3 rounded-full border px-4 py-3 text-sm font-medium transition ${
+          darkMode
+            ? 'border-cyan-400/30 bg-[#08101f] text-white shadow-[0_20px_60px_rgba(0,0,0,0.4)] hover:border-cyan-300/60'
+            : 'border-cyan-500/20 bg-white text-slate-900 shadow-[0_20px_60px_rgba(15,23,42,0.14)] hover:border-cyan-500/50'
+        }`}
+        aria-label="Open chatbot"
+      >
+        <span className="flex h-9 w-9 items-center justify-center rounded-full bg-cyan-400/15 text-cyan-300">
+          <MessageCircle size={18} />
+        </span>
+
+        <span className="hidden sm:inline">
+          Chat
+        </span>
+
+        <ChevronDown
+          size={16}
+          className={`transition ${
+            isOpen ? 'rotate-180' : ''
+          }`}
+        />
+      </button>
+
+      {!isOpen && (
+        <div
+          className={`fixed right-5 bottom-20 z-40 hidden max-w-[14rem] rounded-2xl border px-3 py-2 text-center text-[11px] backdrop-blur-xl sm:block ${
+            darkMode
+              ? 'border-white/10 bg-black/30 text-white/60'
+              : 'border-slate-200 bg-white/90 text-slate-500'
+          }`}
+        >
+          Ask about {ASSISTANT_TOPICS.join(', ')}.
+        </div>
+      )}
+    </>
+  );
 }

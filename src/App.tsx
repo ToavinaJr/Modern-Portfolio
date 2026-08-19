@@ -1,73 +1,29 @@
-import { lazy, Suspense, useEffect, useState } from 'react';
-import { Code2, Download, ExternalLink, Github, Linkedin, MapPin, Menu, Moon, Sun, X } from 'lucide-react';
-import { SiCmake, SiCplusplus, SiDocker, SiGit, SiGithub, SiJavascript, SiLinux, SiMysql, SiNestjs, SiNextdotjs, SiPostgresql, SiPrisma, SiQt, SiReact, SiSfml, SiTailwindcss, SiTypescript, SiVercel } from 'react-icons/si';
-import { ContactForm } from './components/ContactForm';
-import certifications from './data/certification';
+import { lazy, Suspense } from 'react';
+import { Footer } from './components/Footer';
+import { Header } from './components/Header';
 import projects from './data/project';
-import type { Project } from './types';
+import { useRevealAnimations } from './hooks/useRevealAnimations';
+import { useTheme } from './hooks/useTheme';
+import { CaseStudyPage } from './pages/CaseStudyPage';
+import { HomePage } from './pages/HomePage';
+import { NotFoundPage } from './pages/NotFoundPage';
+import { ProjectsPage } from './pages/ProjectsPage';
 
-const SITE = 'https://portfolio-toavinajr.vercel.app';
 const ChatBot = lazy(() => import('./components/ChatBot'));
-const nav = [['Home', '/'], ['Projects', '/projects'], ['About', '/#about'], ['Experience', '/#experience'], ['Skills', '/#skills'], ['Contact', '/#contact']];
-const skills = {
-  Frontend: [{ name: 'React', Icon: SiReact }, { name: 'TypeScript', Icon: SiTypescript }, { name: 'JavaScript', Icon: SiJavascript }, { name: 'Next.js', Icon: SiNextdotjs }, { name: 'Tailwind CSS', Icon: SiTailwindcss }],
-  Backend: [{ name: 'NestJS', Icon: SiNestjs }, { name: 'REST APIs', Icon: Code2 }, { name: 'Authentication', Icon: Code2 }],
-  Databases: [{ name: 'PostgreSQL', Icon: SiPostgresql }, { name: 'Prisma', Icon: SiPrisma }, { name: 'MySQL', Icon: SiMysql }],
-  'Software & Desktop': [{ name: 'C++', Icon: SiCplusplus }, { name: 'Qt', Icon: SiQt }, { name: 'CMake', Icon: SiCmake }, { name: 'SFML', Icon: SiSfml }],
-  'DevOps & Tools': [{ name: 'Docker', Icon: SiDocker }, { name: 'Linux', Icon: SiLinux }, { name: 'Git', Icon: SiGit }, { name: 'GitHub', Icon: SiGithub }, { name: 'Vercel', Icon: SiVercel }],
-  'AI & Automation': [{ name: 'LLM API integration', Icon: Code2 }, { name: 'Knowledge-grounded assistants', Icon: Code2 }, { name: 'Workflow automation', Icon: Code2 }],
-};
-
-function setMeta(title: string, description: string, path: string, image = '/images/og-portfolio.png') {
-  document.title = title;
-  const set = (selector: string, attr: string, value: string) => document.querySelector(selector)?.setAttribute(attr, value);
-  set('meta[name="description"]', 'content', description); set('link[rel="canonical"]', 'href', `${SITE}${path}`);
-  set('meta[property="og:title"]', 'content', title); set('meta[property="og:description"]', 'content', description); set('meta[property="og:url"]', 'content', `${SITE}${path}`); set('meta[property="og:image"]', 'content', `${SITE}${image}`);
-  set('meta[name="twitter:title"]', 'content', title); set('meta[name="twitter:description"]', 'content', description); set('meta[name="twitter:image"]', 'content', `${SITE}${image}`);
-}
-
-function Header({ dark, setDark }: { dark: boolean; setDark: (value: boolean) => void }) {
-  const [open, setOpen] = useState(false);
-  useEffect(() => { if (!open) return; const close = (event: KeyboardEvent) => event.key === 'Escape' && setOpen(false); addEventListener('keydown', close); return () => removeEventListener('keydown', close); }, [open]);
-  return <header className="site-header"><a className="brand" href="/" aria-label="ToavinaJr home">Toavina<span>Jr</span></a><nav id="primary-menu" aria-label="Primary navigation" className={open ? 'open' : ''}>{nav.map(([label, href]) => <a key={label} href={href} onClick={() => setOpen(false)}>{label}</a>)}</nav><div className="header-actions"><button className="icon-button" onClick={() => setDark(!dark)} aria-label={`Use ${dark ? 'light' : 'dark'} theme`}>{dark ? <Sun /> : <Moon />}</button><button className="menu-button icon-button" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="primary-menu" aria-label="Toggle navigation">{open ? <X /> : <Menu />}</button></div></header>;
-}
-
-function ProjectActions({ project, caseStudy = true }: { project: Project; caseStudy?: boolean }) {
-  return <div className="actions">{caseStudy && <a className="button" href={`/projects/${project.slug}`}>Explore Case Study</a>}{project.codeLink ? <a className="text-link" href={project.codeLink} target="_blank" rel="noopener noreferrer"><Code2 />View code</a> : <span className="private">Repository not public</span>}{project.demoLink && <a className="text-link" href={project.demoLink} target="_blank" rel="noopener noreferrer"><ExternalLink />Live demo</a>}</div>;
-}
-
-function ProjectCard({ project, compact = false }: { project: Project; compact?: boolean }) {
-  return <article className={`project-card ${compact ? 'compact' : ''}`}><img src={project.image} alt={`${project.title} application interface`} width="640" height="360" loading="lazy" decoding="async" /><div className="card-body"><div className="eyebrow">{project.category}</div><h3>{project.title}</h3><p>{project.summary}</p><p className="project-role"><strong>Role:</strong> {project.role}</p><ul className="tags" aria-label={`${project.title} technology stack`}>{project.tech.map((item) => <li key={item}>{item}</li>)}</ul><ProjectActions project={project} /></div></article>;
-}
-
-function Home({ dark }: { dark: boolean }) {
-  useEffect(() => setMeta('Toavina Sylvianno Randriamihaingoson | Software Engineer', 'Software Engineer and Full-Stack Developer in Madagascar building React, NestJS, PostgreSQL, C++/Qt and AI-integrated applications. Available for remote opportunities.', '/'), []);
-  return <main id="main-content">
-    <section className="hero" id="home"><div className="hero-copy"><div className="eyebrow">Toavina Sylvianno Randriamihaingoson · ToavinaJr</div><h1>Software Engineer &amp; Full-Stack Developer</h1><p className="lead">Building robust web, backend and desktop applications with React, TypeScript, NestJS, PostgreSQL and C++/Qt.</p><p className="availability"><MapPin />Antananarivo, Madagascar <span>·</span> Available for remote opportunities</p><div className="actions"><a className="button" href="#selected-work">View My Work</a><a className="button secondary" href="#about">About Me</a><a className="button secondary" href="/pdf/CV-RANDRIAMIHAINGOSON_Toavina_Sylvianno.pdf" download><Download />Download Resume</a></div><div className="socials"><a href="https://github.com/ToavinaJr" target="_blank" rel="noopener noreferrer"><Github />GitHub</a><a href="https://www.linkedin.com/in/randriamihaingoson-toavina-sylvianno-38a987276" target="_blank" rel="noopener noreferrer"><Linkedin />LinkedIn</a></div></div><img className="portrait" src="/images/RANDRIAMIHAINGOSON_Toavina_Sylvianno_Profil.jpeg" alt="Portrait of Toavina Sylvianno Randriamihaingoson" width="420" height="420" fetchPriority="high" /></section>
-    <section id="selected-work" className="section"><div className="section-heading"><div><div className="eyebrow">Selected work</div><h2>Engineering across web and desktop</h2></div><a href="/projects">Explore all projects →</a></div><div className="project-grid selected">{projects.filter((project) => project.selected).map((project) => <ProjectCard project={project} key={project.slug} />)}</div></section>
-    <section id="about" className="section split"><div><div className="eyebrow">About</div><h2>Applied mathematics meets product engineering</h2></div><div><p>I am a Master 2 student in Mathematics, Computer Science and Applied Statistics (MISA) at the University of Antananarivo. I design full-stack applications with React, TypeScript, NestJS and relational databases, and I explore native software engineering through C++ and Qt.</p><p>Teaching mathematics at Ikigasy and through private tutoring has sharpened how I decompose problems, test assumptions and explain complex ideas. In software, I apply that same discipline to interfaces, APIs, data models and maintainable implementation decisions.</p><p>I also build AI-integrated features, including this portfolio assistant, with curated context and explicit failure handling to keep responses grounded.</p></div></section>
-    <section id="experience" className="section"><div className="eyebrow">Experience &amp; education</div><h2>Professional experience, presented honestly</h2><div className="two-columns"><article className="info-card"><h3>Professional Experience</h3><h4>Mathematics Teacher · Ikigasy</h4><p>Teaching mathematics through structured explanations, problem decomposition and learner-focused communication.</p><h4>Private Mathematics Tutor</h4><p>Adapting individual lessons to each learner&apos;s needs and progress.</p></article><article className="info-card"><h3>Education</h3><h4>Master 2 MISA Student</h4><p>Mathematics, Computer Science and Applied Statistics at the University of Antananarivo.</p><a href="/projects">Software engineering projects →</a></article></div></section>
-    <section id="skills" className="section"><div className="eyebrow">Skills</div><h2>Technologies demonstrated through practical work</h2><p className="section-note">No arbitrary percentages or proficiency labels—project case studies show where the tools are used.</p><div className="skills-grid">{Object.entries(skills).map(([group, items]) => <article className="info-card" key={group}><h3>{group}</h3><ul className="skill-list">{items.map(({ name, Icon }) => <li key={name}><Icon aria-hidden="true" /><span>{name}</span></li>)}</ul></article>)}</div></section>
-    <section id="certifications" className="section"><div className="eyebrow">Certifications</div><h2>Selected credentials</h2><div className="cert-grid">{certifications.slice(0, 4).map((cert) => <article className="info-card" key={cert.title}><h3>{cert.title}</h3><p>{cert.issuer}</p>{cert.certificateLink && <a href={cert.certificateLink} target="_blank" rel="noopener noreferrer">View credential →</a>}</article>)}</div><details><summary>View all certifications</summary><div className="cert-grid all-certifications">{certifications.map((cert) => <article className="project-card cert-card" key={`${cert.issuer}-${cert.title}`}>{cert.image && <img src={cert.image} alt={`${cert.title} certificate`} width="640" height="360" loading="lazy" decoding="async" />}<div className="card-body"><h3>{cert.title}</h3><p>{cert.issuer}</p>{cert.description && <p>{cert.description}</p>}{cert.certificateLink ? <a href={cert.certificateLink} target="_blank" rel="noopener noreferrer">View credential →</a> : cert.image && <a href={cert.image} target="_blank" rel="noopener noreferrer">View certificate →</a>}</div></article>)}</div></details></section>
-    <ContactForm darkMode={dark} />
-  </main>;
-}
-
-function Projects() { useEffect(() => setMeta('Software Projects | ToavinaJr', 'Case studies and software projects by ToavinaJr across full-stack web development, C++/Qt desktop software and frontend engineering.', '/projects'), []); return <main id="main-content" className="page"><div className="page-intro"><div className="eyebrow">Selected engineering work</div><h1>Projects &amp; Case Studies</h1><p>Four primary projects show full-stack and desktop work. Smaller builds remain available as supporting practice rather than competing for attention.</p></div><section className="section"><h2>Featured case studies</h2><div className="project-grid selected">{projects.filter((project) => project.selected).map((project) => <ProjectCard project={project} key={project.slug} />)}</div></section><section className="section"><h2>Additional projects</h2><div className="project-grid compact-grid">{projects.filter((project) => !project.selected).map((project) => <ProjectCard project={project} compact key={project.slug} />)}</div></section></main>; }
-
-function CaseStudy({ project }: { project: Project }) {
-  useEffect(() => setMeta(`${project.title} Case Study | ToavinaJr`, `${project.summary} Built with ${project.tech.join(', ')}.`, `/projects/${project.slug}`, project.image), [project]);
-  const sections = [{ title: 'Overview', body: project.summary }, { title: 'The Problem', body: project.problem ?? project.summary }, { title: 'Goals', list: project.goals }, { title: 'My Role', body: project.role }, { title: 'Architecture', list: project.architecture }, { title: 'Technical Decisions', list: project.decisions }, { title: 'Features', list: project.features }, { title: 'Challenges', body: project.challenge }, { title: 'Solution', body: project.solution }, { title: 'Results', body: project.results }, { title: 'What I Learned', body: project.learned }];
-  const schema = { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: project.title, description: project.summary, applicationCategory: project.category, author: { '@type': 'Person', name: 'Toavina Sylvianno Randriamihaingoson', alternateName: 'ToavinaJr' }, url: `${SITE}/projects/${project.slug}`, image: `${SITE}${project.image}` };
-  return <main id="main-content" className="page case-study"><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} /><a className="back" href="/projects">← All projects</a><div className="page-intro"><div className="eyebrow">{project.category} · {project.status}</div><h1>{project.title}</h1><p>{project.summary}</p><ul className="tags" aria-label="Technology stack">{project.tech.map((item) => <li key={item}>{item}</li>)}</ul></div><img className="case-image" src={project.image} alt={`${project.title} application interface`} width="1200" height="675" />{sections.map((section) => (section.body || section.list?.length) && <section key={section.title}><h2>{section.title}</h2>{section.body && <p>{section.body}</p>}{section.list && <ul>{section.list.map((item) => <li key={item}>{item}</li>)}</ul>}</section>)}<section><h2>Repository &amp; Live Demo</h2><ProjectActions project={project} caseStudy={false} /></section></main>;
-}
-
-function NotFound() { useEffect(() => setMeta('Page Not Found | ToavinaJr', 'The requested portfolio page could not be found.', location.pathname), []); return <main id="main-content" className="page not-found"><p className="eyebrow">404</p><h1>Page not found</h1><p>The page you requested does not exist.</p><a className="button" href="/">Return home</a></main>; }
 
 export default function App() {
-  const [dark, setDark] = useState(() => localStorage.getItem('theme') !== 'light');
-  useEffect(() => { document.documentElement.dataset.theme = dark ? 'dark' : 'light'; localStorage.setItem('theme', dark ? 'dark' : 'light'); }, [dark]);
-  useEffect(() => { const elements = [...document.querySelectorAll<HTMLElement>('.hero-copy,.portrait,.section-heading,.split>div,.project-card,.info-card,.page-intro,.case-image,.case-study>section')]; document.documentElement.classList.add('motion-ready'); elements.forEach((element, index) => { element.classList.add('reveal'); element.style.setProperty('--reveal-delay', `${Math.min(index % 5, 4) * 60}ms`); }); const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } }), { threshold: .08 }); elements.forEach((element) => observer.observe(element)); return () => observer.disconnect(); }, []);
-  const path = location.pathname.replace(/\/$/, '') || '/'; const project = projects.find((item) => `/projects/${item.slug}` === path); const content = path === '/' ? <Home dark={dark} /> : path === '/projects' ? <Projects /> : project ? <CaseStudy project={project} /> : <NotFound />;
-  return <><a className="skip-link" href="#main-content">Skip to content</a><Header dark={dark} setDark={setDark} />{content}<footer><p>&copy; {new Date().getFullYear()} Toavina Sylvianno Randriamihaingoson · Software Engineer &amp; Full-Stack Developer</p><nav aria-label="Footer navigation"><a href="/projects">Projects</a><a href="/#about">About</a><a href="/#contact">Contact</a></nav><a href="https://github.com/ToavinaJr" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/randriamihaingoson-toavina-sylvianno-38a987276" target="_blank" rel="noopener noreferrer">LinkedIn</a></footer><Suspense fallback={null}><ChatBot darkMode={dark} /></Suspense></>;
+  const { dark, setDark } = useTheme();
+  useRevealAnimations();
+
+  const path = location.pathname.replace(/\/$/, '') || '/';
+  const project = projects.find((item) => `/projects/${item.slug}` === path);
+  const page = path === '/'
+    ? <HomePage />
+    : path === '/projects'
+      ? <ProjectsPage />
+      : project
+        ? <CaseStudyPage project={project} />
+        : <NotFoundPage />;
+
+  return <><a className="skip-link" href="#main-content">Skip to content</a><Header dark={dark} setDark={setDark} />{page}<Footer /><Suspense fallback={null}><ChatBot darkMode={dark} /></Suspense></>;
 }

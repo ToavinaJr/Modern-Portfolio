@@ -1,3 +1,5 @@
+import type { IconType } from 'react-icons';
+
 export type ProjectCategory = 'Full-Stack' | 'Frontend' | 'C++/Qt' | 'AI Integration' | 'Games';
 
 export interface Project {
@@ -33,8 +35,39 @@ export interface Certification {
   description?: string;
 }
 
-export interface Education { degree: string; school: string; period: string; }
+export interface Education { 
+  degree: string; 
+  school: string; 
+  period: string; 
+}
 
-export interface ChatKnowledgeDocument { id: string; title: string; content: string; tags: string[]; }
-export interface ChatMessage { id: string; role: 'user' | 'assistant'; content: string; }
-export interface ChatApiResponse { answer?: string; error?: string; }
+export interface ChatKnowledgeDocument { 
+  id: string; 
+  title: string; 
+  content: string; 
+  tags: string[]; 
+}
+
+export interface ChatMessage { 
+  id: string; 
+  role: 'user' | 'assistant'; 
+  content: string; 
+}
+
+export interface ChatApiResponse { 
+  answer?: 
+  string; 
+  error?: string; 
+}
+
+export interface SocialNetwork {
+  name: string;
+  url: string;
+  description: string;
+  Icon: IconType;
+}
+
+export interface Skill {
+  name: string;
+  Icon: IconType;
+}

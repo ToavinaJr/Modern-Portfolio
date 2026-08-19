@@ -1,0 +1,11 @@
+import { ProjectActions } from '../components/ProjectCard';
+import { usePageMeta } from '../hooks/usePageMeta';
+import { SITE } from '../lib/seo';
+import type { Project } from '../types';
+
+export function CaseStudyPage({ project }: { project: Project }) {
+  usePageMeta(`${project.title} Case Study | ToavinaJr`, `${project.summary} Built with ${project.tech.join(', ')}.`, `/projects/${project.slug}`, project.image);
+  const sections = [{ title: 'Overview', body: project.summary }, { title: 'The Problem', body: project.problem ?? project.summary }, { title: 'Goals', list: project.goals }, { title: 'My Role', body: project.role }, { title: 'Architecture', list: project.architecture }, { title: 'Technical Decisions', list: project.decisions }, { title: 'Features', list: project.features }, { title: 'Challenges', body: project.challenge }, { title: 'Solution', body: project.solution }, { title: 'Results', body: project.results }, { title: 'What I Learned', body: project.learned }];
+  const schema = { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: project.title, description: project.summary, applicationCategory: project.category, author: { '@type': 'Person', name: 'Toavina Sylvianno Randriamihaingoson', alternateName: 'ToavinaJr' }, url: `${SITE}/projects/${project.slug}`, image: `${SITE}${project.image}` };
+  return <main id="main-content" className="page case-study"><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} /><a className="back" href="/projects">← All projects</a><div className="page-intro"><div className="eyebrow">{project.category} · {project.status}</div><h1>{project.title}</h1><p>{project.summary}</p><ul className="tags" aria-label="Technology stack">{project.tech.map((item) => <li key={item}>{item}</li>)}</ul></div><img className="case-image" src={project.image} alt={`${project.title} application interface`} width="1200" height="675" />{sections.map((section) => (section.body || section.list?.length) && <section key={section.title}><h2>{section.title}</h2>{section.body && <p>{section.body}</p>}{section.list && <ul>{section.list.map((item) => <li key={item}>{item}</li>)}</ul>}</section>)}<section><h2>Repository &amp; Live Demo</h2><ProjectActions project={project} caseStudy={false} /></section></main>;
+}

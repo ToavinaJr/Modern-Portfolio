@@ -35,7 +35,7 @@ Portfolio data and case-study views
           ↓
 /api/chat server boundary
           ↓
-Curated knowledge retrieval → Groq LLM
+Curated knowledge retrieval → OpenAI or Groq LLM
 ```
 
 Portfolio content lives in typed data modules. The chat API reconstructs trusted context server-side, applies input and rate limits, and keeps the provider key outside the browser.

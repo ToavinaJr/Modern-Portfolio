@@ -14,7 +14,7 @@ The site presents selected full-stack, frontend, C++/Qt and AI integration work.
 
 - React 19, TypeScript and Vite
 - Tailwind CSS
-- Groq API integration through server-side endpoints
+- Configurable OpenAI or Groq integration through server-side endpoints
 - Vercel deployment
 
 ## Features
@@ -44,7 +44,7 @@ Portfolio content lives in typed data modules. The chat API reconstructs trusted
 
 The assistant only answers questions about the documented profile, education, experience, skills, projects, availability and contact options. Its prompt forbids invented employers, results, proficiency levels and experience duration. Missing or unrelated information receives an explicit refusal.
 
-Create a local `.env` from `.env.example` and provide `GROQ_API_KEY` to use the assistant during development.
+Create a local `.env` from `.env.example`. Set `AI_PROVIDER=openai` (the default) with `OPENAI_API_KEY`, or set `AI_PROVIDER=groq` with `GROQ_API_KEY`. The optional model variables are `OPENAI_MODEL` (default: `gpt-4.1-mini`) and `GROQ_MODEL` (default: `openai/gpt-oss-20b`).
 
 ## SEO
 

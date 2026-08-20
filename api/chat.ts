@@ -1,12 +1,16 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
-import Groq from 'groq-sdk';
 import { buildKnowledgeContext } from '../src/lib/chatbot.js';
 import chatbotKnowledge from '../src/data/chatbotKnowledge.js';
 
-const MODEL = 'llama-3.3-70b-versatile';
+type AiProvider = 'openai' | 'groq';
+
+const AI_PROVIDER = (process.env.AI_PROVIDER ?? 'openai').toLowerCase() as AiProvider;
+const PROVIDERS = {
+  openai: { apiKey: process.env.OPENAI_API_KEY, model: process.env.OPENAI_MODEL ?? 'gpt-4.1-mini', url: 'https://api.openai.com/v1/chat/completions' },
+  groq: { apiKey: process.env.GROQ_API_KEY, model: process.env.GROQ_MODEL ?? 'openai/gpt-oss-20b', url: 'https://api.groq.com/openai/v1/chat/completions' },
+} as const;
 const MAX_MESSAGE_LENGTH = 500;
 const requests = new Map<string, { count: number; resetAt: number }>();
-const client = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 const systemPrompt = `You are the AI Portfolio Assistant for Toavina Sylvianno Randriamihaingoson, a Software Engineer and Full-Stack Developer.
 
@@ -36,6 +40,13 @@ const readRequestBody = async (req: IncomingMessage): Promise<Record<string, unk
   return rawBody ? JSON.parse(rawBody) as Record<string, unknown> : {};
 };
 
+const getProviderConfig = () => {
+  if (AI_PROVIDER !== 'openai' && AI_PROVIDER !== 'groq') throw new Error(`Unsupported AI_PROVIDER: ${AI_PROVIDER}`);
+  const config = PROVIDERS[AI_PROVIDER];
+  if (!config.apiKey) throw new Error(`Missing ${AI_PROVIDER.toUpperCase()}_API_KEY`);
+  return config;
+};
+
 export default async function handler(req: IncomingMessage, res: ServerResponse) {
   if (req.method !== 'POST') return sendJson(res, 405, { error: 'Method not allowed' });
 
@@ -54,18 +65,19 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
     if (message.length > MAX_MESSAGE_LENGTH) return sendJson(res, 400, { error: 'Message is too long.' });
 
     const context = buildKnowledgeContext(message, chatbotKnowledge);
-    const completion = await client.chat.completions.create({
-      model: MODEL,
-      messages: [{ role: 'system', content: `${systemPrompt}\n\nTrusted portfolio context:\n${context}` }, { role: 'user', content: message }],
-      temperature: 0.1,
-      max_completion_tokens: 250,
-      top_p: 0.9,
-      stream: false,
+    const provider = getProviderConfig();
+    const response = await fetch(provider.url, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${provider.apiKey}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model: provider.model, messages: [{ role: 'system', content: `${systemPrompt}\n\nTrusted portfolio context:\n${context}` }, { role: 'user', content: message }], temperature: 0.1, max_completion_tokens: 250, top_p: 0.9, stream: false }),
     });
-    const answer = completion.choices[0]?.message?.content?.trim();
+    if (!response.ok) throw new Error(`${AI_PROVIDER} request failed with status ${response.status}`);
+    const completion = await response.json() as { choices?: Array<{ message?: { content?: string } }> };
+    const answer = completion.choices?.[0]?.message?.content?.trim();
     return answer ? sendJson(res, 200, { answer }) : sendJson(res, 503, { error: 'The assistant returned an empty response.' });
   } catch (error) {
     if (error instanceof Error && error.message === 'REQUEST_TOO_LARGE') return sendJson(res, 413, { error: 'Request is too large.' });
+    console.error('Portfolio assistant request failed', error);
     return sendJson(res, 503, { error: 'The portfolio assistant is temporarily unavailable.' });
   }
 }

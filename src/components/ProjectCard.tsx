@@ -61,6 +61,11 @@ export function ProjectCard({
     <article
       className={`project-card interactive-project-card ${compact ? 'compact' : ''}`}
     >
+      <a
+        className="card-hit-area"
+        href={`/projects/${project.slug}`}
+        aria-label={`Open case study: ${project.title}`}
+      />
       <img
         src={project.image}
         alt={`${project.title} application interface`}

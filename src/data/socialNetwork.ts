@@ -1,7 +1,13 @@
-import { SiLinkedin, SiMalt, SiUpwork } from 'react-icons/si';
+import { SiLinkedin, SiMalt, SiUpwork, SiWhatsapp } from 'react-icons/si';
 import type { SocialNetwork } from '../types';
 
 const socialNetworks: SocialNetwork[] = [
+  {
+    name: 'WhatsApp',
+    url: 'https://wa.me/261341654007',
+    description: 'Écrivez-moi directement sur WhatsApp au +261 34 16 54 007.',
+    Icon: SiWhatsapp,
+  },
   {
     name: 'Upwork',
     url: 'https://www.upwork.com/freelancers/~0141db3c7711b27f9b',

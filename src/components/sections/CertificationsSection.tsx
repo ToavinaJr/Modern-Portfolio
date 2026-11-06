@@ -1,5 +1,9 @@
 import certifications from '../../data/certification';
 
+function credentialUrl(cert: (typeof certifications)[number]) {
+  return cert.certificateLink ?? cert.image;
+}
+
 export function CertificationsSection() {
   return (
     <section id="certifications" className="section">
@@ -8,11 +12,13 @@ export function CertificationsSection() {
       <div className="cert-grid">
         {certifications.slice(0, 4).map((cert) => (
           <div className="cert-card-shell" key={cert.title}>
-            <article className="info-card cert-hover-card">
-              <h3>{cert.title}</h3>
-              <p>{cert.issuer}</p>
-              {cert.certificateLink && <a href={cert.certificateLink} target="_blank" rel="noopener noreferrer">View credential →</a>}
-            </article>
+            <a className="cert-card-link" href={credentialUrl(cert)} target="_blank" rel="noopener noreferrer" aria-label={`View ${cert.title} certificate`}>
+              <article className="info-card cert-hover-card">
+                <h3>{cert.title}</h3>
+                <p>{cert.issuer}</p>
+                <span className="text-link">View credential ↗</span>
+              </article>
+            </a>
           </div>
         ))}
       </div>
@@ -21,15 +27,17 @@ export function CertificationsSection() {
         <div className="cert-grid all-certifications">
           {certifications.map((cert) => (
             <div className="cert-card-shell" key={`${cert.issuer}-${cert.title}`}>
-              <article className="project-card cert-card cert-hover-card">
-                {cert.image && <img src={cert.image} alt={`${cert.title} certificate`} width="640" height="360" loading="lazy" decoding="async" />}
-                <div className="card-body">
-                  <h3>{cert.title}</h3>
-                  <p>{cert.issuer}</p>
-                  {cert.description && <p>{cert.description}</p>}
-                  {cert.certificateLink ? <a href={cert.certificateLink} target="_blank" rel="noopener noreferrer">View credential →</a> : cert.image && <a href={cert.image} target="_blank" rel="noopener noreferrer">View certificate →</a>}
-                </div>
-              </article>
+              <a className="cert-card-link" href={credentialUrl(cert)} target="_blank" rel="noopener noreferrer" aria-label={`View ${cert.title} certificate`}>
+                <article className="project-card cert-card cert-hover-card">
+                  {cert.image && <img src={cert.image} alt={`${cert.title} certificate`} width="640" height="360" loading="lazy" decoding="async" />}
+                  <div className="card-body">
+                    <h3>{cert.title}</h3>
+                    <p>{cert.issuer}</p>
+                    {cert.description && <p>{cert.description}</p>}
+                    <span className="text-link">View credential ↗</span>
+                  </div>
+                </article>
+              </a>
             </div>
           ))}
         </div>

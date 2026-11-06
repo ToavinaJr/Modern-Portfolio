@@ -24,8 +24,12 @@ export function useChat() {
       const timeout = window.setTimeout(() => controller.abort(), 15_000);
       const response = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: text, history }), signal: controller.signal });
       window.clearTimeout(timeout);
-      if (!response.ok) throw new Error(response.status === 429 ? 'The assistant is receiving too many requests. Please wait a minute and try again.' : 'The portfolio assistant is temporarily unavailable. Please try again later.');
       const data = (await response.json()) as ChatApiResponse;
+      if (!response.ok) {
+        throw new Error(data.error || (response.status === 429
+          ? 'The assistant is receiving too many requests. Please wait a minute and try again.'
+          : 'The portfolio assistant is temporarily unavailable. Please try again later.'));
+      }
       const answer = data.answer?.trim() || 'The assistant returned an empty response. Please try again.';
       setMessages((current) => current.map((message) => message.id === assistantMessageId ? { ...message, content: answer } : message));
     } catch (error) {

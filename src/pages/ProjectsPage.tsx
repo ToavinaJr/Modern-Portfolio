@@ -11,12 +11,6 @@ export function ProjectsPage() {
       </div>
 
       <h1>Projects &amp; Case Studies</h1>
-
-      <p>
-        Four primary projects show full-stack and desktop work. Smaller builds
-        remain available as supporting practice rather than competing for
-        attention.
-      </p>
     </div>
 
     <section className="section">

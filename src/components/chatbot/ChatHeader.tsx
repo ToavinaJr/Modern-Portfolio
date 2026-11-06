@@ -1,5 +1,5 @@
 import { Sparkles, X } from 'lucide-react';
 
-export function ChatHeader({ darkMode, onClose }: { darkMode: boolean; onClose: () => void }) {
-  return <div className={`flex items-center justify-between border-b px-4 py-3 ${darkMode ? 'border-white/10' : 'border-slate-200'}`}><div className="flex items-center gap-3"><div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-cyan-400/15 text-cyan-300"><Sparkles size={18} /></div><p id="assistant-title" className={`text-sm font-semibold ${darkMode ? 'text-white' : 'text-slate-900'}`}>AI Portfolio Assistant</p></div><button type="button" onClick={onClose} className={`rounded-full p-2 transition ${darkMode ? 'text-white/60 hover:bg-white/10 hover:text-white' : 'text-slate-500 hover:bg-slate-100 hover:text-slate-900'}`} aria-label="Close chat"><X size={18} /></button></div>;
+export function ChatHeader({ onClose }: { onClose: () => void }) {
+  return <div className="flex items-center justify-between border-b border-line px-4 py-3"><div className="flex items-center gap-3"><div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary"><Sparkles size={18} aria-hidden="true" /></div><p id="assistant-title" className="text-sm font-semibold text-card-foreground">AI Portfolio Assistant</p></div><button type="button" onClick={onClose} className="rounded-xl p-2 text-muted transition-colors hover:bg-secondary hover:text-foreground" aria-label="Close chat"><X size={18} /></button></div>;
 }

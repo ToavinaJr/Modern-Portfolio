@@ -20,6 +20,26 @@ const getProviderConfig = () => {
   return config;
 };
 
+const getProviderFailure = (status, providerError) => {
+  const providerCode = providerError?.error?.code ?? providerError?.error?.type ?? `HTTP_${status}`;
+  if (status === 401) {
+    return {
+      providerCode,
+      message: `The ${AI_PROVIDER} provider rejected the configured API key. Check that ${AI_PROVIDER.toUpperCase()}_API_KEY contains a valid key for ${AI_PROVIDER}, then restart the server.`,
+    };
+  }
+  if (status === 429) {
+    return {
+      providerCode,
+      message: `The ${AI_PROVIDER} provider is rate-limiting requests or the account has reached its usage limit. Please try again later.`,
+    };
+  }
+  return {
+    providerCode,
+    message: 'The portfolio assistant is temporarily unavailable. Please try again later.',
+  };
+};
+
 http.createServer(async (req, res) => {
   if (req.url !== '/api/chat' || req.method !== 'POST') return sendJson(res, 404, { error: 'Not found' });
   try {
@@ -29,12 +49,26 @@ http.createServer(async (req, res) => {
     if (message.length > 500) return sendJson(res, 400, { error: 'Message is too long.' });
     const provider = getProviderConfig();
     const response = await fetch(provider.url, { method: 'POST', headers: { Authorization: `Bearer ${provider.apiKey}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ model: provider.model, messages: [{ role: 'system', content: systemPrompt }, { role: 'user', content: message }], temperature: .1, max_completion_tokens: 250, stream: false }) });
-    if (!response.ok) throw new Error(`${AI_PROVIDER} request failed with status ${response.status}`);
+    if (!response.ok) {
+      let providerError;
+      try {
+        providerError = await response.json();
+      } catch {
+        providerError = undefined;
+      }
+      const failure = getProviderFailure(response.status, providerError);
+      console.error('Portfolio assistant provider rejected request', {
+        provider: AI_PROVIDER,
+        status: response.status,
+        code: failure.providerCode,
+      });
+      return sendJson(res, 503, { error: failure.message });
+    }
     const completion = await response.json();
     const answer = completion.choices?.[0]?.message?.content?.trim();
     return answer ? sendJson(res, 200, { answer }) : sendJson(res, 503, { error: 'The assistant returned an empty response.' });
   } catch (error) {
-    console.error('Portfolio assistant request failed', error);
+    console.error('Portfolio assistant request failed', error instanceof Error ? error.message : 'Unknown error');
     return sendJson(res, 503, { error: 'The portfolio assistant is temporarily unavailable.' });
   }
 }).listen(PORT, () => console.log(`Portfolio assistant server running on http://localhost:${PORT}`));

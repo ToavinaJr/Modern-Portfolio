@@ -5,11 +5,9 @@ import { ChatLauncher } from './chatbot/ChatLauncher';
 import { ChatMessages } from './chatbot/ChatMessages';
 import { useChat } from '../hooks/useChat';
 
-const ChatBot = ({ darkMode }: { darkMode: boolean }) => {
+const ChatBot = () => {
   const chat = useChat();
-  const shell = darkMode
-    ? 'border-white/10 bg-[#08101f]/95 text-white shadow-[0_25px_80px_rgba(0,0,0,0.45)]'
-    : 'border-slate-200 bg-white/95 text-slate-900 shadow-[0_25px_80px_rgba(15,23,42,0.18)]';
+  const shell = 'border-line bg-card/95 text-card-foreground shadow-[0_20px_60px_hsl(var(--foreground)/0.14)]';
 
   return <>
     <AnimatePresence>
@@ -39,19 +37,14 @@ const ChatBot = ({ darkMode }: { darkMode: boolean }) => {
           aria-labelledby="assistant-title"
           className={`fixed right-5 bottom-24 z-50 flex h-[min(36rem,calc(100vh-7rem))] w-[min(92vw,24rem)] flex-col overflow-hidden rounded-3xl border backdrop-blur-xl ${shell}`}
         >
-          <ChatHeader
-            darkMode={darkMode}
-            onClose={() => chat.setIsOpen(false)}
-          />
+          <ChatHeader onClose={() => chat.setIsOpen(false)} />
 
           <ChatMessages
             messages={chat.messages}
-            darkMode={darkMode}
             endRef={chat.messagesEndRef}
           />
 
           <ChatComposer
-            darkMode={darkMode}
             input={chat.input}
             isLoading={chat.isLoading}
             inputRef={chat.inputRef}
@@ -63,7 +56,6 @@ const ChatBot = ({ darkMode }: { darkMode: boolean }) => {
     </AnimatePresence>
 
     <ChatLauncher
-      darkMode={darkMode}
       isOpen={chat.isOpen}
       onToggle={() =>
         chat.setIsOpen((current) => !current)

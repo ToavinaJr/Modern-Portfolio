@@ -5,20 +5,13 @@ import { PENDING_RESPONSE } from './constants';
 
 export function ChatMessages({
   messages,
-  darkMode,
   endRef,
 }: {
   messages: ChatMessage[];
-  darkMode: boolean;
   endRef: RefObject<HTMLDivElement | null>;
 }) {
-  const bubble = darkMode
-    ? 'border-white/10 bg-white/5 text-white/88'
-    : 'border-slate-200 bg-slate-50 text-slate-800';
-
-  const pending = darkMode
-    ? 'border-white/10 bg-white/5 text-white/65'
-    : 'border-slate-200 bg-slate-50 text-slate-500';
+  const bubble = 'border-line bg-secondary text-secondary-foreground';
+  const pending = 'border-line bg-secondary text-muted';
 
   return (
     <div className="flex-1 space-y-4 overflow-y-auto px-4 py-4">
@@ -34,7 +27,7 @@ export function ChatMessages({
           <div
             className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
               message.role === 'user'
-                ? 'bg-cyan-500 text-slate-950'
+                ? 'bg-primary text-primary-foreground'
                 : message.content === PENDING_RESPONSE
                   ? pending
                   : bubble

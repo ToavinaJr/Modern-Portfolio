@@ -59,9 +59,9 @@ export function useCursorParticles() {
         if (particle.life <= 0) { particles.splice(index, 1); continue; }
         context.beginPath();
         context.arc(particle.x, particle.y, particle.size * particle.life, 0, Math.PI * 2);
-        context.fillStyle = `hsla(${particle.hue}, 90%, 65%, ${particle.life * 0.75})`;
+        context.fillStyle = `hsl(346 77% 56% / ${particle.life * 0.62})`;
         context.shadowBlur = 10;
-        context.shadowColor = `hsl(${particle.hue}, 90%, 60%)`;
+        context.shadowColor = 'hsl(346 77% 56%)';
         context.fill();
       }
       frame = requestAnimationFrame(draw);

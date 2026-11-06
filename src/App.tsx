@@ -26,5 +26,5 @@ export default function App() {
         ? <CaseStudyPage project={project} />
         : <NotFoundPage />;
 
-  return <><a className="skip-link" href="#main-content">Skip to content</a><Header dark={dark} setDark={setDark} /><CursorParticles />{page}<Footer /><Suspense fallback={null}><ChatBot darkMode={dark} /></Suspense></>;
+  return <><a className="skip-link" href="#main-content">Skip to content</a><Header dark={dark} setDark={setDark} /><CursorParticles />{page}<Footer /><Suspense fallback={null}><ChatBot /></Suspense></>;
 }

@@ -47,6 +47,34 @@ const getProviderConfig = () => {
   return config;
 };
 
+const getProviderFailure = (status: number, providerError: unknown) => {
+  const errorDetails = providerError && typeof providerError === 'object' && 'error' in providerError
+    ? providerError.error
+    : undefined;
+  const providerCode = errorDetails && typeof errorDetails === 'object' && 'code' in errorDetails
+    ? String(errorDetails.code)
+    : errorDetails && typeof errorDetails === 'object' && 'type' in errorDetails
+      ? String(errorDetails.type)
+      : `HTTP_${status}`;
+
+  if (status === 401) {
+    return {
+      providerCode,
+      message: `The ${AI_PROVIDER} provider rejected the configured API key. Check that ${AI_PROVIDER.toUpperCase()}_API_KEY contains a valid key for ${AI_PROVIDER}.`,
+    };
+  }
+  if (status === 429) {
+    return {
+      providerCode,
+      message: `The ${AI_PROVIDER} provider is rate-limiting requests or the account has reached its usage limit. Please try again later.`,
+    };
+  }
+  return {
+    providerCode,
+    message: 'The portfolio assistant is temporarily unavailable. Please try again later.',
+  };
+};
+
 export default async function handler(req: IncomingMessage, res: ServerResponse) {
   if (req.method !== 'POST') return sendJson(res, 405, { error: 'Method not allowed' });
 
@@ -71,7 +99,21 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
       headers: { Authorization: `Bearer ${provider.apiKey}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({ model: provider.model, messages: [{ role: 'system', content: `${systemPrompt}\n\nTrusted portfolio context:\n${context}` }, { role: 'user', content: message }], temperature: 0.1, max_completion_tokens: 250, top_p: 0.9, stream: false }),
     });
-    if (!response.ok) throw new Error(`${AI_PROVIDER} request failed with status ${response.status}`);
+    if (!response.ok) {
+      let providerError: unknown;
+      try {
+        providerError = await response.json();
+      } catch {
+        providerError = undefined;
+      }
+      const failure = getProviderFailure(response.status, providerError);
+      console.error('Portfolio assistant provider rejected request', {
+        provider: AI_PROVIDER,
+        status: response.status,
+        code: failure.providerCode,
+      });
+      return sendJson(res, 503, { error: failure.message });
+    }
     const completion = await response.json() as { choices?: Array<{ message?: { content?: string } }> };
     const answer = completion.choices?.[0]?.message?.content?.trim();
     return answer ? sendJson(res, 200, { answer }) : sendJson(res, 503, { error: 'The assistant returned an empty response.' });
